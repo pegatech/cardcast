@@ -6,12 +6,12 @@ var app = express();
 
 app.use(bodyParser.json());
 
-app.get('/card', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'clients', 'sender', 'index.html'));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../clients/sender/index.html'));
 });
 
 app.get('/receiver', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'clients', 'receiver', 'index.html'));
+  res.sendFile(path.join(__dirname, '../clients/receiver/index.html'));
 });
 
 app.use((req, res) => {
