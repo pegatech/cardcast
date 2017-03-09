@@ -1,0 +1,22 @@
+{
+  "name": "cardcast",
+  "description": "A simple chromecast tool for collaborative presentations.",
+  "main": "clinets/sender/index.html",
+  "authors": [
+    "Jerry Krusinski <jkruzr@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/pegatech/cardcast.git",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "clients/assets/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-route": "^1.6.3"
+  }
+}

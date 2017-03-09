@@ -1,0 +1,23 @@
+{
+  "name": "cardcast",
+  "version": "1.0.0",
+  "description": "A simple chromecast tool for collaborative presentations.",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pegatech/cardcast.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pegatech/cardcast/issues"
+  },
+  "homepage": "https://github.com/pegatech/cardcast#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+  }
+}
