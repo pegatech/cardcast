@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head ng-app="cardcast">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CardCast</title>
+
+    <link href="/assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/assets/styles/sender.css" rel="stylesheet" />
+
+    <script src="/assets/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/lib/angular/angular.min.js"></script>
+    <script src="/assets/lib/angular-route/angular-route.js"></script>
+  </head>
+  <body>
+
+    <h1>CardCast</h1>
+
+    <div ng-view></div>
+
+    <script src="/sender/controllers/main.js"></script>
+    <script src="/sender/app.js"></script>
+  </body>
+</html>
