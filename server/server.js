@@ -14,8 +14,10 @@ app.get('/receiver', (req, res) => {
   res.sendFile(path.join(__dirname, '../clients/receiver/index.html'));
 });
 
+app.use(express.static(path.join(__dirname, '../clients/')));
+
 app.use((req, res) => {
-  res.status(404).send("ERROR 404 Sorry can't find what you're looking for!");
+  res.status(404).send('ERROR 404 Sorry can\'t find what you\'re looking for!');
 });
 
 app.listen(8000, () => {
