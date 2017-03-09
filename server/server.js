@@ -10,6 +10,11 @@ app.get('/card', function(req, res) {
   res.sendFile("Sender html");
 });
 
+app.post('/card', function(req, res) {
+  var texts = req.body.texts;
+
+});
+
 app.get('/receiver', function(req, res) {
   res.sendFile("Receiver html");
 });
