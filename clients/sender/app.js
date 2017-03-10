@@ -1,11 +1,12 @@
 angular.module('cardcast', [
-  'ngRoute'
+  'ngRoute',
+  'cardcast.main'
 ])
 
-.config(function($routeProvider) {
+.config(function($routeProvider, $httpProvider) {
   $routeProvider
     .when('/', {
-      template: '/sender/controllers/main.html',
+      templateUrl: '/sender/controllers/main.html',
       controller: 'MainCtrl'
     });
 });
