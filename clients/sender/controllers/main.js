@@ -1,7 +1,6 @@
 angular.module('cardcast.main', [])
 
 .controller('MainCtrl', function($scope) {
-  $scope.text = {};
 
   $scope.initialize = function() {
     var applicationID = '';
