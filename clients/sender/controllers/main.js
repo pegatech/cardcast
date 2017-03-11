@@ -32,7 +32,6 @@ angular.module('cardcast.main', [])
 
     function sessionListener(currentSession) {
       console.log('New session ID: ' + currentSession.sessionId);
-      $scope.variables.session = currentSession;
       session = currentSession;
       session.addUpdateListener(sessionUpdateListener);
       session.addMessageListener(namespace, receiverMessage);
