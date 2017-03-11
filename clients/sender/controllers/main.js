@@ -1,16 +1,12 @@
 angular.module('cardcast.main', [])
 
 .controller('MainCtrl', function($scope) {
-  $scope.variables = {
-    applicationID: '7F987426',
-    namespace: 'urn:x-cast:pegatech.card.cast',
-    session: null
-  }
 
-  $scope.initialize = function() {
-    var applicationID = $scope.variables.applicationID;
-    var namespace = $scope.variables.namespace;
-    var session = $scope.variables.session;
+  var applicationID = '7F987426';
+  var namespace = 'urn:x-cast:pegatech.card.cast';
+  var session = null;
+
+  var initialize = function() {
 
     if (!chrome.cast || !chrome.cast.isAvailable) {
       setTimeout(initializeCastApi, 1000);
@@ -72,12 +68,9 @@ angular.module('cardcast.main', [])
       session.stop(onStopAppSuccess, onError);
     }
 
-  }
+  };
 
   $scope.sendMessage = function() {
-    var session = $scope.variables.session;
-    var applicationID = $scope.variables.applicationID;
-    var namespace = $scope.variables.namespace;
 
     function sendMessage(message) {
       if (session !== null) {
@@ -99,7 +92,7 @@ angular.module('cardcast.main', [])
     }
 
     sendMessage($scope.message);
-  }
+  };
 
-  $scope.initialize();
+  window.onload(initialize);
 });
