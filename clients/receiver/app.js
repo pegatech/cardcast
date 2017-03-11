@@ -1,5 +1,7 @@
-angular.module('cardcast-receiver', [])
-.controller('MainController', function($scope) {
+angular.module('cardcast-receiver', [
+  'ngSanitize'
+  ])
+.controller('MainController', function($scope, $sanitize, Markdown) {
 
   $scope.text = 'Nothing casted yet.';
 
@@ -34,7 +36,7 @@ angular.module('cardcast-receiver', [])
     //handler for castMessageBus event
     messageBus.onMessage = function(event) {
       //set the event.data to $scope.text so it can be used by the view
-      $scope.text = event.data;
+      $scope.text = $sanitize(Markdown.compile(event.data));
 
       console.log('Message [' + event.senderId + ']: ' + event.data);
       castReceiverManager.setApplicationState(event.data);
@@ -55,4 +57,12 @@ angular.module('cardcast-receiver', [])
   } else {
     initialize();
   }
+})
+.factory('Markdown', function() {
+  var compile = function(text){
+    return marked(text);
+  };
+  return {
+    compile: compile
+  };
 });

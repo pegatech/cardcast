@@ -13,6 +13,8 @@
     <script src="/assets/lib/jquery/dist/jquery.min.js"></script>
     <script src="/assets/lib/angular/angular.min.js"></script>
     <script src="/assets/lib/angular-route/angular-route.js"></script>
+    <script src="/assets/lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/assets/lib/marked/lib/marked.js"></script>
     <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
   </head>
   <body>
@@ -20,7 +22,7 @@
     <h1>CardCast</h1>
 
     <div ng-controller="MainController">
-      {{ text }}
+      <div ng-bind-html="text"></div>
     </div>
     <script src="/receiver/app.js"></script>
   </body>
