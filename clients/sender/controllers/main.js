@@ -90,6 +90,14 @@ angular.module('cardcast.main', [])
       }
     }
 
+    function onError(message) {
+      console.log('onError: ' + JSON.stringify(message));
+    }
+
+    function onSuccess(message) {
+      console.log('onSuccess: ' + message);
+    }
+
     sendMessage($scope.message);
   }
 
