@@ -1,4 +1,6 @@
-angular.module('cardcast-receiver', [])
+angular.module('cardcast-receiver', [
+  'ngSanitize'
+  ])
 .controller('MainController', function($scope, Markdown) {
 
   $scope.text = 'Nothing casted yet.';
