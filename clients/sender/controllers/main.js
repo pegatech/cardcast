@@ -64,9 +64,11 @@ angular.module('cardcast.main', [])
     function stopApp() {
       session.stop(onStopAppSuccess, onError);
     }
+
   }
 
-  $scope.update() {
+  $scope.sendMessage() {
+
     function sendMessage(message) {
       if (session !== null) {
         session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
@@ -78,6 +80,7 @@ angular.module('cardcast.main', [])
       }
     }
 
+    sendMessage(document.getElementById('textBox').value);
   }
 
   $scope.initialize();
