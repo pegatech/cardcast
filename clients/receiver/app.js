@@ -58,9 +58,6 @@ angular.module('cardcast-receiver', [])
 })
 .factory('Markdown', function() {
   var compile = function(text){
-    marked.setOption({
-      sanitize: true
-    });
     return marked(text);
   };
   return {
