@@ -8,16 +8,11 @@ angular.module('cardcast.main', [])
 
   var initialize = function() {
 
-    if (!chrome.cast || !chrome.cast.isAvailable) {
-      setTimeout(initializeCastApi, 1000);
-    }
+    var sessionRequest = new chrome.cast.SessionRequest(applicationID);
+    var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
 
-    function initializeCastApi() {
-      var sessionRequest = new chrome.cast.SessionRequest(applicationID);
-      var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
+    chrome.cast.initialize(apiConfig, onInitSuccess, onError);
 
-      chrome.cast.initialize(apiConfig, onInitSuccess, onError);
-    }
 
     function onInitSuccess() {
       console.log('Successful initialization');
@@ -94,5 +89,5 @@ angular.module('cardcast.main', [])
     sendMessage($scope.message);
   };
 
-  window.onload(initialize);
+  window.onload = initialize;
 });

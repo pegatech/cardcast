@@ -5,7 +5,7 @@ angular.module('cardcast-receiver', [])
 
   var initialize = function() {
     cast.receiver.logger.setLevelValue(0);
-    window.castReceiverManager = cast.receiver.castReceiverManager.getInstance();
+    window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
     console.log('Starting the Receiver Manager');
 
     //on ready event
@@ -49,5 +49,9 @@ angular.module('cardcast-receiver', [])
     console.log('Receiver Manager started');
   };
 
-  window.onload = initialize;
+  if (!cast.receiver) {
+    setTimeout(initialize, 1000);
+  } else {
+    initialize();
+  }
 });
