@@ -42,7 +42,7 @@ angular.module('cardcast-receiver', [])
       //inform all senders on messagebus of incoming message
       //this invokes the senders messageListener function
       messageBus.send(event.senderId, event.data);
-      $scope.apply();
+      $scope.$apply();
     };
 
     // start the receiver
