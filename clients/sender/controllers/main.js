@@ -69,11 +69,13 @@ angular.module('cardcast.main', [])
     function sendMessage(message) {
       if (session !== null) {
         session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
+        $scope.message = '';
       } else {
         chrome.cast.requestSession(function(currentSession) {
           session = currentSession;
           session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
         }, onError);
+        $scope.message = '';
       }
     }
 
