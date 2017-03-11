@@ -66,7 +66,7 @@ angular.module('cardcast.main', [])
 
   }
 
-  $scope.sendMessage() {
+  $scope.sendMessage = function() {
 
     function sendMessage(message) {
       if (session !== null) {
