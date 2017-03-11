@@ -1,27 +1,18 @@
 angular.module('cardcast.main', [])
 
 .controller('MainCtrl', function($scope) {
-  $scope.variables = {
-    applicationID: '7F987426',
-    namespace: 'urn:x-cast:pegatech.card.cast',
-    session: null
-  }
 
-  $scope.initialize = function() {
-    var applicationID = $scope.variables.applicationID;
-    var namespace = $scope.variables.namespace;
-    var session = $scope.variables.session;
+  var applicationID = '7F987426';
+  var namespace = 'urn:x-cast:pegatech.card.cast';
+  var session = null;
 
-    if (!chrome.cast || !chrome.cast.isAvailable) {
-      setTimeout(initializeCastApi, 1000);
-    }
+  var initialize = function() {
 
-    function initializeCastApi() {
-      var sessionRequest = new chrome.cast.SessionRequest(applicationID);
-      var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
+    var sessionRequest = new chrome.cast.SessionRequest(applicationID);
+    var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
 
-      chrome.cast.initialize(apiConfig, onInitSuccess, onError);
-    }
+    chrome.cast.initialize(apiConfig, onInitSuccess, onError);
+
 
     function onInitSuccess() {
       console.log('Successful initialization');
@@ -41,7 +32,6 @@ angular.module('cardcast.main', [])
 
     function sessionListener(currentSession) {
       console.log('New session ID: ' + currentSession.sessionId);
-      $scope.variables.session = currentSession;
       session = currentSession;
       session.addUpdateListener(sessionUpdateListener);
       session.addMessageListener(namespace, receiverMessage);
@@ -72,12 +62,9 @@ angular.module('cardcast.main', [])
       session.stop(onStopAppSuccess, onError);
     }
 
-  }
+  };
 
   $scope.sendMessage = function() {
-    var session = $scope.variables.session;
-    var applicationID = $scope.variables.applicationID;
-    var namespace = $scope.variables.namespace;
 
     function sendMessage(message) {
       if (session !== null) {
@@ -99,7 +86,7 @@ angular.module('cardcast.main', [])
     }
 
     sendMessage($scope.message);
-  }
+  };
 
-  $scope.initialize();
+  window.onload = initialize;
 });
