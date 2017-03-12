@@ -1,9 +1,9 @@
 angular.module('cardcast-receiver', [
   'ngSanitize'
-  ])
+])
 .controller('MainController', function($scope, $sanitize, Markdown) {
 
-  $scope.text = 'Nothing casted yet.';
+  $scope.text = 'Nothing casted yet...';
 
   var initialize = function() {
     cast.receiver.logger.setLevelValue(0);

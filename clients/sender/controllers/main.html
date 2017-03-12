@@ -1,6 +1,22 @@
-<h3>Card Cast</h3>
+<div class="cast-markdown mdl-card mdl-shadow--4dp">
 
-<form method="get" ng-submit="sendMessage()">
-  <textarea ng-model="message" rows="10" cols="80" placeholder="Your markdown here"></textarea>
-  <input type="submit" name="Submit"></input>
-</form>
+  <div class="mdl-card__title">
+    <h1 class="mdl-card__title-text">CardCast</h1>
+  </div>
+
+  <form method="get" ng-submit="sendMessage()">
+
+    <div class="mdl-card__supporting-text">
+      <p>Welcome to CardCast! Share your cards with everyone in the room by easily casting to any Chromecast on the network. Create your card by entering some markdown below, then cast away! To learn more about markdown, visit this <a href="http://commonmark.org/help/">link</a>.</p>
+      <div class="mdl-textfield mdl-js-textfield">
+        <textarea class="mdl-textfield__input" ng-model="message" rows="10" id="markdown-text"></textarea>
+        <label class="mdl-textfield__label" for="markdown-text">Your markdown here...</label>
+      </div>
+    </div>
+
+    <div class="mdl-card__actions mdl-card--border">
+      <input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Cast Card" />
+    </div>
+
+  </form>
+</div>
