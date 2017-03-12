@@ -1,0 +1,28 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cast-markdown {
+  width: 560px;
+}
+
+.cast-markdown .mdl-card__title {
+  background-color: #009688;
+}
+
+.cast-markdown .mdl-card__title-text {
+  font-size: 2.5em;
+  padding: 5px;
+  color: #fff;
+}
+
+.cast-markdown .mdl-card__supporting-text {
+  padding: 20px 30px;
+}
+
+.mdl-textfield {
+  width: 500px;
+}

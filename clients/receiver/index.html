@@ -7,10 +7,12 @@
 
     <title>CardCast</title>
 
-    <link href="/assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/assets/styles/sender.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="/assets/styles/receiver.css" rel="stylesheet" />
 
-    <script src="/assets/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/lib/material-design-lite/material.min.js"></script>
     <script src="/assets/lib/angular/angular.min.js"></script>
     <script src="/assets/lib/angular-route/angular-route.js"></script>
     <script src="/assets/lib/angular-sanitize/angular-sanitize.js"></script>
@@ -19,11 +21,15 @@
   </head>
   <body>
 
-    <h1>CardCast</h1>
+    <div class="card-canvas mdl-card mdl-shadow--6dp" ng-controller="MainController">
+      <div class="mdl-card__supporting-text">
 
-    <div ng-controller="MainController">
-      <div ng-bind-html="text"></div>
+        <div class="markdown" ng-bind-html="text"></div>
+
+      </div>
     </div>
+
+
     <script src="/receiver/app.js"></script>
   </body>
 </html>
