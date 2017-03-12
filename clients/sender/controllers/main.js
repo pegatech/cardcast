@@ -2,7 +2,7 @@ angular.module('cardcast.main', [])
 
 .controller('MainCtrl', function($scope) {
 
-  var applicationID = '7F987426';
+  var applicationID = DEV_APP_ID;
   var namespace = 'urn:x-cast:pegatech.card.cast';
   var session = null;
 
