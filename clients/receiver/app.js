@@ -3,7 +3,7 @@ angular.module('cardcast-receiver', [
 ])
 .controller('MainController', function($scope, $sanitize, Markdown) {
 
-  $scope.text = '<h1>Welcome to CardCast!</h1><br/>Nothing has been casted yet...';
+  $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...';
 
   var initialize = function() {
     cast.receiver.logger.setLevelValue(0);
