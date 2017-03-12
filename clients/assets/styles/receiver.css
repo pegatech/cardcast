@@ -9,6 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #fff;
+  zoom: 2;
 }
 
 .card-canvas {
@@ -23,5 +24,4 @@ body {
 
 .markdown {
   color: #fff;
-  font-size: 3em;
 }
