@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cardController = require('../db/controllers/cards.js');
 
 mongoose.connect('mongodb://localhost/cardcast');
 
@@ -15,6 +16,15 @@ app.get('/', (req, res) => {
 
 app.get('/receiver', (req, res) => {
   res.sendFile(path.join(__dirname, '../clients/receiver/index.html'));
+});
+
+app.post('/new', (req, res) => {
+  cardController.insertOne(req.body, function(err, resp) {
+    if (err) {
+      console.error(err);
+    }
+    res.send(resp);
+  });
 });
 
 app.use(express.static(path.join(__dirname, '../clients/')));

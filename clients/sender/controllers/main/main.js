@@ -1,8 +1,6 @@
-angular.module('cardcast.main', [
-  'ngSanitize'
-])
+angular.module('cardcast.main', [])
 
-.controller('MainCtrl', function($scope, $sanitize, Markdown) {
+.controller('MainCtrl', function($scope) {
 
   var applicationID = DEV_APP_ID;
   var namespace = 'urn:x-cast:pegatech.card.cast';
@@ -94,20 +92,6 @@ angular.module('cardcast.main', [
 
   };
 
-  $scope.changes = function() {
-    $scope.show = true;
-    $scope.preview = $sanitize(Markdown.compile($scope.message));
-  };
-
   window.onload = initialize;
-})
-.factory('Markdown', function($interval) {
-
-  var compile = function(text) {
-    return marked(text);
-  };
-
-  return {
-    compile: compile
-  };
 });
+
