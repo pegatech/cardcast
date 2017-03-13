@@ -85,6 +85,7 @@ angular.module('cardcast.main', [
           }
         }
 
+
       session.sendMessage(namespace, message, onSuccess.bind(this, 'User canceled overwrite for the following: ' + message), onError);
       $scope.message = '';
       $scope.show = false;
@@ -106,7 +107,9 @@ angular.module('cardcast.main', [
     var onSuccess = function(message) {
       console.log('onSuccess: ' + message);
     };
+
     sendMessage($scope.message);
+
   };
 
   $scope.changes = function() {
