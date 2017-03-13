@@ -1,6 +1,8 @@
-angular.module('cardcast.main', [])
+angular.module('cardcast.main', [
+  'ngSanitize'
+])
 
-.controller('MainCtrl', function($scope) {
+.controller('MainCtrl', function($scope, $sanitize, Markdown) {
 
   var applicationID = DEV_APP_ID;
   var namespace = 'urn:x-cast:pegatech.card.cast';
@@ -88,6 +90,7 @@ angular.module('cardcast.main', [])
       $scope.show = false;
 
       //********** A Session does not exist yet so create one ****////
+
       } else {
         chrome.cast.requestSession(function(currentSession) {
           session = currentSession;
@@ -102,6 +105,17 @@ angular.module('cardcast.main', [])
 
   };
 
+  console.log($scope.message);
   window.onload = initialize;
+})
+.factory('Markdown', function($interval) {
+
+  var compile = function(text) {
+    return marked(text);
+  };
+
+  return {
+    compile: compile
+  };
 });
 
