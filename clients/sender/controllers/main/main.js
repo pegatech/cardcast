@@ -91,7 +91,7 @@ angular.module('cardcast.main', [
 
       //********** A Session does not exist yet so create one ****////
       } else {
-          chrome.cast.requestSession(function(currentSession) {
+        chrome.cast.requestSession(function(currentSession) {
           session = currentSession;
           session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
         }, onError);
@@ -115,6 +115,7 @@ angular.module('cardcast.main', [
   };
 
   window.onload = initialize;
+
 })
 .factory('Markdown', function($interval) {
 
@@ -128,3 +129,6 @@ angular.module('cardcast.main', [
 
 
 
+=======
+});
+>>>>>>> Fixed width and height for the preview card to match the casting
