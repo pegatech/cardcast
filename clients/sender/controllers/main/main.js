@@ -8,17 +8,9 @@ angular.module('cardcast.main', [])
 
   var initialize = function() {
 
-<<<<<<< HEAD:clients/sender/controllers/main/main.js
     var onInitSuccess = function() {
-=======
-    var sessionRequest = new chrome.cast.SessionRequest(applicationID);
-    var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener, receiverMessage);
-
-    chrome.cast.initialize(apiConfig, onInitSuccess, onError);
-
 
     function onInitSuccess() {
->>>>>>> Implement receiver logic to set state to isAlreadyCasting when applicable:clients/sender/controllers/main.js
       console.log('Successful initialization');
     };
 
@@ -43,12 +35,7 @@ angular.module('cardcast.main', [])
       }
     };
 
-<<<<<<< HEAD:clients/sender/controllers/main/main.js
     var receiverMessage = function(namespace, message) {
-=======
-    function receiverMessage(namespace, message) {
-      alert('hello');
->>>>>>> Implement receiver logic to set state to isAlreadyCasting when applicable:clients/sender/controllers/main.js
       console.log('receiverMessage: ' + namespace + ', ' + message);
     };
 
@@ -81,27 +68,26 @@ angular.module('cardcast.main', [])
 
   $scope.sendMessage = function() {
 
-    var onError = function(message) {
-      console.log('onError: ' + JSON.stringify(message));
-    };
-
-    var onSuccess = function(message) {
-      console.log('onSuccess: ' + message);
-    };
-
     var sendMessage = function(message) {
+    //will be working on better UI for this shortly, for now it is just MVP version prompt
       if (session !== null) {
-        session.sendMessage(namespace, message, onSuccess.bind(this, 'Message not sent: ' + message), onError);
+        if(session.statusText === 'isAlreadyCasting'){
+          result = window.prompt('Someone is already casting at the moment, are you sure you want to overwrite the current card?');
+          if (result === ('y' || 'Y' || 'yes' || 'Yes')){
+            alert('this feature will be implemented shortly');
+            //need to find a way to save the message and send something to the receiver 
+            //and reset the isAlreadyCasting to false.  Then resend message.
+          } else {
+            alert('overwrite canceled');
+          }
+        }
+        session.sendMessage(namespace, message, onSuccess.bind(this, 'Message was not sent: ' + message), onError);
         $scope.message = '';
-<<<<<<< HEAD:clients/sender/controllers/main/main.js
         $scope.show = false;
-=======
-        console.log("already Has session", session.statusText);
->>>>>>> Implement receiver logic to set state to isAlreadyCasting when applicable:clients/sender/controllers/main.js
       } else {
         chrome.cast.requestSession(function(currentSession) {
           session = currentSession;
-          console.log(session);
+
           session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
         }, onError);
         $scope.message = '';
