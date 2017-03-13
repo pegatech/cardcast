@@ -47,7 +47,7 @@ angular.module('cardcast.main', [
       }
     };
 
-    var sessionListener = function (currentSession) {
+    var sessionListener = function(currentSession) {
       console.log('New session ID: ' + currentSession.sessionId);
       session = currentSession;
       session.addUpdateListener(sessionUpdateListener);
@@ -55,8 +55,8 @@ angular.module('cardcast.main', [
     };
 
     var sessionRequest = new chrome.cast.SessionRequest(applicationID);
-    var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
-
+    var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener, receiverMessage);
+    
     chrome.cast.initialize(apiConfig, onInitSuccess, onError);
 
     var stopApp = function() {
@@ -120,9 +120,7 @@ angular.module('cardcast.main', [
   var compile = function(text) {
     return marked(text);
   };
-
   return {
     compile: compile
   };
 });
-

@@ -38,14 +38,16 @@ app.use('/api/users', users(passport));
 
 var cardController = require('../db/controllers/cards.js');
 
+
 app.post('/new', (req, res) => {
   cardController.insertOne(req.body, function(err, resp) {
-    if (err) {
-      console.error(err);
-    }
-    res.send(resp);
+  if (err) {
+    console.error(err);
+  }
+  res.send(resp);
   });
 });
+
 
 // serve static files
 app.use(express.static(path.join(__dirname, '../clients/')));
