@@ -1,6 +1,8 @@
-angular.module('cardcast.main', [])
+angular.module('cardcast.main', [
+  'ngSanitize'
+])
 
-.controller('MainCtrl', function($scope) {
+.controller('MainCtrl', function($scope, $sanitize, Markdown) {
 
   var applicationID = DEV_APP_ID;
   var namespace = 'urn:x-cast:pegatech.card.cast';
@@ -8,65 +10,65 @@ angular.module('cardcast.main', [])
 
   var initialize = function() {
 
-    var sessionRequest = new chrome.cast.SessionRequest(applicationID);
-    var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
-
-    chrome.cast.initialize(apiConfig, onInitSuccess, onError);
-
-
-    function onInitSuccess() {
+    var onInitSuccess = function() {
       console.log('Successful initialization');
-    }
+    };
 
-    function onError(message) {
+    var onError = function(message) {
       console.log('onError: ' + JSON.stringify(message));
-    }
+    };
 
-    function onSuccess(message) {
+    var onSuccess = function(message) {
       console.log('onSuccess: ' + message);
-    }
+    };
 
-    function onStopAppSuccess() {
+    var onStopAppSuccess = function() {
       console.log('Successful stop');
-    }
+    };
 
-    function sessionListener(currentSession) {
-      console.log('New session ID: ' + currentSession.sessionId);
-      session = currentSession;
-      session.addUpdateListener(sessionUpdateListener);
-      session.addMessageListener(namespace, receiverMessage);
-    }
-
-    function sessionUpdateListener(isAlive) {
+    var sessionUpdateListener = function(isAlive) {
       var message = isAlive ? 'Session Updated' : 'Session Removed';
       message += ': ' + session.sessionId;
       console.log(message);
       if (!isAlive) {
         session = null;
       }
-    }
+    };
 
-    function receiverMessage(namespace, message) {
+    var receiverMessage = function(namespace, message) {
       console.log('receiverMessage: ' + namespace + ', ' + message);
-    }
+    };
 
-    function receiverListener(event) {
+    var receiverListener = function(event) {
       if (event === 'available') {
         console.log('receiver found');
       } else {
         console.log('receiver list empty');
       }
-    }
+    };
 
-    function stopApp() {
+    var sessionListener = function(currentSession) {
+      console.log('New session ID: ' + currentSession.sessionId);
+      session = currentSession;
+      session.addUpdateListener(sessionUpdateListener);
+      session.addMessageListener(namespace, receiverMessage);
+    };
+
+    var sessionRequest = new chrome.cast.SessionRequest(applicationID);
+    var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
+
+    chrome.cast.initialize(apiConfig, onInitSuccess, onError);
+
+    var stopApp = function() {
       session.stop(onStopAppSuccess, onError);
-    }
+    };
 
   };
 
   $scope.sendMessage = function() {
 
     function sendMessage(message) {
+      console.log($scope);
       if (session !== null) {
         session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
         $scope.message = '';
@@ -90,5 +92,16 @@ angular.module('cardcast.main', [])
     sendMessage($scope.message);
   };
 
+  console.log($scope.message);
   window.onload = initialize;
+})
+.factory('Markdown', function($interval) {
+
+  var compile = function(text) {
+    return marked(text);
+  };
+
+  return {
+    compile: compile
+  };
 });
