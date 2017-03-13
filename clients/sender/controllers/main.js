@@ -79,12 +79,14 @@ angular.module('cardcast.main', [
       if (session !== null) {
         session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
         $scope.message = '';
+        $scope.show = false;
       } else {
         chrome.cast.requestSession(function(currentSession) {
           session = currentSession;
           session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
         }, onError);
         $scope.message = '';
+        $scope.show = false;
       }
     };
 
