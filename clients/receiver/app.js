@@ -37,6 +37,8 @@ angular.module('cardcast-receiver', [
     //handler for castMessageBus event
     messageBus.onMessage = function(event) {
 
+      //set the event.data to $scope.text so it can be used by the view
+
       //if there is not currently a cast going on, sanitize the markdown and set the 
       //text to display to the result
 
@@ -61,6 +63,15 @@ angular.module('cardcast-receiver', [
 
       messageBus.send(event.senderId, event.data);
       $scope.apply();
+
+      castReceiverManager.setApplicationState('isAlreadyCasting');
+      isAlreadyCasting = true;
+
+      //inform all senders on messagebus of incoming message
+      //this invokes the senders messageListener function
+      
+        messageBus.send(event.senderId, event.data);
+        $scope.$apply();
     };
 
 
