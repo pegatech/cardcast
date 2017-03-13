@@ -22,14 +22,14 @@
 
 </div>
 
-<div>Cast Preview</div>
 
 
-<div class="card-canvas mdl-card mdl-shadow--6dp">
-  <div class="mdl-card__supporting-text">
+<div ng-if="show">Cast Preview
+  <div class="card-canvas mdl-card mdl-shadow--6dp" >
+    <div class="mdl-card__supporting-text">
 
-    <div class="preview" ng-bind-html="preview"></div>
+      <div class="preview" ng-bind-html="preview"></div>
 
+    </div>
   </div>
 </div>
-

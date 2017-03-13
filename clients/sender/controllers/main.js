@@ -93,6 +93,7 @@ angular.module('cardcast.main', [
   };
 
   $scope.changes = function() {
+    $scope.show = true;
     $scope.preview = $sanitize(Markdown.compile($scope.message));
   };
 
