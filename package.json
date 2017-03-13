@@ -19,6 +19,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mongoose": "^4.8.7"
   }
 }
