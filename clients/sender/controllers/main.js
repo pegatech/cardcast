@@ -55,7 +55,11 @@ angular.module('cardcast.main', [
     };
 
     var sessionRequest = new chrome.cast.SessionRequest(applicationID);
+<<<<<<< HEAD
     var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener, receiverMessage);
+=======
+    var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
+>>>>>>> Changed formatting to get rid of eslint errors
 
     chrome.cast.initialize(apiConfig, onInitSuccess, onError);
 
@@ -66,9 +70,25 @@ angular.module('cardcast.main', [
   };
 
 
+<<<<<<< HEAD
   $scope.sendMessage = function() {
     //will be working on better UI for this shortly, for now it is just MVP version prompt
   var sendMessage = function(message) {
+=======
+    function sendMessage(message) {
+      console.log($scope);
+      if (session !== null) {
+        session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
+        $scope.message = '';
+      } else {
+        chrome.cast.requestSession(function(currentSession) {
+          session = currentSession;
+          session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
+        }, onError);
+        $scope.message = '';
+      }
+    }
+>>>>>>> Changed formatting to get rid of eslint errors
 
     var onError = function(message) {
       console.log('onError: ' + JSON.stringify(message));
@@ -119,6 +139,7 @@ angular.module('cardcast.main', [
     $scope.preview = $sanitize(Markdown.compile($scope.message));
   };
 
+  console.log($scope.message);
   window.onload = initialize;
 })
 .factory('Markdown', function($interval) {
