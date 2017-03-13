@@ -107,6 +107,7 @@ angular.module('cardcast.main', [
     var onSuccess = function(message) {
       console.log('onSuccess: ' + message);
     };
+    
     sendMessage($scope.message);
   };
 
@@ -129,6 +130,4 @@ angular.module('cardcast.main', [
 
 
 
-=======
-});
->>>>>>> Fixed width and height for the preview card to match the casting
+
