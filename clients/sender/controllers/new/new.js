@@ -35,7 +35,7 @@ angular.module('cardcast.new', [
 
 })
 
-.factory('Markdown', function($interval) {
+.factory('Markdown', function() {
 
   var compile = function(text) {
     return marked(text);
