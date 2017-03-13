@@ -90,22 +90,29 @@ angular.module('cardcast.main', [
       $scope.show = false;
 
       //********** A Session does not exist yet so create one ****////
-
       } else {
         chrome.cast.requestSession(function(currentSession) {
           session = currentSession;
-
           session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
         }, onError);
         $scope.message = '';
         $scope.show = false;
       }
     };
-    sendMessage($scope.message);
+    var onError = function(message) {
+      console.log('onError: ' + JSON.stringify(message));
+    };
 
+    var onSuccess = function(message) {
+      console.log('onSuccess: ' + message);
+    };
+    sendMessage($scope.message);
   };
 
-  console.log($scope.message);
+  $scope.changes = function() {
+    $scope.preview = $sanitize(Markdown.compile($scope.message));
+  };
+
   window.onload = initialize;
 })
 .factory('Markdown', function($interval) {
