@@ -28,14 +28,22 @@ body {
 }
 
 .card-canvas {
+<<<<<<< HEAD
   width: 500px;
+=======
+  width: 520px;
+>>>>>>> Showing preview of the card before casting
   height: 290px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 40px;
   background-color: #ff5252;
+<<<<<<< HEAD
   margin-bottom: 100px;
+=======
+  margin-bottom: 1000px;
+>>>>>>> Showing preview of the card before casting
 }
 
 .preview {

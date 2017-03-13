@@ -71,11 +71,23 @@ angular.module('cardcast.main', [
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   $scope.sendMessage = function() {
     //will be working on better UI for this shortly, for now it is just MVP version prompt
   var sendMessage = function(message) {
 =======
     function sendMessage(message) {
+=======
+    var onError = function(message) {
+      console.log('onError: ' + JSON.stringify(message));
+    };
+
+    var onSuccess = function(message) {
+      console.log('onSuccess: ' + message);
+    };
+
+    var sendMessage = function(message) {
+>>>>>>> Showing preview of the card before casting
       console.log($scope);
       if (session !== null) {
         session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
@@ -87,6 +99,7 @@ angular.module('cardcast.main', [
         }, onError);
         $scope.message = '';
       }
+<<<<<<< HEAD
     }
 >>>>>>> Changed formatting to get rid of eslint errors
 
@@ -136,10 +149,18 @@ angular.module('cardcast.main', [
 
   $scope.changes = function() {
     $scope.show = true;
+=======
+    };
+
+    sendMessage($scope.message);
+
+  };
+
+  $scope.changes = function() {
+>>>>>>> Showing preview of the card before casting
     $scope.preview = $sanitize(Markdown.compile($scope.message));
   };
 
-  console.log($scope.message);
   window.onload = initialize;
 })
 .factory('Markdown', function($interval) {
