@@ -76,7 +76,6 @@ angular.module('cardcast.main', [
     };
 
     var sendMessage = function(message) {
-      console.log($scope);
       if (session !== null) {
         session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
         $scope.message = '';
