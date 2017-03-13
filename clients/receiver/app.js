@@ -4,6 +4,7 @@ angular.module('cardcast-receiver', [
 .controller('MainController', function($scope, $sanitize, Markdown) {
 
   $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...';
+  var isAlreadyCasting = false;
 
   var initialize = function() {
     cast.receiver.logger.setLevelValue(0);
@@ -43,8 +44,16 @@ angular.module('cardcast-receiver', [
 
       //inform all senders on messagebus of incoming message
       //this invokes the senders messageListener function
-      messageBus.send(event.senderId, event.data);
-      $scope.$apply();
+      if (isAlreadyCasting) {
+        console.log('someone cast while there was already a cast up');
+        messageBus.send(event.senderId, event.data);
+        $scope.$apply();
+      } else {
+        console.log('a brand new cast just happened');
+        messageBus.send(event.senderId, event.data);
+        $scope.$apply();
+        isAlreadyCasting = true;
+      }
     };
 
     // start the receiver
