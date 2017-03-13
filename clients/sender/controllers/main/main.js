@@ -100,14 +100,5 @@ angular.module('cardcast.main', [
   };
 
   window.onload = initialize;
-})
-.factory('Markdown', function($interval) {
-
-  var compile = function(text) {
-    return marked(text);
-  };
-
-  return {
-    compile: compile
-  };
 });
+
