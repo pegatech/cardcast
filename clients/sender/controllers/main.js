@@ -55,12 +55,8 @@ angular.module('cardcast.main', [
     };
 
     var sessionRequest = new chrome.cast.SessionRequest(applicationID);
-<<<<<<< HEAD
     var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener, receiverMessage);
-=======
-    var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
->>>>>>> Changed formatting to get rid of eslint errors
-
+    
     chrome.cast.initialize(apiConfig, onInitSuccess, onError);
 
     var stopApp = function() {
@@ -69,48 +65,9 @@ angular.module('cardcast.main', [
 
   };
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
   $scope.sendMessage = function() {
     //will be working on better UI for this shortly, for now it is just MVP version prompt
   var sendMessage = function(message) {
-=======
-    function sendMessage(message) {
-=======
-    var onError = function(message) {
-      console.log('onError: ' + JSON.stringify(message));
-    };
-
-    var onSuccess = function(message) {
-      console.log('onSuccess: ' + message);
-    };
-
-    var sendMessage = function(message) {
->>>>>>> Showing preview of the card before casting
-      console.log($scope);
-      if (session !== null) {
-        session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
-        $scope.message = '';
-      } else {
-        chrome.cast.requestSession(function(currentSession) {
-          session = currentSession;
-          session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
-        }, onError);
-        $scope.message = '';
-      }
-<<<<<<< HEAD
-    }
->>>>>>> Changed formatting to get rid of eslint errors
-
-    var onError = function(message) {
-      console.log('onError: ' + JSON.stringify(message));
-    };
-
-    var onSuccess = function(message) {
-      console.log('onSuccess: ' + message);
-    };
-
 
     //*********** A Session Already Exists  ***********//
     if (session !== null) {
@@ -132,32 +89,26 @@ angular.module('cardcast.main', [
       $scope.message = '';
 
       //********** A Session does not exist yet so create one ****////
+      } else {
+        chrome.cast.requestSession(function(currentSession) {
+          session = currentSession;
+          session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
+        }, onError);
+        $scope.message = '';
+        $scope.show = false;
+      }
+    };
+    var onError = function(message) {
+      console.log('onError: ' + JSON.stringify(message));
+    };
 
-    } else {
-
-      chrome.cast.requestSession(function(currentSession) {
-        session = currentSession;
-        session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
-      }, onError);
-      $scope.message = '';
-      $scope.show = false;
-    }
-  };
-  sendMessage($scope.message);
-
-};
-
-  $scope.changes = function() {
-    $scope.show = true;
-=======
+    var onSuccess = function(message) {
+      console.log('onSuccess: ' + message);
     };
 
     sendMessage($scope.message);
-
   };
-
   $scope.changes = function() {
->>>>>>> Showing preview of the card before casting
     $scope.preview = $sanitize(Markdown.compile($scope.message));
   };
 
