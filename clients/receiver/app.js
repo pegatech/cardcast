@@ -39,6 +39,7 @@ angular.module('cardcast-receiver', [
 
       //set the event.data to $scope.text so it can be used by the view
 
+
       //if there is not currently a cast going on, sanitize the markdown and set the 
       //text to display to the result
 
@@ -63,6 +64,8 @@ angular.module('cardcast-receiver', [
 
       messageBus.send(event.senderId, event.data);
       $scope.apply();
+
+      
     };
 
 

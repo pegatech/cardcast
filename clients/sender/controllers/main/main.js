@@ -65,7 +65,9 @@ angular.module('cardcast.main', [
 
   };
 
+
   $scope.sendMessage = function() {
+
     //will be working on better UI for this shortly, for now it is just MVP version prompt
   var sendMessage = function(message) {
 
@@ -92,6 +94,7 @@ angular.module('cardcast.main', [
       } else {
         chrome.cast.requestSession(function(currentSession) {
           session = currentSession;
+          console.log(session);
           session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
         }, onError);
         $scope.message = '';
