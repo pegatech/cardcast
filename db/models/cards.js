@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var cardSchema = mongoose.Schema({
+  title: String,
   card: String,
   user: String
 });
