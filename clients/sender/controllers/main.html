@@ -9,7 +9,7 @@
     <div class="mdl-card__supporting-text">
       <p>Welcome to CardCast! Share a card with everyone in the room by easily casting it to any Chromecast on the network. Create your card by entering some markdown below, then cast away! To learn more about markdown, visit this <a href="http://commonmark.org/help/">link</a>.</p>
       <div class="mdl-textfield mdl-js-textfield">
-        <textarea class="mdl-textfield__input" ng-model="message" rows="10" id="markdown-text"></textarea>
+        <textarea class="mdl-textfield__input" ng-model="message" ng-change="changes()" rows="10" id="markdown-text"></textarea>
         <label class="mdl-textfield__label" for="markdown-text">Your markdown here...</label>
       </div>
     </div>
@@ -20,6 +20,16 @@
 
   </form>
 
-  <div class="preview" ng-bind-html="preview"></div>
-
 </div>
+
+<div>Cast Preview</div>
+
+
+<div class="card-canvas mdl-card mdl-shadow--6dp">
+  <div class="mdl-card__supporting-text">
+
+    <div class="preview" ng-bind-html="preview"></div>
+
+  </div>
+</div>
+

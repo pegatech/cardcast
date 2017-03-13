@@ -67,7 +67,15 @@ angular.module('cardcast.main', [
 
   $scope.sendMessage = function() {
 
-    function sendMessage(message) {
+    var onError = function(message) {
+      console.log('onError: ' + JSON.stringify(message));
+    };
+
+    var onSuccess = function(message) {
+      console.log('onSuccess: ' + message);
+    };
+
+    var sendMessage = function(message) {
       console.log($scope);
       if (session !== null) {
         session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
@@ -79,20 +87,16 @@ angular.module('cardcast.main', [
         }, onError);
         $scope.message = '';
       }
-    }
-
-    function onError(message) {
-      console.log('onError: ' + JSON.stringify(message));
-    }
-
-    function onSuccess(message) {
-      console.log('onSuccess: ' + message);
-    }
+    };
 
     sendMessage($scope.message);
+
   };
 
-  console.log($scope.message);
+  $scope.changes = function() {
+    $scope.preview = $sanitize(Markdown.compile($scope.message));
+  };
+
   window.onload = initialize;
 })
 .factory('Markdown', function($interval) {

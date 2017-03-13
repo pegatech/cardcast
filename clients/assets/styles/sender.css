@@ -26,3 +26,18 @@ body {
 .mdl-textfield {
   width: 500px;
 }
+
+.card-canvas {
+  width: 520px;
+  height: 290px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  background-color: #ff5252;
+  margin-bottom: 1000px;
+}
+
+.preview {
+  color: #fff;
+}
