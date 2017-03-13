@@ -19,13 +19,12 @@ app.get('/receiver', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  console.log(req.body);
   cardController.insertOne(req.body, function(err, resp) {
     if (err) {
       console.error(err);
     }
 
-    console.log(resp);
+    res.send(resp);
   });
 });
 

@@ -7,9 +7,15 @@ angular.module('cardcast.new', [
 
   $scope.createCard = function() {
 
-    var createCard = function(message) {
+    var cardInfo = {
+      title: $scope.title,
+      card: $scope.message,
+      user: 'user'
+    };
 
-      $http.post('/', message)
+    var createCard = function(card) {
+
+      $http.post('/', card)
         .then(function(resp) {
           console.log(resp);
         })
@@ -18,7 +24,7 @@ angular.module('cardcast.new', [
         });
     };
 
-    createCard($scope.message);
+    createCard(cardInfo);
 
   };
 
