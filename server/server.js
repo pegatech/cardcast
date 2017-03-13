@@ -22,9 +22,7 @@ app.post('/new', (req, res) => {
   cardController.insertOne(req.body, function(err, resp) {
     if (err) {
       console.error(err);
-      res.send(err);
     }
-
     res.send(resp);
   });
 });

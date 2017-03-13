@@ -14,7 +14,6 @@ angular.module('cardcast.new', [
     };
 
     var createCard = function(card) {
-
       $http.post('/new', card)
         .then(function(resp) {
           console.log('Successfully Created!');
@@ -33,7 +32,9 @@ angular.module('cardcast.new', [
     $scope.show = true;
     $scope.preview = $sanitize(Markdown.compile($scope.message));
   };
+
 })
+
 .factory('Markdown', function($interval) {
 
   var compile = function(text) {
@@ -43,4 +44,5 @@ angular.module('cardcast.new', [
   return {
     compile: compile
   };
+
 });
