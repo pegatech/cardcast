@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var cardSchema = mongoose.Schema({
   card: String,
-  username: String
+  user: String
 });
 
 var CardModel = mongoose.model('Card', cardSchema);
