@@ -2,7 +2,7 @@ angular.module('cardcast.new', [
   'ngSanitize'
 ])
 
-.controller('NewCtrl', function($scope, $sanitize, $http, Markdown) {
+.controller('NewCtrl', function($scope, $sanitize, $http, $location, Markdown) {
 
 
   $scope.createCard = function() {
@@ -15,9 +15,10 @@ angular.module('cardcast.new', [
 
     var createCard = function(card) {
 
-      $http.post('/', card)
+      $http.post('/new', card)
         .then(function(resp) {
-          console.log(resp);
+          console.log('Successfully Created!');
+          $location.url('/');
         })
         .catch(function(err) {
           console.error(err);

@@ -18,10 +18,11 @@ app.get('/receiver', (req, res) => {
   res.sendFile(path.join(__dirname, '../clients/receiver/index.html'));
 });
 
-app.post('/', (req, res) => {
+app.post('/new', (req, res) => {
   cardController.insertOne(req.body, function(err, resp) {
     if (err) {
       console.error(err);
+      res.send(err);
     }
 
     res.send(resp);
