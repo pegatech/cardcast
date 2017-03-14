@@ -1,0 +1,16 @@
+<div class="signup">
+
+  <form ng-submit="signup()">
+    <label for="signup-username">Username: </label>
+    <input type="text" ng-model="username" id="signup-username" />
+    <label for="signup-password">Password: </label>
+    <input type="password" ng-model="password" id="signup-password" />
+    <label for="signup-check">Repeat Password: </label>
+    <input type="password" ng-model="check" id="signup-check" />
+    <input type="submit" value="Signup" />
+  </form>
+
+  <a href="#!/login">Login...</a>
+
+  <div>{{ warning }}</div>
+</div>
