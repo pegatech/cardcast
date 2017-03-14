@@ -2,4 +2,4 @@ node_modules/
 clients/assets/lib/
 .DS_Store
 ._*
-clients/config/config.js
+clients/assets/config/config.js
