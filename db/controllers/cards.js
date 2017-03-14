@@ -8,12 +8,12 @@ var insertOne = function(card, cb) {
   CardModel.create(card, cb);
 };
 
-var updateCard = function(title, message, cb) {
-  CardModel.update({title: title}, {$set: {card: message}}, cb);
+var updateCard = function(id, title, message, cb) {
+  CardModel.update({_id: id}, {$set: {title: title, card: message}}, cb);
 };
 
-var deleteCard = function(title, cb) {
-  CardModel.remove({title: title}, cb);
+var deleteCard = function(id, cb) {
+  CardModel.remove({_id: id}, cb);
 };
 
 exports.findAllBy = findAllBy;
