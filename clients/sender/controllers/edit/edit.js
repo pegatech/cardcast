@@ -9,6 +9,7 @@ angular.module('cardcast.edit', [
     $scope.id = card._id;
     $scope.title = card.title;
     $scope.message = card.card;
+    $scope.preview = card.card;
   };
 
   $scope.updateCard = function() {
@@ -28,7 +29,6 @@ angular.module('cardcast.edit', [
   };
 
   $scope.changes = function() {
-    $scope.show = true;
     $scope.preview = $sanitize(Markdown.compile($scope.message));
   };
 
