@@ -18,3 +18,5 @@ var deleteCard = function(title, cb) {
 
 exports.findAllBy = findAllBy;
 exports.insertOne = insertOne;
+exports.updateCard = updateCard;
+exports.deleteCard = deleteCard;
