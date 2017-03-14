@@ -2,7 +2,8 @@ angular.module('cardcast', [
   'ngRoute',
   'cardcast.main',
   'cardcast.new',
-  'cardcast.edit'
+  'cardcast.edit',
+  'LocalStorageModule'
 ])
 
 .config(function($routeProvider, $httpProvider) {

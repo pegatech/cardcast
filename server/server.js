@@ -27,8 +27,8 @@ app.post('/deck', (req, res) => {
   });
 });
 
-app.post('/delete', (req, res) => {
-  cardController.deleteCard(req.body.title, function(err, resp) {
+app.post('/new', (req, res) => {
+  cardController.insertOne(req.body, function(err, resp) {
     if (err) {
       console.error(err);
     }
@@ -36,8 +36,17 @@ app.post('/delete', (req, res) => {
   });
 });
 
-app.post('/new', (req, res) => {
-  cardController.insertOne(req.body, function(err, resp) {
+app.post('/edit', (req, res) => {
+  cardController.updateCard(req.body.title, req.body.card, function(err, resp) {
+    if (err) {
+      console.error(err);
+    }
+    res.send(resp);
+  });
+});
+
+app.post('/delete', (req, res) => {
+  cardController.deleteCard(req.body.title, function(err, resp) {
     if (err) {
       console.error(err);
     }
