@@ -99,7 +99,6 @@ angular.module('cardcast.main', [
         $scope.show = false;
       }
     };
-
     var onError = function(message) {
       console.log('onError: ' + JSON.stringify(message));
     };
