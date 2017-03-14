@@ -1,6 +1,6 @@
 angular.module('cardcast.main', [])
 
-.controller('MainCtrl', function($scope, $location, $http) {
+.controller('MainCtrl', function($scope, $location, $http, localStorageService) {
 
   $scope.deck = {};
 
@@ -120,6 +120,11 @@ angular.module('cardcast.main', [])
           console.error(err);
         });
     }
+  };
+
+  $scope.editCard = function(card) {
+    localStorageService.set('edit', card);
+    $location.url('/edit');
   };
 
   window.onload = initialize;
