@@ -33,16 +33,4 @@ angular.module('cardcast.new', [
     $scope.preview = $sanitize(Markdown.compile($scope.message));
   };
 
-})
-
-.factory('Markdown', function() {
-
-  var compile = function(text) {
-    return marked(text);
-  };
-
-  return {
-    compile: compile
-  };
-
 });

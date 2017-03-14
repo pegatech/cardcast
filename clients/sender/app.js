@@ -1,7 +1,8 @@
 angular.module('cardcast', [
   'ngRoute',
   'cardcast.main',
-  'cardcast.new'
+  'cardcast.new',
+  'cardcast.edit'
 ])
 
 .config(function($routeProvider, $httpProvider) {
@@ -14,7 +15,23 @@ angular.module('cardcast', [
       templateUrl: '/sender/controllers/new/new.html',
       controller: 'NewCtrl'
     })
+    .when('/edit', {
+      templateUrl: '/sender/controllers/edit/edit.html',
+      controller: 'EditCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });
+})
+
+.factory('Markdown', function() {
+
+  var compile = function(text) {
+    return marked(text);
+  };
+
+  return {
+    compile: compile
+  };
+
 });
