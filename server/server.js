@@ -38,6 +38,16 @@ app.use('/api/users', users(passport));
 
 var cardController = require('../db/controllers/cards.js');
 
+app.post('/deck', (req, res) => {
+  console.log(req.body.user);
+  cardController.findAllBy(req.body.user, function(err, resp) {
+    if (err) {
+      console.error(err);
+    }
+    res.send(resp);
+  });
+});
+
 app.post('/new', (req, res) => {
   cardController.insertOne(req.body, function(err, resp) {
     if (err) {
