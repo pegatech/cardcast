@@ -36,8 +36,11 @@ angular.module('cardcast-receiver', [
 
     //handler for castMessageBus event
     messageBus.onMessage = function(event) {
+<<<<<<< HEAD
       //set the event.data to $scope.text so it can be used by the view
 
+=======
+>>>>>>> Resolving merge conflict
       //set the event.data to $scope.text so it can be used by the view
 
       //if there is not currently a cast going on, sanitize the markdown and set the 
@@ -59,13 +62,16 @@ angular.module('cardcast-receiver', [
       //now set the application state to 'isAlreadyCasting' since the session state
       //can be accessed by the main controller. also set isAlreadyCasting to true
 
+<<<<<<< HEAD
+=======
+      
+
+>>>>>>> Resolving merge conflict
       //inform all senders on messagebus of incoming message
       //this invokes the senders messageListener function
-
-      messageBus.send(event.senderId, event.data);
-      $scope.apply();
+        messageBus.send(event.senderId, event.data);
+        $scope.$apply();
     };
-
 
     // start the receiver
     castReceiverManager.start({statusText: 'Application is starting'});
@@ -79,7 +85,7 @@ angular.module('cardcast-receiver', [
   }
 })
 .factory('Markdown', function() {
-  var compile = function(text) {
+  var compile = function(text){
     return marked(text);
   };
   return {

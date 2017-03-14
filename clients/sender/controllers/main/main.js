@@ -10,6 +10,7 @@ angular.module('cardcast.main', [
 
   var initialize = function() {
 
+
     var onInitSuccess = function() {
       console.log('Successful initialization');
     };
@@ -59,11 +60,14 @@ angular.module('cardcast.main', [
     
     chrome.cast.initialize(apiConfig, onInitSuccess, onError);
 
+
+
     var stopApp = function() {
       session.stop(onStopAppSuccess, onError);
     };
 
   };
+
 
   $scope.sendMessage = function() {
     //will be working on better UI for this shortly, for now it is just MVP version prompt
@@ -83,6 +87,7 @@ angular.module('cardcast.main', [
             alert('overwrite canceled');
           }
         }
+
 
       session.sendMessage(namespace, message, onSuccess.bind(this, 'User canceled overwrite for the following: ' + message), onError);
       $scope.message = '';
@@ -109,11 +114,13 @@ angular.module('cardcast.main', [
     sendMessage($scope.message);
   };
 
+
   $scope.changes = function() {
     $scope.preview = $sanitize(Markdown.compile($scope.message));
   };
 
   window.onload = initialize;
+
 
 })
 .factory('Markdown', function($interval) {
@@ -124,5 +131,5 @@ angular.module('cardcast.main', [
   return {
     compile: compile
   };
-});
 
+});
