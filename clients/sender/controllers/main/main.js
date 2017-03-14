@@ -74,14 +74,12 @@ angular.module('cardcast.main', [])
         if(session.statusText === 'isAlreadyCasting'){
           result = window.prompt('Someone is already casting at the moment, are you sure you want to overwrite the current card?');
           if ((result === 'y') || (result ==='Y') || (result === 'yes') || (result === 'Yes')){
-            alert('this feature will be implemented shortly');
-            //need to find a way to save the message and send something to the receiver 
-            //and reset the isAlreadyCasting to false.  Then resend message.
+            session.sendMessage(namespace, "_OVERWRITE", onSuccess.bind(this, 'Message was not sent: ' + message), onError);
           } else {
             alert('overwrite canceled');
           }
         }
-        session.sendMessage(namespace, message, onSuccess.bind(this, 'Message was not sent: ' + message), onError);
+        session.sendMessage(namespace, message, onSuccess.bind(this, 'User canceled overwrite for the following: ' + message), onError);
         $scope.message = '';
         $scope.show = false;
       } else {

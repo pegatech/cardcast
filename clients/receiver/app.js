@@ -47,10 +47,15 @@ angular.module('cardcast-receiver', [
         castReceiverManager.setApplicationState(event.data);
       }
 
-      //now set the application state to 'isAlreadyCasting' since the session state
-      //can be accessed by the main controller. also set isAlreadyCasting to true
       castReceiverManager.setApplicationState('isAlreadyCasting');
       isAlreadyCasting = true;
+
+      if (event.data === '_OVERWRITE') {
+        isAlreadyCasting = false;
+      }
+
+      //now set the application state to 'isAlreadyCasting' since the session state
+      //can be accessed by the main controller. also set isAlreadyCasting to true
 
       
 
