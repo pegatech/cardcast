@@ -11,6 +11,10 @@
   <div ng-repeat="card in deck">
     <div class="cardTitle">{{ card.title }}</div>
     <div class="cardMessage">{{ card.card }}</div>
+
+    <input type="button" name="Edit" value="Edit" class="editButton" ng-click="editCard(card)"/>
+    <input type="button" name="Cast" value="Cast" class="castButton" ng-click="castCard(card)"/>
+    <input type="button" name="Delete" value="Delete" class="deleteButton" ng-click="deleteCard(card)"/>
   </div>
 
 

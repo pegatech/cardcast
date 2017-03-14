@@ -19,8 +19,16 @@ app.get('/receiver', (req, res) => {
 });
 
 app.post('/deck', (req, res) => {
-  console.log(req.body.user);
   cardController.findAllBy(req.body.user, function(err, resp) {
+    if (err) {
+      console.error(err);
+    }
+    res.send(resp);
+  });
+});
+
+app.post('/delete', (req, res) => {
+  cardController.deleteCard(req.body.title, function(err, resp) {
     if (err) {
       console.error(err);
     }

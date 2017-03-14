@@ -1,6 +1,6 @@
 angular.module('cardcast.main', [])
 
-.controller('MainCtrl', function($scope, $http) {
+.controller('MainCtrl', function($scope, $location, $http) {
 
   $scope.deck = {};
 
@@ -66,6 +66,7 @@ angular.module('cardcast.main', [])
   };
 
   $scope.getDeck = function() {
+
     var user = {
       user: 'user'
     };
@@ -77,9 +78,10 @@ angular.module('cardcast.main', [])
       .catch(function(err) {
         console.error(err);
       });
+
   };
 
-  $scope.sendMessage = function() {
+  $scope.castCard = function(card) {
 
     var onError = function(message) {
       console.log('onError: ' + JSON.stringify(message));
@@ -89,7 +91,7 @@ angular.module('cardcast.main', [])
       console.log('onSuccess: ' + message);
     };
 
-    var sendMessage = function(message) {
+    var castCard = function(message) {
       if (session !== null) {
         session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
         $scope.message = '';
@@ -104,8 +106,20 @@ angular.module('cardcast.main', [])
       }
     };
 
-    sendMessage($scope.message);
+    castCard(card.card);
 
+  };
+
+  $scope.deleteCard = function(card) {
+    if (confirm('Are you sure you want to delete the selected Card?')) {
+      $http.post('/delete', card)
+        .then(function(resp) {
+          location.reload();
+        })
+        .catch(function(err) {
+          console.error(err);
+        });
+    }
   };
 
   window.onload = initialize;
