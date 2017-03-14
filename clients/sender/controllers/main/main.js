@@ -69,7 +69,7 @@ angular.module('cardcast.main', [
   $scope.sendMessage = function() {
     //will be working on better UI for this shortly, for now it is just MVP version prompt
   var sendMessage = function(message) {
-    
+
     //*********** A Session Already Exists  ***********//
     if (session !== null) {
       if(session.statusText === 'isAlreadyCasting'){

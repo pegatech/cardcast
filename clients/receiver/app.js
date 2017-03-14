@@ -63,15 +63,6 @@ angular.module('cardcast-receiver', [
 
       messageBus.send(event.senderId, event.data);
       $scope.apply();
-
-      castReceiverManager.setApplicationState('isAlreadyCasting');
-      isAlreadyCasting = true;
-
-      //inform all senders on messagebus of incoming message
-      //this invokes the senders messageListener function
-      
-        messageBus.send(event.senderId, event.data);
-        $scope.$apply();
     };
 
 
