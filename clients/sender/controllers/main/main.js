@@ -9,8 +9,6 @@ angular.module('cardcast.main', [])
   var initialize = function() {
 
     var onInitSuccess = function() {
-
-    function onInitSuccess() {
       console.log('Successful initialization');
     };
 
@@ -67,21 +65,29 @@ angular.module('cardcast.main', [])
 
 
   $scope.sendMessage = function() {
-
-    var sendMessage = function(message) {
     //will be working on better UI for this shortly, for now it is just MVP version prompt
-      if (session !== null) {
-        if(session.statusText === 'isAlreadyCasting'){
-          result = window.prompt('Someone is already casting at the moment, are you sure you want to overwrite the current card?');
-          if ((result === 'y') || (result ==='Y') || (result === 'yes') || (result === 'Yes')){
-            session.sendMessage(namespace, "_OVERWRITE", onSuccess.bind(this, 'Message was not sent: ' + message), onError);
+  var sendMessage = function(message) {
+
+     //*********** A Session Already Exists  ***********//
+    if (session !== null) {
+      if(session.statusText === 'isAlreadyCasting'){
+
+        //Give the user a chance to back out and not overwrite the card on the screen
+        result = window.prompt('Someone is already casting at the moment, are you sure you want to overwrite the current card?');
+        if ((result === 'y') || (result ==='Y') || (result === 'yes') || (result === 'Yes')){
+          session.sendMessage(namespace, "_OVERWRITE", onSuccess.bind(this, 'Message was not sent: ' + message), onError);
           } else {
+          //If user overwites, we send _OVERWRITE and toggle isAlreadyCasting to false
+          //Otherwise isAlreadyCasting will stay true to prevent message recast 
             alert('overwrite canceled');
           }
         }
-        session.sendMessage(namespace, message, onSuccess.bind(this, 'User canceled overwrite for the following: ' + message), onError);
-        $scope.message = '';
-        $scope.show = false;
+
+      session.sendMessage(namespace, message, onSuccess.bind(this, 'User canceled overwrite for the following: ' + message), onError);
+      $scope.message = '';
+      $scope.show = false;
+
+      //********** A Session does not exist yet so create one ****////
       } else {
         chrome.cast.requestSession(function(currentSession) {
           session = currentSession;
@@ -92,7 +98,6 @@ angular.module('cardcast.main', [])
         $scope.show = false;
       }
     };
-
     sendMessage($scope.message);
 
   };
