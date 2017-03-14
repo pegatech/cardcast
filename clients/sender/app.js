@@ -23,7 +23,23 @@ angular.module('cardcast', [
       templateUrl: '/sender/controllers/new/new.html',
       controller: 'NewCtrl'
     })
+    .when('/edit', {
+      templateUrl: '/sender/controllers/edit/edit.html',
+      controller: 'EditCtrl'
+    })
     .otherwise({
       redirectTo: '/cards'
     });
+})
+
+.factory('Markdown', function() {
+
+  var compile = function(text) {
+    return marked(text);
+  };
+
+  return {
+    compile: compile
+  };
+
 });

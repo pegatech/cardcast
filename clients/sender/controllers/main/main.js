@@ -111,7 +111,7 @@ angular.module('cardcast.main', [])
   };
 
   $scope.deleteCard = function(card) {
-    if (confirm('Are you sure you want to delete the selected Card?')) {
+    if (confirm('Are you sure you want to delete the ' + card.title + ' Card?')) {
       $http.post('/delete', card)
         .then(function(resp) {
           location.reload();
