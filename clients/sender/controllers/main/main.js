@@ -47,7 +47,7 @@ angular.module('cardcast.main', [
       }
     };
 
-    var sessionListener = function(currentSession) {
+    var sessionListener = function (currentSession) {
       console.log('New session ID: ' + currentSession.sessionId);
       session = currentSession;
       session.addUpdateListener(sessionUpdateListener);
@@ -106,7 +106,7 @@ angular.module('cardcast.main', [
     var onSuccess = function(message) {
       console.log('onSuccess: ' + message);
     };
-
+    
     sendMessage($scope.message);
   };
 
