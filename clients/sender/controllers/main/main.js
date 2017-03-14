@@ -1,6 +1,8 @@
 angular.module('cardcast.main', [])
 
-.controller('MainCtrl', function($scope) {
+.controller('MainCtrl', function($scope, $http) {
+
+  $scope.deck = {};
 
   var applicationID = DEV_APP_ID;
   var namespace = 'urn:x-cast:pegatech.card.cast';
@@ -63,6 +65,20 @@ angular.module('cardcast.main', [])
 
   };
 
+  $scope.getDeck = function() {
+    var user = {
+      user: 'user'
+    };
+
+    $http.post('/deck', user)
+      .then(function(resp) {
+        $scope.deck = resp.data;
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+  };
+
   $scope.sendMessage = function() {
 
     var onError = function(message) {
@@ -93,5 +109,6 @@ angular.module('cardcast.main', [])
   };
 
   window.onload = initialize;
+  $scope.getDeck();
 });
 
