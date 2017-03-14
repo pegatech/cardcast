@@ -57,7 +57,7 @@ app.post('/new', (req, res) => {
 });
 
 app.post('/edit', (req, res) => {
-  cardController.updateCard(req.body.title, req.body.card, function(err, resp) {
+  cardController.updateCard(req.body.id, req.body.title, req.body.card, function(err, resp) {
     if (err) {
       console.error(err);
     }
@@ -66,7 +66,7 @@ app.post('/edit', (req, res) => {
 });
 
 app.post('/delete', (req, res) => {
-  cardController.deleteCard(req.body.title, function(err, resp) {
+  cardController.deleteCard(req.body._id, function(err, resp) {
     if (err) {
       console.error(err);
     }

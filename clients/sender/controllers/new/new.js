@@ -29,7 +29,6 @@ angular.module('cardcast.new', [
   };
 
   $scope.changes = function() {
-    $scope.show = true;
     $scope.preview = $sanitize(Markdown.compile($scope.message));
   };
 

@@ -6,12 +6,14 @@ angular.module('cardcast.edit', [
 
   $scope.initialize = function() {
     var card = localStorageService.get('edit');
+    $scope.id = card._id;
     $scope.title = card.title;
     $scope.message = card.card;
   };
 
   $scope.updateCard = function() {
     var cardInfo = {
+      id: $scope.id,
       title: $scope.title,
       card: $scope.message
     };
