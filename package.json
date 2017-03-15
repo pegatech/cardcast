@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/pegatech/cardcast#readme",
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
