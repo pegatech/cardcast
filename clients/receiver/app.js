@@ -38,21 +38,13 @@ angular.module('cardcast-receiver', [
     messageBus.onMessage = function(event) {
       //set the event.data to $scope.text so it can be used by the view
 
-      //if there is not currently a cast going on, sanitize the markdown and set the 
+      //if there is not currently a cast going on, sanitize the markdown and set the
       //text to display to the result
 
-      if (!isAlreadyCasting){
-        $scope.text = $sanitize(Markdown.compile(event.data));
-        console.log('Message [' + event.senderId + ']: ' + event.data);
-        castReceiverManager.setApplicationState(event.data);
-      }
 
-      castReceiverManager.setApplicationState('isAlreadyCasting');
-      isAlreadyCasting = true;
+      $scope.text = $sanitize(Markdown.compile(event.data));
+      console.log('Message [' + event.senderId + ']: ' + event.data);
 
-      if (event.data === '_OVERWRITE') {
-        isAlreadyCasting = false;
-      }
 
       //now set the application state to 'isAlreadyCasting' since the session state
       //can be accessed by the main controller. also set isAlreadyCasting to true
@@ -60,8 +52,8 @@ angular.module('cardcast-receiver', [
 
       //inform all senders on messagebus of incoming message
       //this invokes the senders messageListener function
-        messageBus.send(event.senderId, event.data);
-        $scope.$apply();
+      messageBus.send(event.senderId, 'isCasting');
+      $scope.$apply();
     };
 
     // start the receiver
