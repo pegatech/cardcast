@@ -1,6 +1,6 @@
 angular.module('cardcast.main', [])
 
-.controller('MainCtrl', function($scope, $location, $http, localStorageService) {
+.controller('MainCtrl', function($scope, $location, $http, Service) {
 
   $scope.deck = {};
 
@@ -63,20 +63,9 @@ angular.module('cardcast.main', [])
       session.stop(onStopAppSuccess, onError);
     };
 
-  };
-
-  $scope.getDeck = function() {
-
-    var user = {
-      user: 'user'
-    };
-
-    $http.post('/deck', user)
+    Service.getDeck()
       .then(function(resp) {
-        $scope.deck = resp.data;
-      })
-      .catch(function(err) {
-        console.error(err);
+        $scope.deck = resp;
       });
 
   };
@@ -91,41 +80,31 @@ angular.module('cardcast.main', [])
       console.log('onSuccess: ' + message);
     };
 
-    var castCard = function(message) {
-      if (session !== null) {
-        console.log('1st');
-        session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
-      } else {
-        console.log('2nd');
-        chrome.cast.requestSession(function(currentSession) {
-          session = currentSession;
-          session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
-        }, onError);
-      }
-    };
-
-    castCard(card.card);
+    if (session !== null) {
+      console.log('1st');
+      session.sendMessage(namespace, card.card, onSuccess.bind(this, 'Message sent: ' + card.card), onError);
+    } else {
+      console.log('2nd');
+      chrome.cast.requestSession(function(currentSession) {
+        session = currentSession;
+        session.sendMessage(namespace, card.card, onSuccess.bind(this, 'Message sent: ' + card.card), onError);
+      }, onError);
+    }
 
   };
 
   $scope.deleteCard = function(card) {
     if (confirm('Are you sure you want to delete the ' + card.title + ' Card?')) {
-      $http.post('/delete', card)
+      Service.deleteCard(card)
         .then(function(resp) {
-          location.reload();
-        })
-        .catch(function(err) {
-          console.error(err);
+          Service.getDeck()
+            .then(function(resp) {
+              $scope.deck = resp;
+            });
         });
     }
   };
 
-  $scope.editCard = function(card) {
-    localStorageService.set('edit', card);
-    $location.url('/edit');
-  };
-
   window.onload = initialize;
-  $scope.getDeck();
 });
 

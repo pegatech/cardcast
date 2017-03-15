@@ -2,7 +2,8 @@ angular.module('cardcast', [
   'ngRoute',
   'cardcast.main',
   'cardcast.new',
-  'cardcast.auth'
+  'cardcast.auth',
+  'cardcast.service'
 ])
 
 .config(function($routeProvider, $httpProvider) {
@@ -30,16 +31,4 @@ angular.module('cardcast', [
     .otherwise({
       redirectTo: '/cards'
     });
-})
-
-.factory('Markdown', function() {
-
-  var compile = function(text) {
-    return marked(text);
-  };
-
-  return {
-    compile: compile
-  };
-
 });
