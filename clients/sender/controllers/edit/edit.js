@@ -2,34 +2,33 @@ angular.module('cardcast.edit', [
   'ngSanitize'
 ])
 
-.controller('EditCtrl', function($scope, $location, $http, $sanitize, localStorageService, Markdown) {
+.controller('EditCtrl', function($scope, $location, $routeParams, $sanitize, Service) {
+
+  $scope.card = {};
 
   $scope.initialize = function() {
-    var card = localStorageService.get('edit');
-    $scope.id = card._id;
-    $scope.title = card.title;
-    $scope.message = card.card;
-    $scope.preview = card.card;
+    var id = $routeParams.id;
+    Service.getCard(id)
+      .then(function(resp) {
+        $scope.card = resp;
+      });
   };
 
   $scope.updateCard = function() {
     var cardInfo = {
-      id: $scope.id,
-      title: $scope.title,
-      card: $scope.message
+      id: $scope.card._id,
+      title: $scope.card.title,
+      card: $scope.card.card
     };
 
-    $http.post('/edit', cardInfo)
+    Service.updateCard(cardInfo)
       .then(function(resp) {
-        $location.url('/');
-      })
-      .catch(function(err) {
-        console.error(err);
+        $location.path('/cards');
       });
   };
 
   $scope.changes = function() {
-    $scope.preview = $sanitize(Markdown.compile($scope.message));
+    $scope.preview = $sanitize(Service.markDownCompile($scope.card.card));
   };
 
   $scope.initialize();

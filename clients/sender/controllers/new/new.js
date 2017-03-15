@@ -9,8 +9,7 @@ angular.module('cardcast.new', [
 
     var cardInfo = {
       title: $scope.title,
-      card: $scope.message,
-      user: 'user'
+      card: $scope.message
     };
 
     Service.createCard(cardInfo)

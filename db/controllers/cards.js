@@ -8,8 +8,12 @@ exports.insertOne = function(card) {
   return CardModel.create(card);
 };
 
-exports.updateCard = function(id, title, message) {
-  return CardModel.update({_id: id}, {$set: {title: title, card: message}});
+exports.findOne = function(id) {
+  return CardModel.findOne({_id: id});
+};
+
+exports.updateCard = function(card) {
+  return CardModel.update({_id: card.id}, {$set: {title: card.title, card: card.card}});
 };
 
 exports.deleteCard = function(id) {

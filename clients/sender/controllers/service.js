@@ -8,7 +8,6 @@ angular.module('cardcast.service', [])
     },
 
     getDeck: function() {
-      console.log('getting deck');
       return $http({
         method: 'GET',
         url: '/api/cards'
@@ -29,15 +28,24 @@ angular.module('cardcast.service', [])
       });
     },
 
-    updateCard: function(id, title, card) {
+    getCard: function(id) {
+      return $http({
+        method: 'POST',
+        url: '/api/cards/card',
+        data: {
+          id: id
+        }
+      })
+        .then(function(resp) {
+          return resp.data;
+        });
+    },
+
+    updateCard: function(card) {
       return $http({
         method: 'POST',
         url: '/api/cards/edit',
-        data: {
-          id: id,
-          title: title,
-          card: card
-        }
+        data: card
       });
     },
 

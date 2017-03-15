@@ -26,7 +26,27 @@ router.post('/delete', function(req, res, next) {
 });
 
 router.post('/new', function(req, res) {
-  cardController.insertOne(req.body.id, req.body.title, req.body.card)
+  cardController.insertOne(req.body)
+    .then(function(resp) {
+      res.sendStatus(200);
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+});
+
+router.post('/card', function(req, res) {
+  cardController.findOne(req.body.id)
+    .then(function(resp) {
+      res.send(resp);
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+});
+
+router.post('/edit', function(req, res) {
+  cardController.updateCard(req.body)
     .then(function(resp) {
       res.sendStatus(200);
     })
