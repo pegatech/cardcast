@@ -66,53 +66,7 @@ angular.module('cardcast.main', [
   };
 
 
-  $scope.sendMessage = function() {
-    //will be working on better UI for this shortly, for now it is just MVP version prompt
-  var sendMessage = function(message) {
 
-    var onError = function(message) {
-      console.log('onError: ' + JSON.stringify(message));
-    };
-
-    var onSuccess = function(message) {
-      console.log('onSuccess: ' + message);
-    };
-
-
-    //*********** A Session Already Exists  ***********//
-    if (session !== null) {
-      if(session.statusText === 'isAlreadyCasting'){
-
-        //Give the user a chance to back out and not overwrite the card on the screen
-        result = window.prompt('Someone is already casting at the moment, are you sure you want to overwrite the current card?');
-        if ((result === 'y') || (result ==='Y') || (result === 'yes') || (result === 'Yes')){
-          session.sendMessage(namespace, "_OVERWRITE", onSuccess.bind(this, 'Message was not sent: ' + message), onError);
-          } else {
-          //If user overwites, we send _OVERWRITE and toggle isAlreadyCasting to false
-          //Otherwise isAlreadyCasting will stay true to prevent message recast 
-            alert('overwrite canceled');
-          }
-        }
-
-
-      session.sendMessage(namespace, message, onSuccess.bind(this, 'User canceled overwrite for the following: ' + message), onError);
-      $scope.message = '';
-
-      //********** A Session does not exist yet so create one ****////
-
-    } else {
-
-      chrome.cast.requestSession(function(currentSession) {
-        session = currentSession;
-        session.sendMessage(namespace, message, onSuccess.bind(this, 'Message sent: ' + message), onError);
-      }, onError);
-      $scope.message = '';
-      $scope.show = false;
-    }
-  };
-  sendMessage($scope.message);
-
-};
 
   $scope.changes = function() {
     $scope.show = true;
