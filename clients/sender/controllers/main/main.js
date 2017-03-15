@@ -83,10 +83,8 @@ angular.module('cardcast.main', [])
     };
 
     if (session !== null) {
-      console.log('1st');
       session.sendMessage(namespace, card.card, onSuccess.bind(this, 'Message sent: ' + card.card), onError);
     } else {
-      console.log('2nd');
       chrome.cast.requestSession(function(currentSession) {
         session = currentSession;
         session.sendMessage(namespace, card.card, onSuccess.bind(this, 'Message sent: ' + card.card), onError);
