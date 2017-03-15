@@ -1,6 +1,6 @@
 angular.module('cardcast.service', [])
 
-.factory('Service', function($http, $location) {
+.factory('Service', function($http) {
   return {
 
     markDownCompile: function(text) {

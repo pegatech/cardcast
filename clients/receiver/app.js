@@ -68,7 +68,7 @@ angular.module('cardcast-receiver', [
   }
 })
 .factory('Markdown', function() {
-  var compile = function(text){
+  var compile = function(text) {
     return marked(text);
   };
   return {
