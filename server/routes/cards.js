@@ -15,6 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/delete', function(req, res, next) {
+  console.log('hello');
   cardController.deleteCard(req.body._id)
     .then(function(resp) {
       res.sendStatus(200);

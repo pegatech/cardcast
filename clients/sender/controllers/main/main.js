@@ -63,11 +63,13 @@ angular.module('cardcast.main', [])
       session.stop(onStopAppSuccess, onError);
     };
 
+  };
+
+  $scope.getDeck = function() {
     Service.getDeck()
       .then(function(resp) {
         $scope.deck = resp;
       });
-
   };
 
   $scope.castCard = function(card) {
@@ -106,5 +108,6 @@ angular.module('cardcast.main', [])
   };
 
   window.onload = initialize;
+  $scope.getDeck();
 });
 
