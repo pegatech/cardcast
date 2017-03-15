@@ -1,0 +1,41 @@
+<div class="cast-markdown mdl-card mdl-shadow--4dp">
+
+  <div class="mdl-card__title">
+    <h1 class="mdl-card__title-text">EditCard</h1>
+  </div>
+
+  <form method="get" ng-submit="updateCard()">
+
+    <div class="mdl-card__supporting-text">
+      <p>To learn more about markdown, visit this <a href="http://commonmark.org/help/">link</a>.</p>
+      <input class="mdl-textfield__input" ng-model="card.title" placeholder="Please Enter Title"/>
+      <div class="mdl-textfield mdl-js-textfield">
+        <textarea class="mdl-textfield__input" ng-model="card.card" ng-change="changes()" rows="10" id="markdown-text"></textarea>
+        <label class="mdl-textfield__label" for="markdown-text">Your markdown here...</label>
+      </div>
+    </div>
+
+    <div class="mdl-card__actions mdl-card--border">
+      <input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Edit Card"/>
+    </div>
+
+  </form>
+
+</div>
+
+
+<div class="mdl-card__supporting-text">
+
+  <div class="mdl-card__title">
+    <h1 class="mdl-card__title-text">Cast Preview</h1>
+  </div>
+
+  <div class="card-canvas mdl-card mdl-shadow--6dp" >
+    <div class="mdl-card__supporting-text">
+
+      <div class="preview" ng-bind-html="preview"></div>
+
+    </div>
+  </div>
+
+</div>

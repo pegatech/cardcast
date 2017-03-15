@@ -2,7 +2,10 @@ angular.module('cardcast.main', [
   'ngSanitize'
 ])
 
-.controller('MainCtrl', function($scope, $sanitize, Markdown) {
+
+.controller('MainCtrl', function($scope, $location, $http, Service) {
+
+  $scope.deck = {};
 
   var applicationID = DEV_APP_ID;
   var namespace = 'urn:x-cast:pegatech.card.cast';
@@ -69,40 +72,15 @@ angular.module('cardcast.main', [
   };
 
 
-  $scope.sendMessage = function() {
-    //will be working on better UI for this shortly, for now it is just MVP version prompt
-  var sendMessage = function(message) {
+  $scope.getDeck = function() {
+    Service.getDeck()
+      .then(function(resp) {
+        $scope.deck = resp;
+      });
+  };
 
-    //*********** if a Session Already Exists  ***********//
-    if (session !== null) {
-      if(session.statusText === 'isAlreadyCasting'){
+  $scope.castCard = function(card) {
 
-        //Give the user a chance to back out and not overwrite the card on the screen
-        result = window.prompt('Someone is already casting at the moment, are you sure you want to overwrite the current card?');
-        if ((result === 'y') || (result ==='Y') || (result === 'yes') || (result === 'Yes')){
-          session.sendMessage(namespace, "_OVERWRITE", onSuccess.bind(this, 'Message was not sent: ' + message), onError);
-        } else {
-          //If user overwites, we send _OVERWRITE and toggle isAlreadyCasting to false
-          //Otherwise isAlreadyCasting will stay true to prevent message recast 
-            alert('overwrite canceled');
-          }
-        }
-
-
-      session.sendMessage(namespace, message, onSuccess.bind(this, 'User canceled overwrite for the following: ' + message), onError);
-      $scope.message = '';
-      $scope.show = false;
-
-      //********** A Session does not exist yet so create one ****////
-      } else {
-        chrome.cast.requestSession(function(currentSession) {
-          session = currentSession;
-          session.sendMessage(namespace, message, onSuccess.bind(this, 'User canceled overwrite for the following: ' + message), onError);
-        }, onError);
-        $scope.message = '';
-        $scope.show = false;
-      }
-    };
     var onError = function(message) {
       console.log('onError: ' + JSON.stringify(message));
     };
@@ -111,25 +89,29 @@ angular.module('cardcast.main', [
       console.log('onSuccess: ' + message);
     };
 
-    sendMessage($scope.message);
+    if (session !== null) {
+      session.sendMessage(namespace, card.card, onSuccess.bind(this, 'Message sent: ' + card.card), onError);
+    } else {
+      chrome.cast.requestSession(function(currentSession) {
+        session = currentSession;
+        session.sendMessage(namespace, card.card, onSuccess.bind(this, 'Message sent: ' + card.card), onError);
+      }, onError);
+    }
+
   };
 
-
-  $scope.changes = function() {
-    $scope.preview = $sanitize(Markdown.compile($scope.message));
+  $scope.deleteCard = function(card) {
+    if (confirm('Are you sure you want to delete the ' + card.title + ' Card?')) {
+      Service.deleteCard(card)
+        .then(function(resp) {
+          Service.getDeck()
+            .then(function(resp) {
+              $scope.deck = resp;
+            });
+        });
+    }
   };
 
   window.onload = initialize;
-
-
-})
-.factory('Markdown', function($interval) {
-
-  var compile = function(text) {
-    return marked(text);
-  };
-  return {
-    compile: compile
-  };
-
+  $scope.getDeck();
 });

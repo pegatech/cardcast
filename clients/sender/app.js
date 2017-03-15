@@ -2,7 +2,9 @@ angular.module('cardcast', [
   'ngRoute',
   'cardcast.main',
   'cardcast.new',
-  'cardcast.auth'
+  'cardcast.auth',
+  'cardcast.service',
+  'cardcast.edit'
 ])
 
 .config(function($routeProvider, $httpProvider) {
@@ -23,7 +25,12 @@ angular.module('cardcast', [
       templateUrl: '/sender/controllers/new/new.html',
       controller: 'NewCtrl'
     })
+    .when('/edit/:id', {
+      templateUrl: '/sender/controllers/edit/edit.html',
+      controller: 'EditCtrl'
+    })
     .otherwise({
       redirectTo: '/cards'
     });
+
 });

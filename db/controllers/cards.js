@@ -1,16 +1,22 @@
 var CardModel = require('../models/cards.js');
 
-var findAllBy = function(user, cb) {
-  CardModel.find({user: user}, cb);
+exports.findAll = function() {
+  return CardModel.find({});
 };
 
-var insertOne = function(card, cb) {
-  CardModel.create(card, cb);
+exports.insertOne = function(card) {
+  return CardModel.create(card);
 };
 
-var updateCard = function(title, message, cb) {
-  CardModel.update({title: title}, {$set: {card: message}}, cb);
+exports.findOne = function(id) {
+  return CardModel.findOne({_id: id});
 };
 
-exports.findAllBy = findAllBy;
-exports.insertOne = insertOne;
+exports.updateCard = function(card) {
+  return CardModel.update({_id: card.id}, {$set: {title: card.title, card: card.card}});
+};
+
+exports.deleteCard = function(id) {
+  return CardModel.remove({_id: id});
+};
+

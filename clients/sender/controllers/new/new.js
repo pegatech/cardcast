@@ -2,47 +2,25 @@ angular.module('cardcast.new', [
   'ngSanitize'
 ])
 
-.controller('NewCtrl', function($scope, $sanitize, $http, $location, Markdown) {
+.controller('NewCtrl', function($scope, $sanitize, $http, $location, Service) {
 
 
   $scope.createCard = function() {
 
     var cardInfo = {
       title: $scope.title,
-      card: $scope.message,
-      user: 'user'
+      card: $scope.message
     };
 
-    var createCard = function(card) {
-      $http.post('/new', card)
-        .then(function(resp) {
-          console.log('Successfully Created!');
-          $location.url('/');
-        })
-        .catch(function(err) {
-          console.error(err);
-        });
-    };
-
-    createCard(cardInfo);
+    Service.createCard(cardInfo)
+      .then(function(resp) {
+        $location.path('/cards');
+      });
 
   };
 
   $scope.changes = function() {
-    $scope.show = true;
-    $scope.preview = $sanitize(Markdown.compile($scope.message));
-  };
-
-})
-
-.factory('Markdown', function() {
-
-  var compile = function(text) {
-    return marked(text);
-  };
-
-  return {
-    compile: compile
+    $scope.preview = $sanitize(Service.markDownCompile($scope.message));
   };
 
 });

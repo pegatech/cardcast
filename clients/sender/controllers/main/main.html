@@ -4,32 +4,19 @@
     <h1 class="mdl-card__title-text">CardCast</h1>
   </div>
 
-  <form method="get" ng-submit="sendMessage()">
+  <nav>
+    <a href="#!/new">Create New Card</a>
+  </nav>
 
-    <div class="mdl-card__supporting-text">
-      <p>Welcome to CardCast! Share a card with everyone in the room by easily casting it to any Chromecast on the network. Create your card by entering some markdown below, then cast away! To learn more about markdown, visit this <a href="http://commonmark.org/help/">link</a>.</p>
-      <div class="mdl-textfield mdl-js-textfield">
-        <textarea class="mdl-textfield__input" ng-model="message" ng-change="changes()" rows="10" id="markdown-text"></textarea>
-        <label class="mdl-textfield__label" for="markdown-text">Your markdown here...</label>
-      </div>
-    </div>
+  <div ng-repeat="card in deck">
+    <div class="cardTitle">{{ card.title }}</div>
+    <div class="cardMessage">{{ card.card }}</div>
 
-    <div class="mdl-card__actions mdl-card--border">
-      <input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Cast Card" />
-    </div>
-
-  </form>
-
-</div>
-
-
-
-<div ng-if="show">Cast Preview
-  <div class="card-canvas mdl-card mdl-shadow--6dp" >
-    <div class="mdl-card__supporting-text">
-
-      <div class="preview" ng-bind-html="preview"></div>
-
-    </div>
+    <a href="#!/edit/{{ card._id }}"><input type="button" name="Edit" value="Edit" class="editButton"></a>
+    <input type="button" name="Cast" value="Cast" class="castButton" ng-click="castCard(card)"/>
+    <input type="button" name="Delete" value="Delete" class="deleteButton" ng-click="deleteCard(card)"/>
   </div>
+
+
+
 </div>
