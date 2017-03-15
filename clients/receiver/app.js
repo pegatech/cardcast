@@ -4,6 +4,7 @@ angular.module('cardcast-receiver', [
 .controller('MainController', function($scope, $sanitize, Markdown) {
 
   $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...';
+  var isAlreadyCasting = false;
 
   var initialize = function() {
     cast.receiver.logger.setLevelValue(0);
@@ -36,15 +37,31 @@ angular.module('cardcast-receiver', [
     //handler for castMessageBus event
     messageBus.onMessage = function(event) {
       //set the event.data to $scope.text so it can be used by the view
-      $scope.text = $sanitize(Markdown.compile(event.data));
 
-      console.log('Message [' + event.senderId + ']: ' + event.data);
-      castReceiverManager.setApplicationState(event.data);
+      //if there is not currently a cast going on, sanitize the markdown and set the 
+      //text to display to the result
+
+      if (!isAlreadyCasting){
+        $scope.text = $sanitize(Markdown.compile(event.data));
+        console.log('Message [' + event.senderId + ']: ' + event.data);
+        castReceiverManager.setApplicationState(event.data);
+      }
+
+      castReceiverManager.setApplicationState('isAlreadyCasting');
+      isAlreadyCasting = true;
+
+      if (event.data === '_OVERWRITE') {
+        isAlreadyCasting = false;
+      }
+
+      //now set the application state to 'isAlreadyCasting' since the session state
+      //can be accessed by the main controller. also set isAlreadyCasting to true
+
 
       //inform all senders on messagebus of incoming message
       //this invokes the senders messageListener function
-      messageBus.send(event.senderId, event.data);
-      $scope.$apply();
+        messageBus.send(event.senderId, event.data);
+        $scope.$apply();
     };
 
     // start the receiver
@@ -59,7 +76,7 @@ angular.module('cardcast-receiver', [
   }
 })
 .factory('Markdown', function() {
-  var compile = function(text) {
+  var compile = function(text){
     return marked(text);
   };
   return {

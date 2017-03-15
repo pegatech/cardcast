@@ -1,25 +1,21 @@
 <div class="cast-markdown mdl-card mdl-shadow--4dp">
 
   <div class="mdl-card__title">
-    <h1 class="mdl-card__title-text">NewCard</h1>
     <h1 class="mdl-card__title-text">CardCast</h1>
   </div>
 
-  <form name="cardForm" method="get" ng-submit="createCard()">
+  <form method="get" ng-submit="sendMessage()">
 
     <div class="mdl-card__supporting-text">
       <p>Welcome to CardCast! Share a card with everyone in the room by easily casting it to any Chromecast on the network. Create your card by entering some markdown below, then cast away! To learn more about markdown, visit this <a href="http://commonmark.org/help/">link</a>.</p>
-      <input class="mdl-textfield__input" ng-model="title" placeholder="Please Enter Title"/>
       <div class="mdl-textfield mdl-js-textfield">
-        <textarea name="message" class="mdl-textfield__input" ng-model="message" ng-change="changes()" rows="10" id="markdown-text"></textarea>
+        <textarea class="mdl-textfield__input" ng-model="message" ng-change="changes()" rows="10" id="markdown-text"></textarea>
         <label class="mdl-textfield__label" for="markdown-text">Your markdown here...</label>
       </div>
     </div>
 
     <div class="mdl-card__actions mdl-card--border">
-      
-      <input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Create Card" ng-disable="cardForm.message.$dirty"/>
-
+      <input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Cast Card" />
     </div>
 
   </form>
@@ -28,12 +24,7 @@
 
 
 
-<div class="mdl-card__supporting-text" ng-show="cardForm.message.$dirty">
-
-  <div class="mdl-card__title">
-    <h1 class="mdl-card__title-text">Cast Preview</h1>
-  </div>
-
+<div ng-if="show">Cast Preview
   <div class="card-canvas mdl-card mdl-shadow--6dp" >
     <div class="mdl-card__supporting-text">
 
@@ -41,5 +32,4 @@
 
     </div>
   </div>
-
 </div>

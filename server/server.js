@@ -9,6 +9,7 @@ var cards = require('./routes/cards');
 
 // make bluebird the default Promise Library
 global.Promise = mongoose.Promise = require('bluebird');
+//mongoose.connect('mongodb://localhost/cardcast');
 
 // start app and connect to db
 var app = express();
@@ -37,53 +38,6 @@ require('./passport/init')(passport);
 app.use('/', clients);
 app.use('/api/users', users(passport));
 app.use('/api/cards', cards);
-
-var cardController = require('../db/controllers/cards.js');
-
-app.post('/deck', (req, res) => {
-  cardController.findAllBy(req.body.user, function(err, resp) {
-    if (err) {
-      console.error(err);
-    }
-    res.send(resp);
-  });
-});
-
-app.post('/deck', (req, res) => {
-  cardController.findAllBy(req.body.user, function(err, resp) {
-    if (err) {
-      console.error(err);
-    }
-    res.send(resp);
-  });
-});
-
-app.post('/new', (req, res) => {
-  cardController.insertOne(req.body, function(err, resp) {
-    if (err) {
-      console.error(err);
-    }
-    res.send(resp);
-  });
-});
-
-app.post('/edit', (req, res) => {
-  cardController.updateCard(req.body.id, req.body.title, req.body.card, function(err, resp) {
-    if (err) {
-      console.error(err);
-    }
-    res.send(resp);
-  });
-});
-
-app.post('/delete', (req, res) => {
-  cardController.deleteCard(req.body._id, function(err, resp) {
-    if (err) {
-      console.error(err);
-    }
-    res.send(resp);
-  });
-});
 
 // serve static files
 app.use(express.static(path.join(__dirname, '../clients/')));
