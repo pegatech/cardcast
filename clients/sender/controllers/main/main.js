@@ -1,9 +1,7 @@
-angular.module('cardcast.main', [
-  'ngSanitize'
-])
+angular.module('cardcast.main', [])
 
 
-.controller('MainCtrl', function($scope, $location, $http, Service) {
+.controller('MainCtrl', function($scope, $location, Service) {
 
   $scope.deck = {};
   $scope.currentCard = {};
@@ -187,6 +185,6 @@ angular.module('cardcast.main', [
   if (!chrome.cast || !chrome.cast.isAvailable) {
     setTimeout(initialize, 1000);
   }
-  
+
   $scope.getDeck();
 });
