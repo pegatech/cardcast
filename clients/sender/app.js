@@ -2,8 +2,13 @@ angular.module('cardcast', [
   'ngRoute',
   'cardcast.main',
   'cardcast.new',
+<<<<<<< HEAD
   'cardcast.auth',
   'cardcast.service'
+=======
+  'cardcast.edit',
+  'LocalStorageModule'
+>>>>>>> 0b05789f1d4e446089325fe928a1e99c9cbac707
 ])
 
 .config(function($routeProvider, $httpProvider) {
@@ -31,4 +36,19 @@ angular.module('cardcast', [
     .otherwise({
       redirectTo: '/cards'
     });
+<<<<<<< HEAD
+=======
+})
+
+.factory('Markdown', function() {
+
+  var compile = function(text) {
+    return marked(text);
+  };
+
+  return {
+    compile: compile
+  };
+
+>>>>>>> 0b05789f1d4e446089325fe928a1e99c9cbac707
 });

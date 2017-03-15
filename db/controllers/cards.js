@@ -15,3 +15,4 @@ exports.updateCard = function(id, title, message) {
 exports.deleteCard = function(id) {
   return CardModel.remove({_id: id});
 };
+

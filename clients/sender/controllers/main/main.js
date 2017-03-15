@@ -106,5 +106,6 @@ angular.module('cardcast.main', [])
   };
 
   window.onload = initialize;
+  $scope.getDeck();
 });
 

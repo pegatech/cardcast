@@ -36,9 +36,18 @@ require('./passport/init')(passport);
 // use routes
 app.use('/', clients);
 app.use('/api/users', users(passport));
-app.use('/api/cards',cards);
+app.use('/api/cards', cards);
 
 var cardController = require('../db/controllers/cards.js');
+
+app.post('/deck', (req, res) => {
+  cardController.findAllBy(req.body.user, function(err, resp) {
+    if (err) {
+      console.error(err);
+    }
+    res.send(resp);
+  });
+});
 
 app.post('/deck', (req, res) => {
   cardController.findAllBy(req.body.user, function(err, resp) {

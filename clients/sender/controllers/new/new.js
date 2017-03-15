@@ -21,7 +21,11 @@ angular.module('cardcast.new', [
   };
 
   $scope.changes = function() {
+<<<<<<< HEAD
     $scope.preview = $sanitize(Service.markDownCompile($scope.message));
+=======
+    $scope.preview = $sanitize(Markdown.compile($scope.message));
+>>>>>>> 0b05789f1d4e446089325fe928a1e99c9cbac707
   };
 
 });
