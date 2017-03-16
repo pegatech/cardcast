@@ -41,3 +41,42 @@ body {
 .preview {
   color: #fff;
 }
+
+.popup {
+  margin: auto;
+  width: 70%;
+  border: 3px;
+  border-radius: 1px;
+  border-style: solid;
+  border-color: black;
+  margin-bottom: 25px;
+  margin-top: 5px;
+  background-color:#eee;
+}
+
+.popup-title {
+  text-align: center;
+  margin-top: 0;
+  padding-top: 1px;
+  background-color: #ff3433;
+  color: #fff;
+}
+
+.popup-text {
+  text-align: center;
+}
+
+.popup-btn-container {
+  margin: auto;
+  width: 50%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.popup-btn {
+  margin: 9px;
+}
+
+.popup-btn:hover{
+  color: #009688;
+}

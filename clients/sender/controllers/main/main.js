@@ -6,6 +6,8 @@ angular.module('cardcast.main', [
 .controller('MainCtrl', function($scope, $location, $http, Service) {
 
   $scope.deck = {};
+  $scope.currentCard = {};
+  $scope.showWarning = false;
 
   var applicationID = DEV_APP_ID;
   var namespace = 'urn:x-cast:pegatech.card.cast';
@@ -69,12 +71,24 @@ angular.module('cardcast.main', [
     session.stop(onStopAppSuccess, onError);
   };
 
-
   $scope.getDeck = function() {
     Service.getDeck()
       .then(function(resp) {
         $scope.deck = resp;
       });
+  };
+
+  $scope.showPopup = function(card) {
+    if (session === null) {
+      $scope.castCard(card);
+    } else {
+      $scope.showWarning = true;
+      $scope.currentCard = card;
+    }
+  };
+
+  $scope.cancelCast = function() {
+    $scope.showWarning = false;
   };
 
   $scope.castCard = function(card) {
@@ -86,6 +100,8 @@ angular.module('cardcast.main', [
     var onSuccess = function(message) {
       console.log('onSuccess: ' + message);
     };
+
+    $scope.showWarning = false;
 
     //*********** A Session Already Exists  ***********//
     if (session !== null) {
@@ -147,7 +163,7 @@ angular.module('cardcast.main', [
         //Give the user a chance to back out and not overwrite the card on the screen
         result = window.prompt('Someone is already casting at the moment, are you sure you want to overwrite the current card?');
         if ((result === 'y') || (result === 'Y') || (result === 'yes') || (result === 'Yes')) {
-          session.sendMessage(namespace, "_OVERWRITE", onSuccess.bind(this, 'Message was not sent: ' + message), onError);
+          session.sendMessage(namespace, '_OVERWRITE', onSuccess.bind(this, 'Message was not sent: ' + message), onError);
         } else {
           //If user overwites, we send _OVERWRITE and toggle isAlreadyCasting to false
           //Otherwise isAlreadyCasting will stay true to prevent message recast

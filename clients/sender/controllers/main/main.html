@@ -13,10 +13,16 @@
     <div class="cardMessage">{{ card.card }}</div>
 
     <a href="#!/edit/{{ card._id }}"><input type="button" name="Edit" value="Edit" class="editButton"></a>
-    <input type="button" name="Cast" value="Cast" class="castButton" ng-click="castCard(card)"/>
+    <input type="button" name="Cast" value="Cast" class="castButton" ng-click="showPopup(card)"/>
     <input type="button" name="Delete" value="Delete" class="deleteButton" ng-click="deleteCard(card)"/>
   </div>
 
-
-
+  <div class='popup' ng-show='showWarning'>
+    <h3 class='popup-title'>Cast already in progress</h3>
+    <div class='popup-text'>Casting now will overwrite the current card.  Are you sure you want to continue?</div>
+    <div class='popup-btn-container'>
+    <button  class='popup-btn' ng-click='cancelCast()'>Cancel</button>
+    <button  class='popup-btn' ng-click='castCard(currentCard)'>Cast Anyway</button>
+  </div>
+  </div>
 </div>
