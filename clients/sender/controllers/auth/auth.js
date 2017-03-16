@@ -47,6 +47,7 @@ angular.module('cardcast.auth', [])
         .catch(function() {
           $scope.warning = 'User already exists.';
         });
+
     } else {
       $scope.warning = 'Please complete form.';
     }

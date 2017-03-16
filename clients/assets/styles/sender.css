@@ -5,6 +5,43 @@ body {
   align-items: center;
 }
 
+.auth .mdl-card {
+  width: 500px;
+}
+
+.auth .mdl-card__title {
+  background-color: #009688;
+}
+
+.auth .mdl-card__title-text {
+  font-size: 2.5em;
+  padding: 5px;
+  color: #fff;
+}
+
+.auth .mdl-card__supporting-text {
+  padding: 20px 30px;
+  width: calc(100% - 60px);
+}
+
+.auth .mdl-textfield {
+  display: block;
+  width: 100%;
+}
+
+.auth .warning {
+  height: 30px;
+  line-height: 30px;
+  font-size: 1.1em;
+  color: #E57373;
+}
+
+.auth .mdl-card__actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
 .cast-markdown {
   width: 560px;
 }
