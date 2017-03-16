@@ -71,7 +71,7 @@ angular.module('cardcast.main', [
     session.stop(onStopAppSuccess, onError);
   };
 
-  $scope.getDeck = function() {
+  $scope.getDeck = function(){
     Service.getDeck()
       .then(function(resp) {
         $scope.deck = resp;
