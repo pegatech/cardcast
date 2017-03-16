@@ -46,4 +46,11 @@ angular.module('cardcast', [
     .otherwise({
       redirectTo: '/cards'
     });
+})
+
+
+.run(function($rootScope) {
+  $rootScope.$on('$viewContentLoaded', function(event, next) {
+    componentHandler.upgradeAllRegistered();
+  });
 });
