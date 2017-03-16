@@ -6,6 +6,8 @@ angular.module('cardcast.main', [
 .controller('MainCtrl', function($scope, $location, $http, Service) {
 
   $scope.deck = {};
+  $scope.currentCard = {};
+  $scope.showWarning = false;
 
   var applicationID = DEV_APP_ID;
   var namespace = 'urn:x-cast:pegatech.card.cast';
@@ -69,13 +71,23 @@ angular.module('cardcast.main', [
     session.stop(onStopAppSuccess, onError);
   };
 
-
   $scope.getDeck = function() {
     Service.getDeck()
       .then(function(resp) {
         $scope.deck = resp;
       });
   };
+
+  $scope.showPopup = function(card){
+    console.log('user tried to cast a card when already a card being cast')
+    $scope.showWarning = true;
+    $scope.currentCard = card;
+  }
+
+  $scope.cancelCast = function(){
+    console.log('user picked cancel');
+    $scope.showWarning = false;
+  }
 
   $scope.castCard = function(card) {
 
@@ -86,6 +98,8 @@ angular.module('cardcast.main', [
     var onSuccess = function(message) {
       console.log('onSuccess: ' + message);
     };
+
+    $scope.showWarning = false;
 
     //*********** A Session Already Exists  ***********//
     if (session !== null) {

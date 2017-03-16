@@ -41,3 +41,22 @@ body {
 .preview {
   color: #fff;
 }
+
+.popup {
+  margin: auto;
+  width: 70%;
+  border: 5;
+  border-radius: 1px;
+  border-style: solid;
+  border-color: black;
+  margin-bottom: 25px;
+  margin-top: 5px;
+}
+
+.popup-title {
+  text-align: center;
+  margin-top: 0;
+  padding-top: 1px;
+  background-color: #ff3433;
+  color: #fff;
+}
