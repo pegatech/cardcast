@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var cardController = require('../../db/controllers/cards.js');
+var helpers = require('../helpers');
 
 
-router.get('/', function(req, res, next) {
+router.get('/', helpers.isAuth, function(req, res, next) {
   cardController.findAll()
     .then(function(resp) {
       res.send(resp);
@@ -14,8 +15,17 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.post('/delete', function(req, res, next) {
-  console.log('hello');
+router.post('/', helpers.isAuth, function(req, res) {
+  cardController.insertOne(req.body)
+    .then(function(resp) {
+      res.sendStatus(200);
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+});
+
+router.post('/:id', helpers.isAuth, function(req, res, next) {
   cardController.deleteCard(req.body._id)
     .then(function(resp) {
       res.sendStatus(200);
@@ -26,17 +36,8 @@ router.post('/delete', function(req, res, next) {
 
 });
 
-router.post('/new', function(req, res) {
-  cardController.insertOne(req.body)
-    .then(function(resp) {
-      res.sendStatus(200);
-    })
-    .catch(function(err) {
-      console.error(err);
-    });
-});
 
-router.post('/card', function(req, res) {
+router.post('/card', helpers.isAuth, function(req, res) {
   cardController.findOne(req.body.id)
     .then(function(resp) {
       res.send(resp);
@@ -46,7 +47,7 @@ router.post('/card', function(req, res) {
     });
 });
 
-router.post('/edit', function(req, res) {
+router.put('/:id', helpers.isAuth, function(req, res) {
   cardController.updateCard(req.body)
     .then(function(resp) {
       res.sendStatus(200);
