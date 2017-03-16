@@ -43,8 +43,8 @@ router.post('/:id', helpers.isAuth, function(req, res, next) {
 });
 
 
-router.post('/card', helpers.isAuth, function(req, res) {
-  cardController.findOne(req.body.id)
+router.get('/:id', helpers.isAuth, function(req, res) {
+  cardController.findOne(req.params.id)
     .then(function(resp) {
       res.send(resp);
     })

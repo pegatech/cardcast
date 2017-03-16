@@ -30,11 +30,8 @@ angular.module('cardcast.service', [])
 
     getCard: function(id) {
       return $http({
-        method: 'POST',
-        url: '/api/cards/card',
-        data: {
-          id: id
-        }
+        method: 'GET',
+        url: '/api/cards/' + id
       })
         .then(function(resp) {
           return resp.data;
