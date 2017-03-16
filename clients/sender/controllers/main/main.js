@@ -1,11 +1,12 @@
 angular.module('cardcast.main', [])
 
 
-.controller('MainCtrl', function($scope, $location, Service) {
+.controller('MainCtrl', function($scope, $location, Service, user) {
 
   $scope.deck = {};
   $scope.currentCard = {};
   $scope.showWarning = false;
+  $scope.username = user;
 
   var applicationID = DEV_APP_ID;
   var namespace = 'urn:x-cast:pegatech.card.cast';

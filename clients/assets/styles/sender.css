@@ -6,9 +6,6 @@ html, body {
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #FAFAFA;
-  /*display: flex;
-  justify-content: center;
-  align-items: center;*/
 }
 
 .body-primary {
@@ -49,7 +46,6 @@ body {
 .auth .mdl-textfield {
   display: block;
   width: 100%;
-  font-size: 35px;
 }
 
 .auth .warning {
@@ -63,6 +59,52 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 15px;
+}
+
+.card-deck {
+  width: 100%;
+  margin-top: 20%;
+  min-height: 100px;
+}
+
+.card-deck .mdl-card__title {
+  padding: 30px 0 0 30px;
+}
+
+.card-deck .mdl-card__title-text {
+  font-size: 2em;
+  color: #757575;
+}
+
+.card-deck .mdl-card__supporting-text {
+  padding: 30px;
+  font-size: 1em;
+}
+
+.card {
+  margin-top: 20px;
+  min-height: 0;
+  width: 100%;
+  background-color: #B3E5FC;
+}
+
+.card .mdl-card__supporting-text {
+  font-size: 1em;
+}
+
+.card .mdl-card__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card .mdl-button {
+  margin-left: 10px;
+}
+
+.add-card {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
 }
 
 .cast-markdown {
@@ -83,9 +125,10 @@ body {
   padding: 20px 30px;
 }
 
-.mdl-textfield {
+
+/*.mdl-textfield {
   width: 500px;
-}
+}*/
 
 .card-canvas {
   width: 500px;
