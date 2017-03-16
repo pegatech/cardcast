@@ -8,6 +8,11 @@ angular.module('cardcast', [
 ])
 
 .config(function($routeProvider, $httpProvider) {
+
+  var authorize = function(Auth) {
+    return Auth.isAuth();
+  };
+
   $routeProvider
     .when('/login', {
       templateUrl: '/sender/controllers/auth/login.html',
@@ -19,18 +24,26 @@ angular.module('cardcast', [
     })
     .when('/cards', {
       templateUrl: '/sender/controllers/main/main.html',
-      controller: 'MainCtrl'
+      controller: 'MainCtrl',
+      resolve: {
+        user: authorize
+      }
     })
     .when('/new', {
       templateUrl: '/sender/controllers/new/new.html',
-      controller: 'NewCtrl'
+      controller: 'NewCtrl',
+      resolve: {
+        user: authorize
+      }
     })
     .when('/edit/:id', {
       templateUrl: '/sender/controllers/edit/edit.html',
-      controller: 'EditCtrl'
+      controller: 'EditCtrl',
+      resolve: {
+        user: authorize
+      }
     })
     .otherwise({
       redirectTo: '/cards'
     });
-
 });

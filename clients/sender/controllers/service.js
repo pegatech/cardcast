@@ -58,4 +58,59 @@ angular.module('cardcast.service', [])
     }
 
   };
+})
+
+.factory('Auth', function($http, $location, $timeout) {
+  return {
+
+    isAuth: function() {
+      return $http({
+        method: 'GET',
+        url: '/api/users'
+      })
+      .then(function(res) {
+        return res.data;
+      })
+      .catch(function() {
+        $timeout(function() {
+          $location.path('/login');
+        });
+      });
+    },
+
+    login: function(username, password) {
+      return $http({
+        method: 'POST',
+        url: '/api/users/login',
+        data: {
+          username: username,
+          password: password
+        }
+      });
+    },
+
+    signup: function(user) {
+      return $http({
+        method: 'POST',
+        url: '/api/users/signup',
+        data: user
+      })
+      .then(function(res) {
+        return res.data;
+      });
+    },
+
+    logout: function() {
+      return $http({
+        method: 'POST',
+        url: '/api/users/logout'
+      })
+      .then(function() {
+        $location.path('/login');
+      })
+      .catch(function() {
+        $location.path('/login');
+      });
+    }
+  };
 });
