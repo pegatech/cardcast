@@ -71,23 +71,23 @@ angular.module('cardcast.main', [
     session.stop(onStopAppSuccess, onError);
   };
 
-  $scope.getDeck = function(){
+  $scope.getDeck = function() {
     Service.getDeck()
       .then(function(resp) {
         $scope.deck = resp;
       });
   };
 
-  $scope.showPopup = function(card){
-    if (session === null){
+  $scope.showPopup = function(card) {
+    if (session === null) {
       $scope.castCard(card);
     } else {
-    $scope.showWarning = true;
-    $scope.currentCard = card;
+      $scope.showWarning = true;
+      $scope.currentCard = card;
     }
   };
 
-  $scope.cancelCast = function(){
+  $scope.cancelCast = function() {
     $scope.showWarning = false;
   };
 
@@ -163,7 +163,7 @@ angular.module('cardcast.main', [
         //Give the user a chance to back out and not overwrite the card on the screen
         result = window.prompt('Someone is already casting at the moment, are you sure you want to overwrite the current card?');
         if ((result === 'y') || (result === 'Y') || (result === 'yes') || (result === 'Yes')) {
-          session.sendMessage(namespace, "_OVERWRITE", onSuccess.bind(this, 'Message was not sent: ' + message), onError);
+          session.sendMessage(namespace, '_OVERWRITE', onSuccess.bind(this, 'Message was not sent: ' + message), onError);
         } else {
           //If user overwites, we send _OVERWRITE and toggle isAlreadyCasting to false
           //Otherwise isAlreadyCasting will stay true to prevent message recast
