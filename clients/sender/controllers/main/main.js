@@ -79,15 +79,17 @@ angular.module('cardcast.main', [
   };
 
   $scope.showPopup = function(card){
-    console.log('user tried to cast a card when already a card being cast')
+    if (session === null){
+      $scope.castCard(card);
+    } else {
     $scope.showWarning = true;
     $scope.currentCard = card;
-  }
+    }
+  };
 
   $scope.cancelCast = function(){
-    console.log('user picked cancel');
     $scope.showWarning = false;
-  }
+  };
 
   $scope.castCard = function(card) {
 
