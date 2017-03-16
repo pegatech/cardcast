@@ -23,7 +23,7 @@ angular.module('cardcast.service', [])
     createCard: function(card) {
       return $http({
         method: 'POST',
-        url: '/api/cards/new',
+        url: '/api/cards',
         data: card
       });
     },
@@ -43,8 +43,8 @@ angular.module('cardcast.service', [])
 
     updateCard: function(card) {
       return $http({
-        method: 'POST',
-        url: '/api/cards/edit',
+        method: 'PUT',
+        url: '/api/cards/' + card.id,
         data: card
       });
     },
@@ -52,7 +52,7 @@ angular.module('cardcast.service', [])
     deleteCard: function(card) {
       return $http({
         method: 'POST',
-        url: '/api/cards/delete',
+        url: '/api/cards/' + card._id,
         data: card
       });
     }
