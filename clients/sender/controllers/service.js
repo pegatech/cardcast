@@ -1,6 +1,6 @@
 angular.module('cardcast.service', [])
 
-.factory('Service', function($http, $location) {
+.factory('Service', function($http) {
   return {
 
     markDownCompile: function(text) {
@@ -23,18 +23,15 @@ angular.module('cardcast.service', [])
     createCard: function(card) {
       return $http({
         method: 'POST',
-        url: '/api/cards/new',
+        url: '/api/cards',
         data: card
       });
     },
 
     getCard: function(id) {
       return $http({
-        method: 'POST',
-        url: '/api/cards/card',
-        data: {
-          id: id
-        }
+        method: 'GET',
+        url: '/api/cards/' + id
       })
         .then(function(resp) {
           return resp.data;
@@ -43,8 +40,8 @@ angular.module('cardcast.service', [])
 
     updateCard: function(card) {
       return $http({
-        method: 'POST',
-        url: '/api/cards/edit',
+        method: 'PUT',
+        url: '/api/cards/' + card.id,
         data: card
       });
     },
@@ -52,7 +49,7 @@ angular.module('cardcast.service', [])
     deleteCard: function(card) {
       return $http({
         method: 'POST',
-        url: '/api/cards/delete',
+        url: '/api/cards/' + card._id,
         data: card
       });
     }

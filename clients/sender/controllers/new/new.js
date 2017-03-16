@@ -2,14 +2,14 @@ angular.module('cardcast.new', [
   'ngSanitize'
 ])
 
-.controller('NewCtrl', function($scope, $sanitize, $http, $location, Service) {
+.controller('NewCtrl', function($scope, $sanitize, $location, Service) {
 
 
   $scope.createCard = function() {
 
     var cardInfo = {
       title: $scope.title,
-      card: $scope.message
+      card: $scope.message,
     };
 
     Service.createCard(cardInfo)
