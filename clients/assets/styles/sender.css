@@ -1,8 +1,67 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
-  display: flex;
+  background-color: #FAFAFA;
+  /*display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;*/
+}
+
+.body-primary {
+  position: fixed;
+  z-index: -1;
+  height: 25%;
+  background-color: #03A9F4;
+  width: 100%;
+  color: #fff;
+}
+
+.body-primary h1 {
+  color: #fff;
+  margin-top: 7%;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.auth .mdl-card {
+  width: 100%;
+  margin-top: 20%;
+}
+
+.auth .mdl-card__title {
+  padding: 30px;
+}
+
+.auth .mdl-card__title-text {
+  font-size: 2em;
+  color: #757575;
+}
+
+.auth .mdl-card__supporting-text {
+  padding: 20px 30px;
+  width: 100%;
+}
+
+.auth .mdl-textfield {
+  display: block;
+  width: 100%;
+}
+
+.auth .warning {
+  height: 30px;
+  line-height: 30px;
+  font-size: 1.1em;
+  color: #E57373;
+}
+
+.auth .mdl-card__actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
 }
 
 .cast-markdown {

@@ -103,10 +103,14 @@ angular.module('cardcast.service', [])
         url: '/api/users/logout'
       })
       .then(function() {
-        $location.path('/login');
+        $timeout(function() {
+          $location.path('/login');
+        });
       })
       .catch(function() {
-        $location.path('/login');
+        $timeout(function() {
+          $location.path('/login');
+        });
       });
     }
   };
