@@ -5,7 +5,7 @@ var helpers = require('../helpers');
 
 
 router.get('/', helpers.isAuth, function(req, res, next) {
-  cardController.findAll()
+  cardController.findAll(req.user._id)
     .then(function(resp) {
       res.send(resp);
     })
@@ -16,7 +16,13 @@ router.get('/', helpers.isAuth, function(req, res, next) {
 });
 
 router.post('/', helpers.isAuth, function(req, res) {
-  cardController.insertOne(req.body)
+  var cardInfo = {
+    title: req.body.title,
+    card: req.body.card,
+    user: req.user._id
+  };
+
+  cardController.insertOne(cardInfo)
     .then(function(resp) {
       res.sendStatus(200);
     })

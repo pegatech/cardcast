@@ -1,7 +1,7 @@
 var CardModel = require('../models/cards.js');
 
-exports.findAll = function() {
-  return CardModel.find({});
+exports.findAll = function(id) {
+  return CardModel.find({user: id});
 };
 
 exports.insertOne = function(card) {
