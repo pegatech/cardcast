@@ -3,8 +3,20 @@ angular.module('cardcast-receiver', [
 ])
 .controller('MainController', function($scope, $sanitize, Markdown) {
 
+  var isCasting = false;
+  var who = null;
+  var cardId = null;
+
+  var broadcast = function() {
+    messageBus.broadcast(JSON.stringify({
+      who: who,
+      isCasting: isCasting,
+      cardId: cardId
+    }));
+  };
+
   $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...';
-  var isAlreadyCasting = false;
+
 
   var initialize = function() {
     cast.receiver.logger.setLevelValue(0);
@@ -25,7 +37,7 @@ angular.module('cardcast-receiver', [
     castReceiverManager.onSenderConnected = function(event) {
       console.log('Received Sender Connected event: ' + event.data);
       console.log(castReceiverManager.getSender(event.data).userAgent);
-      messageBus.broadcast(JSON.stringify(isAlreadyCasting));
+      broadcast();
     };
 
     //handler for sender disconnect, check if anyone is still connected and close if not
@@ -37,27 +49,24 @@ angular.module('cardcast-receiver', [
     };
 
 
-
     //handler for castMessageBus event
     messageBus.onMessage = function(event) {
       //set the event.data to $scope.text so it can be used by the view
 
       //if there is not currently a cast going on, sanitize the markdown and set the
       //text to display to the result
-
-
-      $scope.text = $sanitize(Markdown.compile(event.data));
       console.log('Message [' + event.senderId + ']: ' + event.data);
 
+      var message = JSON.parse(event.data);
 
-      //now set the application state to 'isAlreadyCasting' since the session state
-      //can be accessed by the main controller. also set isAlreadyCasting to true
+      $scope.text = $sanitize(Markdown.compile(message.card));
 
+      isCasting = !!message.username;
+      who = message.username;
+      cardId = message.cardId;
 
-      //inform all senders on messagebus of incoming message
-      //this invokes the senders messageListener function
-      isAlreadyCasting = true;
-      messageBus.broadcast(JSON.stringify(isAlreadyCasting));
+      broadcast();
+
       $scope.$apply();
     };
 
