@@ -1,28 +1,70 @@
-<div class="cast-markdown mdl-card mdl-shadow--4dp">
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
-  <div class="mdl-card__title">
-    <h1 class="mdl-card__title-text">CardCast</h1>
-  </div>
+    <div class="card-deck mdl-card mdl-shadow--4dp">
 
-  <nav>
-    <a href="#!/new">Create New Card</a>
-  </nav>
+      <div class="mdl-card__title">
+        <h1 class="mdl-card__title-text">Your Deck</h1>
+      </div>
 
-  <div ng-repeat="card in deck">
-    <div class="cardTitle">{{ card.title }}</div>
-    <div class="cardMessage">{{ card.card }}</div>
+      <div class="mdl-card__supporting-text">
+        Below is a list of all of the cards in your personal deck. Click the plus button in the bottom right corner to add a new card to your deck or edit one that already exits. When you are ready to cast a card, hit the cast button to share to the screen.
+      </div>
 
-    <a href="#!/edit/{{ card._id }}"><input type="button" name="Edit" value="Edit" class="editButton"></a>
-    <input type="button" name="Cast" value="Cast" class="castButton" ng-click="showPopup(card)"/>
-    <input type="button" name="Delete" value="Delete" class="deleteButton" ng-click="deleteCard(card)"/>
-  </div>
+    </div>
 
-  <div class='popup' ng-show='showWarning'>
-    <h3 class='popup-title'>Cast already in progress</h3>
-    <div class='popup-text'>Casting now will overwrite the current card.  Are you sure you want to continue?</div>
-    <div class='popup-btn-container'>
-    <button  class='popup-btn' ng-click='cancelCast()'>Cancel</button>
-    <button  class='popup-btn' ng-click='castCard(currentCard)'>Cast Anyway</button>
-  </div>
   </div>
 </div>
+
+
+<div ng-repeat="card in deck" class="row">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+    <div class="card mdl-card mdl-shadow--4dp">
+
+      <div class="mdl-card__title">
+        <h3 class="mdl-card__title-text">{{ card.title }}</h3>
+      </div>
+
+      <div class="mdl-card__supporting-text">{{ card.card }}</div>
+
+      <div class="mdl-card__actions mdl-card--border">
+        <a href="#!/edit/{{ card._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
+        <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="deleteCard(card)"/>
+        <input type="button" value="Cast" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="showPopup(card)"/>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Space for scrolling -->
+<div class="deck-footer">&nbsp;</div>
+
+<!-- Already Casting Warning -->
+<div class="popup" ng-show="showWarning">
+  <div class="mdl-card mdl-shadow--8dp">
+
+    <div class="mdl-card__title">
+      <h3 class="mdl-card__title-text">Cast already in progress</h3>
+    </div>
+
+    <div class="mdl-card__supporting-text">Casting now will overwrite the current card.  Are you sure you want to continue?</div>
+
+    <div class="mdl-card__actions">
+      <button ng-click="cancelCast()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+        Cancel
+      </button>
+      <button ng-click="castCard(currentCard)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+        Cast Anyway
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Add Card Button -->
+<a href="#!/new" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
+  <i class="material-icons">add</i>
+</a>

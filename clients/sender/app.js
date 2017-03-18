@@ -46,4 +46,16 @@ angular.module('cardcast', [
     .otherwise({
       redirectTo: '/cards'
     });
+})
+
+.filter('capitalize', function () {
+  return function(input) {
+    return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+  };
+})
+
+.run(function($rootScope) {
+  $rootScope.$on('$viewContentLoaded', function(event, next) {
+    componentHandler.upgradeAllRegistered();
+  });
 });

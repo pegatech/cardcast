@@ -1,14 +1,44 @@
-<div class="login">
+<div class="auth">
 
-  <form ng-submit="login()">
-    <label for="login-username">Username: </label>
-    <input type="text" ng-model="username" id="login-username" />
-    <label for="login-password">Password: </label>
-    <input type="password" ng-model="password" id="login-password" />
-    <input type="submit" value="Login" />
-  </form>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
-  <a href="#!/signup">Create an account...</a>
+      <form class="mdl-card mdl-shadow--4dp" ng-submit="login()">
 
-  <div>{{ warning }}</div>
+        <div class="mdl-card__title">
+          <h3 class="mdl-card__title-text">Login</h3>
+        </div>
+
+        <div class="mdl-card__supporting-text">
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" ng-model="username" type="text" id="login-username">
+            <label class="mdl-textfield__label" for="login-username">Username...</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" ng-model="password" type="password" id="login-password">
+            <label class="mdl-textfield__label" for="login-username">Password...</label>
+          </div>
+
+          <div class="warning">{{ warning }}</div>
+
+        </div>
+
+        <div class="mdl-card__actions mdl-card--border">
+
+          <a href="#!/signup" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Create an account...
+          </a>
+
+          <input type="submit" value="Login" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"/>
+
+        </div>
+
+      </form>
+
+
+    </div>
+  </div>
+
 </div>

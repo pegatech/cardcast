@@ -1,16 +1,51 @@
-<div class="signup">
+<div class="auth">
 
-  <form ng-submit="signup()">
-    <label for="signup-username">Username: </label>
-    <input type="text" ng-model="username" id="signup-username" />
-    <label for="signup-password">Password: </label>
-    <input type="password" ng-model="password" id="signup-password" />
-    <label for="signup-check">Repeat Password: </label>
-    <input type="password" ng-model="check" id="signup-check" />
-    <input type="submit" value="Signup" />
-  </form>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
-  <a href="#!/login">Login...</a>
 
-  <div>{{ warning }}</div>
+      <form class="mdl-card mdl-shadow--4dp" ng-submit="signup()">
+
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Signup</h2>
+        </div>
+
+
+        <div class="mdl-card__supporting-text">
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" ng-model="username" type="text" id="signup-username">
+            <label class="mdl-textfield__label" for="signup-username">Username...</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" ng-model="password" type="password" id="signup-password">
+            <label class="mdl-textfield__label" for="signup-username">Password...</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" ng-model="check" type="password" id="signup-check">
+            <label class="mdl-textfield__label" for="signup-username">Repeat Password...</label>
+          </div>
+
+          <div class="warning">{{ warning }}</div>
+
+        </div>
+
+        <div class="mdl-card__actions mdl-card--border">
+
+          <a href="#!/login" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Login Existing...
+          </a>
+
+          <input type="submit" value="Signup" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"/>
+
+        </div>
+
+      </form>
+
+
+    </div>
+  </div>
+
 </div>

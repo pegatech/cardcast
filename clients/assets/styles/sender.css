@@ -1,82 +1,209 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #FAFAFA;
 }
 
-.cast-markdown {
-  width: 560px;
+.body-primary {
+  position: fixed;
+  z-index: -1;
+  height: 25%;
+  background-color: #03A9F4;
+  width: 100%;
+  color: #FFFFFF;
 }
 
-.cast-markdown .mdl-card__title {
-  background-color: #009688;
-}
-
-.cast-markdown .mdl-card__title-text {
-  font-size: 2.5em;
-  padding: 5px;
+.body-primary h1 {
   color: #fff;
+  margin-top: 7%;
+  font-size: 3em;
+  font-weight: bold;
 }
 
-.cast-markdown .mdl-card__supporting-text {
+.auth .mdl-card {
+  width: 100%;
+  margin-top: 20%;
+}
+
+.auth .mdl-card__title {
+  padding: 30px 0 0 30px;
+}
+
+.auth .mdl-card__title-text {
+  font-size: 2em;
+  color: #757575;
+}
+
+.auth .mdl-card__supporting-text {
   padding: 20px 30px;
+  width: 100%;
 }
 
-.mdl-textfield {
-  width: 500px;
+.auth .mdl-textfield {
+  display: block;
+  width: 100%;
 }
 
-.card-canvas {
-  width: 500px;
-  height: 290px;
+.auth .warning {
+  height: 30px;
+  line-height: 30px;
+  font-size: 1.5em;
+  color: #FF8F00;
+}
+
+.auth .mdl-card__actions {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 40px;
-  background-color: #ff5252;
-  margin-bottom: 100px;
+  justify-content: space-between;
+  padding: 15px;
 }
 
-.preview {
-  color: #fff;
+.card-deck {
+  width: 100%;
+  margin-top: 20%;
+  min-height: 100px;
+}
+
+.card-deck .mdl-card__title {
+  padding: 30px 0 0 30px;
+}
+
+.card-deck .mdl-card__title-text {
+  font-size: 2em;
+  color: #757575;
+}
+
+.card-deck .mdl-card__supporting-text {
+  padding: 30px;
+  font-size: 1em;
+}
+
+.card {
+  margin-top: 20px;
+  min-height: 0;
+  width: 100%;
+  background-color: #B3E5FC;
+}
+
+.card .mdl-card__supporting-text {
+  font-size: 1em;
+}
+
+.card .mdl-card__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card .mdl-button {
+  margin-left: 10px;
+}
+
+.deck-footer {
+  height: 100px;
+}
+
+.add-card {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 2;
 }
 
 .popup {
-  margin: auto;
-  width: 70%;
-  border: 3px;
-  border-radius: 1px;
-  border-style: solid;
-  border-color: black;
-  margin-bottom: 25px;
-  margin-top: 5px;
-  background-color:#eee;
+  position: fixed;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(144, 144, 144, 0.5);
 }
 
-.popup-title {
-  text-align: center;
-  margin-top: 0;
-  padding-top: 1px;
-  background-color: #ff3433;
-  color: #fff;
+.popup .mdl-card {
+  background-color: #03A9F4;
 }
 
-.popup-text {
-  text-align: center;
+.popup .mdl-card__supporting-text {
+  font-size: 1em;
 }
 
-.popup-btn-container {
-  margin: auto;
-  width: 50%;
-  margin-top: 5px;
-  margin-bottom: 5px;
+.popup .mdl-card__actions {
+  display: flex;
+  justify-content: space-between;
 }
 
-.popup-btn {
-  margin: 9px;
+.new-card-info .mdl-card {
+  width: 100%;
+  margin-top: 13%;
+  min-height: 0;
 }
 
-.popup-btn:hover{
-  color: #009688;
+.new-card-info p {
+  margin-bottom: 0;
+}
+
+.new-card .mdl-card,
+.card-preview .mdl-card {
+  margin-top: 20px;
+}
+
+.new-card .mdl-card {
+  width: 100%;
+  height: 350px;
+}
+
+.new-card form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.new-card .mdl-card__title {
+  padding: 30px 0 0 30px;
+}
+
+.new-card .mdl-card__supporting-text {
+  width: 100%;
+  height: 85%;
+  padding: 10px 30px;
+}
+
+.new-card .text-area {
+  height: calc(100% - 70px);
+}
+
+.new-card textarea {
+  height: 100%;
+}
+
+.new-card .mdl-card__supporting-text p {
+  margin-bottom: 0;
+}
+
+.new-card .mdl-textfield {
+  width: 100%;
+}
+
+.new-card .mdl-card__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card-preview .mdl-card {
+  width: 100%;
+  background-color: #B3E5FC;
+}
+
+.card-preview .mdl-card__supporting-text {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 350px;
 }
