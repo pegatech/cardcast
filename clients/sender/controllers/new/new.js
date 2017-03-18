@@ -4,6 +4,7 @@ angular.module('cardcast.new', [
 
 .controller('NewCtrl', function($scope, $sanitize, $location, Service) {
 
+  $scope.message = '';
 
   $scope.createCard = function() {
 
@@ -20,7 +21,13 @@ angular.module('cardcast.new', [
   };
 
   $scope.changes = function() {
-    $scope.preview = $sanitize(Service.markDownCompile($scope.message));
+    if ($scope.message === '') {
+      $scope.preview = $sanitize('<h1>Your Card Preview</h1>');
+    } else {
+      $scope.preview = $sanitize(Service.markDownCompile($scope.message));
+    }
   };
+
+  $scope.changes();
 
 });

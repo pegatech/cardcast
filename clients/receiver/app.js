@@ -11,6 +11,10 @@ angular.module('cardcast-receiver', [
     window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
     console.log('Starting the Receiver Manager');
 
+    //create message bus for controller
+    window.messageBus = castReceiverManager.getCastMessageBus('urn:x-cast:pegatech.card.cast');
+
+    console.log(castReceiverManager);
     //on ready event
     castReceiverManager.onReady = function(event) {
       console.log('Recieved Ready event: ' + JSON.stringify(event.data));
@@ -21,6 +25,7 @@ angular.module('cardcast-receiver', [
     castReceiverManager.onSenderConnected = function(event) {
       console.log('Received Sender Connected event: ' + event.data);
       console.log(castReceiverManager.getSender(event.data).userAgent);
+      messageBus.broadcast(JSON.stringify(isAlreadyCasting));
     };
 
     //handler for sender disconnect, check if anyone is still connected and close if not
@@ -31,8 +36,7 @@ angular.module('cardcast-receiver', [
       }
     };
 
-    //create message bus for controller
-    window.messageBus = castReceiverManager.getCastMessageBus('urn:x-cast:pegatech.card.cast');
+
 
     //handler for castMessageBus event
     messageBus.onMessage = function(event) {
@@ -52,7 +56,8 @@ angular.module('cardcast-receiver', [
 
       //inform all senders on messagebus of incoming message
       //this invokes the senders messageListener function
-      messageBus.send(event.senderId, 'isCasting');
+      isAlreadyCasting = true;
+      messageBus.broadcast(JSON.stringify(isAlreadyCasting));
       $scope.$apply();
     };
 
