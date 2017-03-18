@@ -31,7 +31,21 @@
       <div class="mdl-card__actions mdl-card--border">
         <a href="#!/edit/{{ card._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
         <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="deleteCard(card)"/>
-        <input type="button" value="Cast" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="showPopup(card)"/>
+
+
+        <input ng-if="card._id !== cardId"
+               type="button"
+               value="Cast"
+               class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+               ng-click="showPopup(card)"/>
+
+         <input ng-if="card._id === cardId"
+                type="button"
+                value="Stop"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+                ng-click="castCard(null, true)"/>
+
+
       </div>
 
     </div>
