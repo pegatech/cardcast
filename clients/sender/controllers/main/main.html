@@ -33,7 +33,7 @@
 
       <div class="mdl-card__actions mdl-card--border">
         <a href="#!/edit/{{ card._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
-        <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="deleteCard(card)"/>
+        <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
 
 
         <input ng-if="card._id !== cardId"
@@ -75,6 +75,28 @@
       </button>
       <button ng-click="castCard(currentCard)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
         Cast Anyway
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Delete Card Warning -->
+<div class="popup" ng-show="showDelete">
+  <div class="mdl-card mdl-shadow--8dp">
+
+    <div class="mdl-card__title">
+      <h3 class="mdl-card__title-text">Do You Really Want To Delete?</h3>
+    </div>
+
+    <div class="mdl-card__supporting-text">You are about to delete this card. This action cannot be undone.</div>
+
+    <div class="mdl-card__actions">
+      <button ng-click="cancelDelete()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+        Cancel
+      </button>
+      <button ng-click="deleteCard(currentCard)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+        Delete
       </button>
     </div>
 
