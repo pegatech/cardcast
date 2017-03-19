@@ -34,7 +34,8 @@ To start using CardCast, simply go to the site and create an account. You start 
 
 ## Customer Quote ##
 > Before CardCast our team struggled with staying engaged and focused in meetings. Our project, Pretzel Robot, was on the verge of disaster before we found CardCast. It makes it fun for everyone to contribute and one idea can be expanded on by everyone in the room, they just make a card and cast it.  It has really helped us stay innovative.
-\- Nathan Turinski
+
+Nathan Turinski - _Valued CardCast Customer_
 
 ## Closing and Call to Action ##
 So what are you waiting for?  Sign up for CardCast today and make your next collaborative presentation an exciting and rewarding experience for everyone.  
