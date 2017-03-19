@@ -1,41 +1,67 @@
-<div class="cast-markdown mdl-card mdl-shadow--4dp">
+<div class="row">
+  <div class="new-card-info col-xs-12">
 
-  <div class="mdl-card__title">
-    <h1 class="mdl-card__title-text">EditCard</h1>
+    <div class="mdl-card mdl-shadow--4dp">
+
+      <div class="mdl-card__title">
+        <h1 class="mdl-card__title-text">Edit Card</h1>
+      </div>
+
+      <div class="mdl-card__supporting-text">
+        <p>Welcome to CardCast! Share a card with everyone in the room by easily casting it to any Chromecast on the network. Create your card by entering some markdown below, then cast away! To learn more about markdown, visit this <a href="http://commonmark.org/help/">link</a>.</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row">
+
+  <div class="new-card col-md-6">
+    <div class="mdl-card mdl-shadow--4dp">
+
+      <form ng-submit="updateCard()">
+
+        <div class="mdl-card__supporting-text">
+
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" ng-model="card.title" type="text" id="edit-card-title">
+            <label class="mdl-textfield__label" for="edit-card-title"></label>
+          </div>
+
+          <div class="text-area mdl-textfield mdl-js-textfield">
+            <textarea name="message"
+                      class="mdl-textfield__input"
+                      ng-model="card.card"
+                      ng-change="changes()"
+                      id="edit-card-markdown"></textarea>
+            <label class="mdl-textfield__label" for="edit-card-markdown"></label>
+          </div>
+
+        </div>
+
+        <div class="mdl-card__actions mdl-card--border">
+          <input class="mdl-button mdl-button--accent mdl-button--raised mdl-js-button mdl-js-ripple-effect"
+                 type="submit"
+                 value="Edit Card"/>
+        </div>
+
+      </form>
+
+    </div>
   </div>
 
-  <form method="get" ng-submit="updateCard()">
 
-    <div class="mdl-card__supporting-text">
-      <p>To learn more about markdown, visit this <a href="http://commonmark.org/help/">link</a>.</p>
-      <input class="mdl-textfield__input" ng-model="card.title" placeholder="Please Enter Title"/>
-      <div class="mdl-textfield mdl-js-textfield">
-        <textarea class="mdl-textfield__input" ng-model="card.card" ng-change="changes()" rows="10" id="markdown-text"></textarea>
-        <label class="mdl-textfield__label" for="markdown-text">Your markdown here...</label>
+  <div class="card-preview col-md-6">
+    <div class="mdl-card mdl-shadow--4dp">
+      <div class="mdl-card__supporting-text">
+        <div ng-bind-html="preview"></div>
       </div>
     </div>
-
-    <div class="mdl-card__actions mdl-card--border">
-      <input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Edit Card"/>
-    </div>
-
-  </form>
-
-</div>
-
-
-<div class="mdl-card__supporting-text">
-
-  <div class="mdl-card__title">
-    <h1 class="mdl-card__title-text">Cast Preview</h1>
-  </div>
-
-  <div class="card-canvas mdl-card mdl-shadow--6dp" >
-    <div class="mdl-card__supporting-text">
-
-      <div class="preview" ng-bind-html="preview"></div>
-
-    </div>
   </div>
 
 </div>
+
+<div class="deck-footer"></div>
