@@ -41,15 +41,7 @@ angular.module('cardcast.edit', [
 
   // Function that watches for changes in message
   $scope.changes = function() {
-
-    // If card.card is empty show Your Card Preview
-    if ($scope.card.card === '') {
-      $scope.preview = $sanitize('<h1>Your Card Preview</h1>');
-    } else {
-      // Else compile the card.card and set it as preview
-      $scope.preview = $sanitize(Service.markDownCompile($scope.card.card));
-    }
-
+    $scope.preview = $sanitize(Service.markDownCompile($scope.card.card));
   };
 
   // Call the initialize function to get the card info when the page loads
