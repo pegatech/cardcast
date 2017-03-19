@@ -27,15 +27,15 @@ Creating flexible visual aids for brainstorming sessions, project meetings, or o
 CardCast’s card model gives your team the ability to adapt the visual aids to the natural flow of your meetings. Each team member can create their own personal deck of cards that each have the ability to cast to any Google Cast device. Any user connected to the same network has the ability to cast any of their cards to the screen at any time. This makes CardCast perfect for presentations that need to be flexible in their content and order.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+CardCast will revolutionize the way your organization thinks about group presentations!  
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+To start using CardCast, simply go to the site and create an account. You start with an empty deck, but creating cards is easy, just click on the yellow plus button in the lower rigth corner.  Give your new card a title and start typing your markdown.  The blue preview shows an exact replica of how your card appears once cast to the screen.  If you're unfamiliar with markdown, you can visit the link to see some of the powerful formatting opitons available to you. Once you're satisfied with your first card, clicking on the yellow 'create card' button will save it to your deck.  Now, when it's your turn to cast in a presentation, simply click the 'cast' button and watch your card come to life.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+"Before CardCast our team struggled with staying engaged and focused in meetings.  With CardCast, it makes it fun for everyone to contribute and one idea can be expanded on by everyone in the room, they just make a card and cast it.  It's really helped us stay innovative.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+So what are you waiting for?  Sign up for CardCast today and make your next collaborative presentation an exciting and rewarding experience for everyone.  
 
 
