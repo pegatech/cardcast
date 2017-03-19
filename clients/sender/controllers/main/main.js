@@ -1,6 +1,6 @@
 angular.module('cardcast.main', [])
 
-//Set up main controller for Sender.  
+//Set up main controller for Sender.
 .controller('MainCtrl', function($scope, $timeout, $location, Service, user) {
 
   $scope.deck = {};
@@ -20,7 +20,7 @@ angular.module('cardcast.main', [])
   };
 
   //First checks for a session and sees if anyone else is currently casting.
-  //Casts the card that invoked it as long as no one else is casting, 
+  //Casts the card that invoked it as long as no one else is casting,
   //otherwise triggers the popup warning.
   $scope.showPopup = function(card) {
 
@@ -60,8 +60,8 @@ angular.module('cardcast.main', [])
 
 
 
-  //Sends cast using the card that invoked showPopup. The username tracks who is currently casting  
-  //Passing the 'clear' parameter stops the current cast and reverts everything to default state. 
+  //Sends cast using the card that invoked showPopup. The username tracks who is currently casting
+  //Passing the 'clear' parameter stops the current cast and reverts everything to default state.
   $scope.castCard = function(card, clear = false) {
     var message = {
       username: clear ? null : user,
@@ -69,7 +69,7 @@ angular.module('cardcast.main', [])
       cardId: clear ? null : card._id
     };
     $scope.showWarning = false;
-    session.sendMessage(namespace, JSON.stringify(message), console.log.bind(null,'onSuccess: ', 'Message was sent: ' + message), console.log.bind(null, 'onError: '));
+    session.sendMessage(namespace, JSON.stringify(message), console.log.bind(null, 'onSuccess: ', 'Message was sent: ' + message), console.log.bind(null, 'onError: '));
   };
 
   //Deletes selected card from the database

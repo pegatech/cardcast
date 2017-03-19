@@ -3,10 +3,12 @@ angular.module('cardcast.service', [])
 .factory('Service', function($http) {
   return {
 
+    // Function to compile markdown
     markDownCompile: function(text) {
       return marked(text);
     },
 
+    // Function that makes get request to '/api/cards' to get user's deck from db
     getDeck: function() {
       return $http({
         method: 'GET',
@@ -14,12 +16,10 @@ angular.module('cardcast.service', [])
       })
         .then(function(resp) {
           return resp.data;
-        })
-        .catch(function(err) {
-          console.error(err);
         });
     },
 
+    // Function that makes post request to '/api/cards' to insert new card into db
     createCard: function(card) {
       return $http({
         method: 'POST',
@@ -28,6 +28,7 @@ angular.module('cardcast.service', [])
       });
     },
 
+    // Function that makes get request to '/api/cards/:id' to get a single card info from db
     getCard: function(id) {
       return $http({
         method: 'GET',
@@ -38,6 +39,7 @@ angular.module('cardcast.service', [])
         });
     },
 
+    // Function that makes put request to '/api/cards/:id' to update the card info in the db
     updateCard: function(card) {
       return $http({
         method: 'PUT',
@@ -46,6 +48,7 @@ angular.module('cardcast.service', [])
       });
     },
 
+    // Function that makes post request to '/api/cards/:id' to delete the card from the db
     deleteCard: function(card) {
       return $http({
         method: 'POST',
