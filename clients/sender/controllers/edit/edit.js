@@ -6,11 +6,13 @@ angular.module('cardcast.edit', [
 
   $scope.card = {};
 
+
   $scope.initialize = function() {
     var id = $routeParams.id;
     Service.getCard(id)
       .then(function(resp) {
         $scope.card = resp;
+        $scope.preview = $sanitize(Service.markDownCompile(resp.card));
       });
   };
 
@@ -24,7 +26,8 @@ angular.module('cardcast.edit', [
     Service.updateCard(cardInfo)
       .then(function(resp) {
         $location.path('/cards');
-      });
+      })
+      .catch(console.log);
   };
 
   $scope.changes = function() {

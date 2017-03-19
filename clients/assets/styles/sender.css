@@ -67,6 +67,10 @@ body {
   min-height: 100px;
 }
 
+.col-xs-12 .card-deck {
+  margin-top: 15% !important;
+}
+
 .card-deck .mdl-card__title {
   padding: 30px 0 0 30px;
 }
@@ -74,6 +78,10 @@ body {
 .card-deck .mdl-card__title-text {
   font-size: 2em;
   color: #757575;
+}
+
+.card-deck button {
+  margin-left: 15px;
 }
 
 .card-deck .mdl-card__supporting-text {

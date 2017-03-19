@@ -6,6 +6,7 @@ angular.module('cardcast.main', [])
   $scope.deck = {};
   $scope.currentCard = {};
   $scope.showWarning = false;
+  $scope.showDelete = false;
   $scope.username = user;
 
   $scope.getDeck = function() {
@@ -52,15 +53,23 @@ angular.module('cardcast.main', [])
   };
 
   $scope.deleteCard = function(card) {
-    if (confirm('Are you sure you want to delete the ' + card.title + ' Card?')) {
-      Service.deleteCard(card)
-        .then(function(resp) {
-          Service.getDeck()
-            .then(function(resp) {
-              $scope.deck = resp;
-            });
-        });
-    }
+    Service.deleteCard(card)
+      .then(function(resp) {
+        Service.getDeck()
+          .then(function(resp) {
+            $scope.deck = resp;
+            $scope.showDelete = false;
+          });
+      });
+  };
+
+  $scope.warnDelete = function(card) {
+    $scope.showDelete = true;
+    $scope.currentCard = card;
+  };
+
+  $scope.cancelDelete = function() {
+    $scope.showDelete = false;
   };
 
   $scope.getDeck();
