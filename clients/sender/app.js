@@ -54,7 +54,16 @@ angular.module('cardcast', [
   };
 })
 
-.run(function($rootScope, $location) {
+.run(function($rootScope, $location, $timeout, Auth) {
+
+  $rootScope.logout = Auth.logout;
+
+  $rootScope.goToDeck = function() {
+    $timeout(function() {
+      $location.path('/cards');
+    });
+  };
+
   $rootScope.$on('$viewContentLoaded', function(event, next) {
 
     var connect = function() {

@@ -12,12 +12,11 @@ angular.module('cardcast.edit', [
     Service.getCard(id)
       .then(function(resp) {
         $scope.card = resp;
-        $scope.preview = resp.card;
+        $scope.preview = $sanitize(Service.markDownCompile(resp.card));
       });
   };
 
   $scope.updateCard = function() {
-    console.log('updateCard');
     var cardInfo = {
       id: $scope.card._id,
       title: $scope.card.title,
