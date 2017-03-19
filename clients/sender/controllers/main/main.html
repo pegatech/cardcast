@@ -19,7 +19,7 @@
   </div>
 </div>
 
-
+<!-- Iterates through all the users cards and displays them -->
 <div ng-repeat="card in deck" class="row">
   <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
@@ -35,13 +35,14 @@
         <a href="#!/edit/{{ card._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
         <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
 
-
+        <!-- Displays 'Cast' with associated behavior for all cards not being casted -->
         <input ng-if="card._id !== cardId"
                type="button"
                value="Cast"
                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
                ng-click="showPopup(card)"/>
 
+        <!-- Displays 'Stop' and associated behavior for the card being cast -->
          <input ng-if="card._id === cardId"
                 type="button"
                 value="Stop"
@@ -59,7 +60,7 @@
 <!-- Space for scrolling -->
 <div class="deck-footer">&nbsp;</div>
 
-<!-- Already Casting Warning -->
+<!-- Already Casting Warning pops up when 'showWarning' is true -->
 <div class="popup" ng-show="showWarning">
   <div class="mdl-card mdl-shadow--8dp">
 
