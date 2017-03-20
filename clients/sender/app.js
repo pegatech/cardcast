@@ -24,6 +24,11 @@ angular.module('cardcast', [
     return Service.getDeck();
   };
 
+  // get a specific card
+  var getCard = function($route, Service) {
+    return Service.getCard($route.current.params.id);
+  };
+
   $routeProvider
     .when('/login', {
       templateUrl: '/sender/controllers/auth/login.html',
@@ -58,7 +63,8 @@ angular.module('cardcast', [
       templateUrl: '/sender/controllers/edit/edit.html',
       controller: 'EditCtrl',
       resolve: {
-        user: authorize
+        user: authorize,
+        card: getCard
       }
     })
     .otherwise({

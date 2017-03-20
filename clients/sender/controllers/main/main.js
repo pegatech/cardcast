@@ -3,6 +3,7 @@ angular.module('cardcast.main', [])
 // Set up main controller for Sender.
 .controller('MainCtrl', function($scope, $timeout, $location, Service, user, deck) {
 
+  // Set $scope.deck with info received from deck resolve
   $scope.deck = deck;
   $scope.currentCard = {};
 
