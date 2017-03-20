@@ -35,6 +35,7 @@ app.use(bodyParser.json());
 require('./passport/init')(passport);
 
 // use routes
+// notice how the initialized passport object is passed to the users router
 app.use('/', clients);
 app.use('/api/users', users(passport));
 app.use('/api/cards', cards);
@@ -42,12 +43,14 @@ app.use('/api/cards', cards);
 // serve static files
 app.use(express.static(path.join(__dirname, '../clients/')));
 
+// catch 404 errors
 app.use((req, res, next) => {
   var err = new Error('ERROR 404 Sorry can\'t find what you\'re looking for!');
   err.status = 404;
   next(err);
 });
 
+// error handler
 app.use((err, req, res, next) => {
   console.log(err.stack);
   var status = err.status || 500;
