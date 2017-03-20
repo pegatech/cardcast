@@ -8,6 +8,10 @@ body {
   background-color: #FAFAFA;
 }
 
+p {
+  margin-bottom: 0;
+}
+
 .body-primary {
   position: fixed;
   z-index: -1;
@@ -152,10 +156,6 @@ body {
   min-height: 0;
 }
 
-.new-card-info p {
-  margin-bottom: 0;
-}
-
 .new-card .mdl-card,
 .card-preview .mdl-card {
   margin-top: 20px;
@@ -230,8 +230,4 @@ body {
   width: 50%;
   border-radius: 4px;
   margin: 0 auto;
-}
-
-.card-preview p {
-  margin-bottom: 0;
 }
