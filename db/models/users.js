@@ -12,9 +12,11 @@ var userSchema = new Schema({
   password: String
 });
 
+// save the password as a hash
 userSchema.pre('save', function(next) {
   var user = this;
 
+  // make sure hash happens only when password is changed/created
   if (!user.isModified('password')) {
     return next();
   }
@@ -29,6 +31,8 @@ userSchema.pre('save', function(next) {
   });
 });
 
+// hash the potential password and see if there is a match
+// this will be a method on the model
 userSchema.methods.comparePassword = function(password) {
   var user = this;
 

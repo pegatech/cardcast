@@ -5,9 +5,9 @@ var helpers = require('../helpers');
 
 // helpers.isAuth is checking if req is authenticated
 
-// Handle get request to '/api/cards/' by using findAll function from cardController
+// handle get request to '/api/cards/' by using findAll function from cardController
 router.get('/', helpers.isAuth, function(req, res, next) {
-  // req has a user object
+  // req has a user object given by passport
   cardController.findAll(req.user._id)
     .then(function(resp) {
       res.send(resp);
@@ -18,9 +18,9 @@ router.get('/', helpers.isAuth, function(req, res, next) {
 
 });
 
-// Handle post request to '/api/cards' by using insertOne function from cardController
+// handle post request to '/api/cards' by using insertOne function from cardController
 router.post('/', helpers.isAuth, function(req, res) {
-  // Add user id to the card info to specify whose card it is
+  // add user id to the card info to specify whose card it is
   var cardInfo = {
     title: req.body.title,
     card: req.body.card,
@@ -36,7 +36,7 @@ router.post('/', helpers.isAuth, function(req, res) {
     });
 });
 
-// Handle post request to '/api/cards/:id' by using deleteCard function from cardController
+// handle post request to '/api/cards/:id' by using deleteCard function from cardController
 router.post('/:id', helpers.isAuth, function(req, res, next) {
   cardController.deleteCard(req.body._id)
     .then(function(resp) {
@@ -48,7 +48,7 @@ router.post('/:id', helpers.isAuth, function(req, res, next) {
 
 });
 
-// Handle get request to '/api/cards/:id' by using findOne function from cardController
+// handle get request to '/api/cards/:id' by using findOne function from cardController
 router.get('/:id', helpers.isAuth, function(req, res) {
   cardController.findOne(req.params.id)
     .then(function(resp) {
@@ -59,7 +59,7 @@ router.get('/:id', helpers.isAuth, function(req, res) {
     });
 });
 
-// Handle put request to '/api/cards/:id' by using updateCard function from cardController
+// handle put request to '/api/cards/:id' by using updateCard function from cardController
 router.put('/:id', helpers.isAuth, function(req, res) {
   cardController.updateCard(req.body)
     .then(function(resp) {
