@@ -118,6 +118,7 @@ angular.module('cardcast', [
         };
 
         var onEndSession = function() {
+          session = null;
           console.log('Successfully ended session');
         };
 
