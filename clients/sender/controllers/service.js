@@ -115,11 +115,13 @@ angular.module('cardcast.service', [])
       })
       .then(function() {
         $timeout(function() {
+          endSession();
           $location.path('/login');
         });
       })
       .catch(function() {
         $timeout(function() {
+          endSession();
           $location.path('/login');
         });
       });
