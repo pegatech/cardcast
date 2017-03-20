@@ -12,6 +12,10 @@ body {
   zoom: 2;
 }
 
+p {
+  margin-bottom: 0;
+}
+
 .card-canvas {
   width: 80%;
   height: 80%;
@@ -24,4 +28,11 @@ body {
 
 .markdown {
   color: #fff;
+}
+
+.card-canvas img {
+  display: block;
+  width: 50%;
+  border-radius: 4px;
+  margin: 0 auto;
 }
