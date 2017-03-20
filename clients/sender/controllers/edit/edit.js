@@ -2,24 +2,10 @@ angular.module('cardcast.edit', [
   'ngSanitize'
 ])
 
-.controller('EditCtrl', function($scope, $location, $routeParams, $sanitize, Service) {
+.controller('EditCtrl', function($scope, $location, $routeParams, $sanitize, Service, card) {
 
-  $scope.card = {};
-
-  // Function to get the card info from the database
-  $scope.initialize = function() {
-
-    // Grabbing the id from route params
-    var id = $routeParams.id;
-
-    // Use the getCard function from the Service factory
-    Service.getCard(id)
-      .then(function(resp) {
-        $scope.card = resp;
-        $scope.preview = $sanitize(Service.markDownCompile(resp.card));
-      });
-
-  };
+  // Set $scope.card with info received from card resolve
+  $scope.card = card;
 
   // Funciton to update the card info in the database
   $scope.updateCard = function() {
@@ -51,6 +37,6 @@ angular.module('cardcast.edit', [
     }
   };
 
-  // Call the initialize function to get the card info when the page loads
-  $scope.initialize();
+  // Function is called initially to set the preview
+  $scope.changes();
 });
