@@ -16,6 +16,9 @@ angular.module('cardcast.service', [])
       })
         .then(function(resp) {
           return resp.data;
+        })
+        .catch(function(err) {
+          console.error(err);
         });
     },
 

@@ -26,7 +26,10 @@ angular.module('cardcast', [
       templateUrl: '/sender/controllers/main/main.html',
       controller: 'MainCtrl',
       resolve: {
-        user: authorize
+        user: authorize,
+        deck: function(Service) {
+          return Service.getDeck();
+        }
       }
     })
     .when('/new', {
