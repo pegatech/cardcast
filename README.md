@@ -67,6 +67,27 @@ Now you should be able to access the sender application from your browser at `ht
 
 To access the __Chromecast Debugger Window__, go to `chrome://inspect` in your browser _while the application is casting_. You should see your developer Chromecast listed on the page. Click the `inspect` link to open up the Chromecast debugger. This is where you can access the console and all of the other development tools for the receiver side application. You can also access the debugger window by finding your Chromecast's LAN IP and going to `http://<YOUR_CHROMECAST_IP>:9222` in your browser. 
 
+
+### Helpful Resources
+
+Chromecast
+
+* [Cast API](https://developers.google.com/cast/docs/developers)
+* [Google's Demo Application](https://github.com/googlecast/CastHelloText-chrome)
+* [Helpful video for setting up Reciever](https://www.youtube.com/watch?v=clhnfUMuhN8)
+* [Cast Receiver App Documentation](https://developers.google.com/cast/docs/custom_receiver)
+* [Sender API Reference](https://developers.google.com/cast/docs/reference/chrome/)
+
+Database
+
+* [Setting up MongoDB](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
+
+Styling
+* [Material Design Lite](https://getmdl.io/)
+
+Markdown 
+* [Marked Compiler](https://www.npmjs.com/package/marked)
+
 ### Roadmap
 
 View the project roadmap [here](https://github.com/pegatech/cardcast/issues)
