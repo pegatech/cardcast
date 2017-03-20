@@ -74,14 +74,8 @@ Chromecast
 
 * [Cast API](https://developers.google.com/cast/docs/developers)
 * [Google's Demo Application](https://github.com/googlecast/CastHelloText-chrome)
-
-  _receiver_
-
 * [Helpful video for setting up Reciever](https://www.youtube.com/watch?v=clhnfUMuhN8)
 * [Cast Receiver App Documentation](https://developers.google.com/cast/docs/custom_receiver)
-
-  _sender_
-
 * [Sender API Reference](https://developers.google.com/cast/docs/reference/chrome/)
 
 Database
