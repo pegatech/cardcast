@@ -7,6 +7,7 @@ angular.module('cardcast.auth', [])
   $scope.check = '';
   $scope.warning = '';
 
+  // try to login the user, redirect on success, show warning message on failure
   $scope.login = function() {
     if ($scope.username && $scope.password) {
 
@@ -25,6 +26,7 @@ angular.module('cardcast.auth', [])
     }
   };
 
+  // try to signup the user, redirect on success, show warning on failure
   $scope.signup = function() {
     var username = $scope.username;
     var password = $scope.password;
@@ -32,6 +34,7 @@ angular.module('cardcast.auth', [])
 
     $scope.warning = '';
 
+    // validate signup form
     if (username && username.length < 8) {
       $scope.warning = 'Username must be at least 8 characters long';
     } else if (password && password.length < 8) {
@@ -40,11 +43,13 @@ angular.module('cardcast.auth', [])
       $scope.warning = 'Passwords do not match';
     } else if (username && password) {
 
+      // if all validations pass, signup the user
       Auth.signup({username: username, password: password})
         .then(function() {
           $location.path('/cards');
         })
         .catch(function() {
+          // if signup throws an error, user already exists
           $scope.warning = 'User already exists.';
         });
 

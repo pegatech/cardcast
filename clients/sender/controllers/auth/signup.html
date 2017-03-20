@@ -1,15 +1,15 @@
 <div class="auth">
 
+  <!-- Bootstrap Grid System -->
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
-
+      <!-- Signup Card - Material Design Lite -->
       <form class="mdl-card mdl-shadow--4dp" ng-submit="signup()">
 
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text">Signup</h2>
         </div>
-
 
         <div class="mdl-card__supporting-text">
 
@@ -28,6 +28,7 @@
             <label class="mdl-textfield__label" for="signup-username">Repeat Password...</label>
           </div>
 
+          <!-- Warning Message -->
           <div class="warning">{{ warning }}</div>
 
         </div>
@@ -37,7 +38,6 @@
           <a href="#!/login" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
             Login Existing...
           </a>
-
           <input type="submit" value="Signup" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"/>
 
         </div>
