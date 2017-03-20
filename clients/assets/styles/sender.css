@@ -204,9 +204,17 @@ body {
   justify-content: flex-end;
 }
 
+.new-card .mdl-card__actions .mdl-button {
+  margin-left: 10px;
+}
 .card-preview .mdl-card {
   width: 100%;
   background-color: #B3E5FC;
+}
+
+/* fix for weird bootstrap thing */
+.card-preview h1 {
+  font-size: 56px;
 }
 
 .card-preview .mdl-card__supporting-text {

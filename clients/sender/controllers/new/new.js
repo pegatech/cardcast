@@ -29,7 +29,7 @@ angular.module('cardcast.new', [
 
     // If message is empty show Your Card Preview
     if ($scope.message === '') {
-      $scope.preview = $sanitize('<h1>Your Card Preview</h1>');
+      $scope.preview = $sanitize('<h3>Your Card Preview</h3>');
     } else {
       // Else compile the message and set it as preview
       $scope.preview = $sanitize(Service.markDownCompile($scope.message));

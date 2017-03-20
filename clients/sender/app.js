@@ -132,18 +132,18 @@ angular.module('cardcast', [
           }
         };
 
-        /*
-          listen to messages from the reciever
-          the receiver will continually broadcast messages with information
-          about what is being casted, specifically the stop casting button in
-          main.html and the cast overwrite dialogs rely on these messages
 
-          if the cardId that is casting matches the card view in main.html,
-          a stop casting button will be shown
+        // listen to messages from the reciever
+        // the receiver will continually broadcast messages with information
+        // about what is being casted, specifically the stop casting button in
+        // main.html and the cast overwrite dialogs rely on these messages
 
-          if isCasting is true, the user will be promted if they want to
-          overwrite the cast that is already on the screen
-        */
+        // if the cardId that is casting matches the card view in main.html,
+        // a stop casting button will be shown
+
+        // if isCasting is true, the user will be promted if they want to
+        // overwrite the cast that is already on the screen
+
         var receiverMessage = function(namespace, message) {
           var message = JSON.parse(message);
           isCasting = message.isCasting;
