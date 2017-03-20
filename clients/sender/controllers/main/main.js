@@ -1,23 +1,15 @@
 angular.module('cardcast.main', [])
 
 //Set up main controller for Sender.
-.controller('MainCtrl', function($scope, $timeout, $location, Service, user) {
+.controller('MainCtrl', function($scope, $timeout, $location, Service, user, deck) {
 
-  $scope.deck = {};
+  $scope.deck = deck;
   $scope.currentCard = {};
 
   //toggles popup warning using 'ng-show' in main.html
   $scope.showWarning = false;
   $scope.showDelete = false;
   $scope.username = user;
-
-//Loads all of the user's cards from DB into controller
-  $scope.getDeck = function() {
-    Service.getDeck()
-      .then(function(resp) {
-        $scope.deck = resp;
-      });
-  };
 
   //First checks for a session and sees if anyone else is currently casting.
   //Casts the card that invoked it as long as no one else is casting,
@@ -76,11 +68,9 @@ angular.module('cardcast.main', [])
   $scope.deleteCard = function(card) {
     Service.deleteCard(card)
       .then(function(resp) {
-        Service.getDeck()
-          .then(function(resp) {
-            $scope.deck = resp;
-            $scope.showDelete = false;
-          });
+        var index = $scope.deck.indexOf(card);
+        $scope.deck.splice(index, 1);
+        $scope.showDelete = false;
       });
   };
 
@@ -93,5 +83,4 @@ angular.module('cardcast.main', [])
     $scope.showDelete = false;
   };
 
-  $scope.getDeck();
 });
