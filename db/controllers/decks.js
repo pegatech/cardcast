@@ -17,7 +17,7 @@ exports.findOne = function(id) {
 
 // update the deck info in the database
 exports.updateDeck = function(deck) {
-  return DeckModel.update({_id: deck.id}, {$set: {title: deck.title, deck: deck.deck}});
+  return DeckModel.update({_id: deck.id}, {$set: {title: deck.title}});
 };
 
 // delete a deck from the database

@@ -8,7 +8,7 @@ var helpers = require('../helpers');
 // handle get request to '/api/cards/' by using findAll function from cardController
 router.get('/', helpers.isAuth, function(req, res, next) {
   // req has a user object given by passport
-  cardController.findAll(req.user._id)
+  cardController.findAll(req.user._id, req.body.deck)
     .then(function(resp) {
       res.send(resp);
     })
@@ -24,7 +24,8 @@ router.post('/', helpers.isAuth, function(req, res) {
   var cardInfo = {
     title: req.body.title,
     card: req.body.card,
-    user: req.user._id
+    user: req.user._id,
+    deck: req.body.deck
   };
 
   cardController.insertOne(cardInfo)
