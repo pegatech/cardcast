@@ -7,6 +7,10 @@ var cardSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'user'
+  },
+  db: {
+    type: Schema.Types.ObjectId,
+    ref: 'db'
   }
 });
 
