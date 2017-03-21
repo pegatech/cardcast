@@ -19,10 +19,24 @@ angular.module('cardcast', [
     return Auth.isAuth();
   };
 
+  // update a specific deck title
+  // TODO: parameter
+  var updateDeck = function(Service) {
+    return Service.updateDeck();
+  }
+
+  // delete a deck for a user
+  //TODO parameter
+  var deleteDeck = function(Service) {
+    return Service.deleteDeck();
+  }
+
+  // get all decks for a specific user
   var getAllDecks = function(Service) {
     return Service.getAllDecks();
   }
   // get a specific deck for a specific user
+  //TODO parameter
   var getDeck = function(Service) {
     return Service.getDeck();
   };
@@ -46,6 +60,8 @@ angular.module('cardcast', [
       controller: 'HomeCtrl',
       resolve: {
       // TODO: figure out what needs to happen on resolve
+      user: authorize,
+      allDecks: getAllDecks
       }
     } )
     .when('/cards', {

@@ -1,0 +1,49 @@
+<!-- Bootstrap Grid System -->
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+    <!-- Navigation Card - Material Design Lite -->
+    <div class="card-deck mdl-card mdl-shadow--4dp">
+
+      <div class="mdl-card__title">
+        <h1 class="mdl-card__title-text">
+          Your Decks
+          <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
+        </h1>
+      </div>
+
+      <div class="mdl-card__supporting-text">
+        Below is a list of your card decks, yo. Hail Satan. Click on a deck to view its cards.
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- Iterates through all the users decks and displays them -->
+<div ng-repeat="deck in allDecks" class="row">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+    <div class="card mdl-card mdl-shadow--4dp">
+
+      <div class="mdl-card__title">
+        <h3 class="mdl-card__title-text">{{ deck.title }}</h3>
+      </div>
+
+      <!-- TODO: allow for deck descriptions -->
+
+      <div class="mdl-card__actions mdl-card--border">
+        <!-- <a href="#!/edit/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a> -->
+        <a href="#!/cards/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">View Deck</button></a>
+        <!-- TODO: build warnings for deck deletion -->
+        <!-- <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(deck)"/> -->
+
+        <!-- Displays 'Cast' with associated behavior for all cards not being casted -->
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

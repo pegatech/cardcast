@@ -20,7 +20,38 @@ angular.module('cardcast.service', [])
       .catch(function(err) {
         console.log(err);
       })
-    }
+    },
+
+   // Function that makes put request to '/api/decks/:id' to change user's deck title (deck is an object)
+    updateDeck: function (deck) {
+      return $http({
+        method: 'PUT',
+        url: '/api/decks/:id',
+        data: deck
+      })
+      .then(function(resp) {
+        return resp.data;
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+
+    },
+
+    // Function that makes post request to '/api/decks/:id' to delete a deck and all of its cards (deck is deck id)
+    deleteDeck: function (deck) {
+      return $http({
+        method: 'POST',
+        url: '/api/decks/:id',
+        data: deck
+      })
+      .then(function(resp) {
+        return resp.data;
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+    },
 
     // Function that makes get request to '/api/cards' to get user's deck from db (requires deck id)
     getDeck: function(deck) {

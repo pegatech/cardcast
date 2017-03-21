@@ -56,7 +56,7 @@ router.put('/:id', helpers.isAuth, function (req, res, next) {
     .then(function(resp) {
       res.send(resp);
     })
-    .catch(functon(err) {
+    .catch(function(err) {
       console.log(err);
     });
 })
