@@ -63,7 +63,14 @@ angular.module('cardcast', [
       user: authorize,
       allDecks: getAllDecks
       }
-    } )
+    })
+    .when('/newDeck', {
+      templateUrl: '/sender/controllers/newDeck/newDeck.html',
+      controller: 'NewDeckCtrl',
+      resolve: {
+        user: authorize
+      }
+    })
     .when('/cards', {
       templateUrl: '/sender/controllers/main/main.html',
       controller: 'MainCtrl',

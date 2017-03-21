@@ -12,7 +12,7 @@ angular.module('cardcast.service', [])
     getAllDecks: function() {
       return $http({
         method: 'GET',
-        url: '/api/decks',
+        url: '/api/home',
       })
       .then(function(resp) {
         return resp.data;
@@ -26,7 +26,7 @@ angular.module('cardcast.service', [])
     updateDeck: function (deck) {
       return $http({
         method: 'PUT',
-        url: '/api/decks/:id',
+        url: '/api/home/:id',
         data: deck
       })
       .then(function(resp) {
@@ -42,7 +42,7 @@ angular.module('cardcast.service', [])
     deleteDeck: function (deck) {
       return $http({
         method: 'POST',
-        url: '/api/decks/:id',
+        url: '/api/home/:id',
         data: deck
       })
       .then(function(resp) {

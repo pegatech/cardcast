@@ -47,3 +47,35 @@
 
   </div>
 </div>
+
+<!-- add space -->
+<div class="deck-footer">&nbsp;</div>
+
+<!-- delete deck warning -->
+<!--TODO: change delete handlers to cancel/delete DECKS, not cards -->
+
+<div class="popup" ng-show="showDelete">
+  <div class="mdl-card mdl-shadow--8dp">
+
+    <div class="mdl-card__title">
+      <h3 class="mdl-card__title-text">Do You Really Want To Delete This Deck?</h3>
+    </div>
+
+    <div class="mdl-card__supporting-text">You are about to delete this deck. This action cannot be undone.</div>
+
+    <div class="mdl-card__actions">
+      <button ng-click="cancelDelete()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+        Cancel
+      </button>
+      <button ng-click="deleteCard(currentCard)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+        Delete
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Add Deck Button -->
+<a href="#!/newDeck" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
+  <i class="material-icons">add</i>
+</a>
