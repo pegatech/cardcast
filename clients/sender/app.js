@@ -19,7 +19,10 @@ angular.module('cardcast', [
     return Auth.isAuth();
   };
 
-  // get a deck for a specific user
+  var getAllDecks = function(Service) {
+    return Service.getAllDecks();
+  }
+  // get a specific deck for a specific user
   var getDeck = function(Service) {
     return Service.getDeck();
   };
@@ -38,6 +41,13 @@ angular.module('cardcast', [
       templateUrl: '/sender/controllers/auth/signup.html',
       controller: 'AuthCtrl'
     })
+    .when('/home', {
+      templateUrl: '/sender/controllers/home/home.html',
+      controller: 'HomeCtrl',
+      resolve: {
+      // TODO: figure out what needs to happen on resolve
+      }
+    } )
     .when('/cards', {
       templateUrl: '/sender/controllers/main/main.html',
       controller: 'MainCtrl',

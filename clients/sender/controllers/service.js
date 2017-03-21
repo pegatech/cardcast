@@ -8,11 +8,26 @@ angular.module('cardcast.service', [])
       return marked(text);
     },
 
-    // Function that makes get request to '/api/cards' to get user's deck from db
-    getDeck: function() {
+    // Function that makes get request to '/api/decks' to get user's decks from db
+    getAllDecks: function() {
       return $http({
         method: 'GET',
-        url: '/api/cards'
+        url: '/api/decks',
+      })
+      .then(function(resp) {
+        return resp.data;
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
+    }
+
+    // Function that makes get request to '/api/cards' to get user's deck from db (requires deck id)
+    getDeck: function(deck) {
+      return $http({
+        method: 'GET',
+        url: '/api/cards',
+        data: deck
       })
         .then(function(resp) {
           return resp.data;
@@ -28,6 +43,12 @@ angular.module('cardcast.service', [])
         method: 'POST',
         url: '/api/cards',
         data: card
+      })
+      .then(function(resp) {
+        return resp.data;
+      })
+      .catch(function(err) {
+        console.log(err);
       });
     },
 
