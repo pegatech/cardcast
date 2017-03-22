@@ -25,7 +25,7 @@ angular.module('cardcast', [
   // get all decks for a specific user
   var getAllDecks = function(Service) {
     return Service.getAllDecks();
-  }
+  };
   // get a specific deck for a specific user
   var getDeck = function($route, Service) {
     return Service.getDeck($route.current.params.id);
