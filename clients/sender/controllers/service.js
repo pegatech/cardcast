@@ -8,11 +8,72 @@ angular.module('cardcast.service', [])
       return marked(text);
     },
 
-    // Function that makes get request to '/api/cards' to get user's deck from db
-    getDeck: function() {
+    // Function that makes get request to '/api/home' to get user's decks from db
+    getAllDecks: function() {
       return $http({
         method: 'GET',
-        url: '/api/cards'
+        url: '/api/home',
+      })
+      .then(function(resp) {
+        return resp.data;
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
+    },
+
+    // Function that makes a post request to '/api/home' to make a new deck
+    createDeck: function (deck) {
+      return $http({
+        method: 'POST',
+        url: '/api/home',
+        data: deck
+      })
+      .then(function(resp) {
+        return resp.data;
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+    },
+
+   // Function that makes put request to '/api/home/:id' to change user's deck title (deck is an object)
+    updateDeck: function (deck) {
+      return $http({
+        method: 'PUT',
+        url: '/api/home/:id',
+        data: deck
+      })
+      .then(function(resp) {
+        return resp.data;
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+
+    },
+
+    // Function that makes post request to '/api/home/:id' to delete a deck and all of its cards (deck is deck id)
+    deleteDeck: function (deck) {
+      return $http({
+        method: 'POST',
+        url: '/api/home/:id',
+        data: deck
+      })
+      .then(function(resp) {
+        return resp.data;
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+    },
+
+    // Function that makes get request to '/api/cards' to get user's deck from db (requires deck id)
+    getDeck: function(deck) {
+      return $http({
+        method: 'GET',
+        url: '/api/cards',
+        data: deck
       })
         .then(function(resp) {
           return resp.data;
@@ -28,6 +89,12 @@ angular.module('cardcast.service', [])
         method: 'POST',
         url: '/api/cards',
         data: card
+      })
+      .then(function(resp) {
+        return resp.data;
+      })
+      .catch(function(err) {
+        console.log(err);
       });
     },
 

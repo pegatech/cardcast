@@ -33,16 +33,42 @@ router.post('/', helpers.isAuth, function (req, res, next) {
     });
 });
 
+router.get('/:id', helpers.isAuth, function (req, res, next) {
+  deckController.findOne(req.params.id)
+  .then(function (resp) {
+    res.send(resp);
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
+})
+
 // deletes deck and all its cards from db
-router.post('/', helpers.isAuth, function (req, res, next) {
+router.post('/:id', helpers.isAuth, function (req, res, next) {
   cardController.deleteAllCards(req.user._id, req.body.deck)
     .then(function (resp) {
-      res.send(resp);
+      deckController.deleteDeck(req.body.deck)
+      .then(function (resp) {
+        res.send(resp);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
     })
     .catch(function (err) {
       console.log(err);
-    })
+    });
 });
 
+// update deck title
+router.put('/:id', helpers.isAuth, function (req, res, next) {
+  deckController.updateDeck(req.body)
+    .then(function(resp) {
+      res.send(resp);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+})
 
 module.exports = router;

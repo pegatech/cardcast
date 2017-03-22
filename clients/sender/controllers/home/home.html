@@ -1,0 +1,81 @@
+<!-- Bootstrap Grid System -->
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+    <!-- Navigation Card - Material Design Lite -->
+    <div class="card-deck mdl-card mdl-shadow--4dp">
+
+      <div class="mdl-card__title">
+        <h1 class="mdl-card__title-text">
+          Your Decks
+          <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
+        </h1>
+      </div>
+
+      <div class="mdl-card__supporting-text">
+        Below is a list of your card decks, yo. Hail Satan. Click on a deck to view its cards.
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- Iterates through all the users decks and displays them -->
+<div ng-repeat="deck in allDecks" class="row">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+    <div class="card mdl-card mdl-shadow--4dp">
+
+      <div class="mdl-card__title">
+        <h3 class="mdl-card__title-text">{{ deck.title }}</h3>
+      </div>
+
+      <!-- TODO: allow for deck descriptions -->
+
+      <div class="mdl-card__actions mdl-card--border">
+        <!-- <a href="#!/edit/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a> -->
+        <a href="#!/home/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">View Deck</button></a>
+        <!-- TODO: build warnings for deck deletion -->
+        <!-- <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(deck)"/> -->
+
+        <!-- Displays 'Cast' with associated behavior for all cards not being casted -->
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- add space -->
+<div class="deck-footer">&nbsp;</div>
+
+<!-- delete deck warning -->
+<!--TODO: change delete handlers to cancel/delete DECKS, not cards -->
+
+<div class="popup" ng-show="showDelete">
+  <div class="mdl-card mdl-shadow--8dp">
+
+    <div class="mdl-card__title">
+      <h3 class="mdl-card__title-text">Do You Really Want To Delete This Deck?</h3>
+    </div>
+
+    <div class="mdl-card__supporting-text">You are about to delete this deck. This action cannot be undone.</div>
+
+    <div class="mdl-card__actions">
+      <button ng-click="cancelDelete()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+        Cancel
+      </button>
+      <button ng-click="deleteCard(currentCard)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+        Delete
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Add Deck Button -->
+<a href="#!/newDeck" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
+  <i class="material-icons">add</i>
+</a>

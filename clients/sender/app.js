@@ -2,9 +2,11 @@ angular.module('cardcast', [
   'ngRoute',
   'cardcast.main',
   'cardcast.new',
+  'cardcast.home',
   'cardcast.auth',
   'cardcast.service',
-  'cardcast.edit'
+  'cardcast.edit',
+  'cardcast.newDeck'
 ])
 
 .config(function($routeProvider, $httpProvider) {
@@ -19,13 +21,20 @@ angular.module('cardcast', [
     return Auth.isAuth();
   };
 
-  // get a deck for a specific user
-  var getDeck = function(Service) {
-    return Service.getDeck();
+
+  // get all decks for a specific user
+  var getAllDecks = function(Service) {
+    return Service.getAllDecks();
+  }
+  // get a specific deck for a specific user
+  var getDeck = function($route, Service) {
+    return Service.getDeck($route.current.params.id);
   };
 
   // get a specific card
   var getCard = function($route, Service) {
+    console.log('current', $route.current);
+    console.log('params.id', $route.current.params.id);
     return Service.getCard($route.current.params.id);
   };
 
@@ -38,7 +47,23 @@ angular.module('cardcast', [
       templateUrl: '/sender/controllers/auth/signup.html',
       controller: 'AuthCtrl'
     })
-    .when('/cards', {
+    .when('/home', {
+      templateUrl: '/sender/controllers/home/home.html',
+      controller: 'HomeCtrl',
+      resolve: {
+      // TODO: figure out what needs to happen on resolve
+      user: authorize,
+      allDecks: getAllDecks
+      }
+    })
+    .when('/newDeck', {
+      templateUrl: '/sender/controllers/newDeck/newDeck.html',
+      controller: 'NewDeckCtrl',
+      resolve: {
+        user: authorize
+      }
+    })
+    .when('/home/:id', {
       templateUrl: '/sender/controllers/main/main.html',
       controller: 'MainCtrl',
       resolve: {
@@ -76,6 +101,12 @@ angular.module('cardcast', [
 
   // put things on the $rootScope so that all views have access to it (controller independent)
   $rootScope.logout = Auth.logout;
+
+  $rootScope.goHome = function() {
+    $timeout(function () {
+      $location.path('/home');
+    });
+  };
 
   $rootScope.goToDeck = function() {
     $timeout(function() {
