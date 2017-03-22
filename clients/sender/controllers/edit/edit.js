@@ -7,6 +7,10 @@ angular.module('cardcast.edit', [
   // Set $scope.card with info received from card resolve
   $scope.card = card;
 
+  // Set $scope.note with info recieved from card resolve
+
+  $scope.note = note;
+
   // Funciton to update the card info in the database
   $scope.updateCard = function() {
 
@@ -14,7 +18,8 @@ angular.module('cardcast.edit', [
     var cardInfo = {
       id: $scope.card._id,
       title: $scope.card.title,
-      card: $scope.card.card
+      card: $scope.card.card,
+      note: $scope.card.note
     };
 
     // Use the updateCard function from the Service factory

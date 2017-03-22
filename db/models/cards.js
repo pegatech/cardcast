@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var cardSchema = new Schema({
   title: String,
   card: String,
-  notes: String,
+  note: String,
   user: {
     type: Schema.Types.ObjectId,
     ref: 'user'
