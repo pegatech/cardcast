@@ -9,7 +9,7 @@
         <h1 class="mdl-card__title-text">
           New Deck
           <!-- TODO: fix goToDeck to change view to home -->
-          <button ng-click="goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Home</button>
+          <button ng-click="goHome()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Home</button>
           <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
         </h1>
       </div>
@@ -39,22 +39,20 @@
           </div>
 
           <div class="text-area mdl-textfield mdl-js-textfield">
-            <textarea name="message"
+            <textarea name="description"
                       class="mdl-textfield__input"
-                      ng-model="message"
-                      ng-change="changes()"
+                      ng-model="description"
                       id="new-card-markdown"></textarea>
-            <label class="mdl-textfield__label" for="new-card-markdown">Add a description...</label>
+            <label class="mdl-textfield__label" for="new-card-markdown">Add a description of your deck...</label>
           </div>
 
         </div>
 
         <div class="mdl-card__actions mdl-card--border">
-          <button ng-click="goToDeck()" type="button" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect">Cancel</button>
+          <button ng-click="goHome()" type="button" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect">Cancel</button>
           <input class="mdl-button mdl-button--accent mdl-button--raised mdl-js-button mdl-js-ripple-effect"
                  type="submit"
-                 value="Create New Deck"
-                 ng-disable="cardForm.message.$dirty"/>
+                 value="Create New Deck"/>
         </div>
 
       </form>

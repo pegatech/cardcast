@@ -33,6 +33,16 @@ router.post('/', helpers.isAuth, function (req, res, next) {
     });
 });
 
+router.get('/:id', helpers.isAuth, function (req, res, next) {
+  deckController.findOne(req.params.id)
+  .then(function (resp) {
+    res.send(resp);
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
+})
+
 // deletes deck and all its cards from db
 router.post('/:id', helpers.isAuth, function (req, res, next) {
   cardController.deleteAllCards(req.user._id, req.body.deck)
