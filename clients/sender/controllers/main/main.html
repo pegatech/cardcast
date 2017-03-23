@@ -91,11 +91,11 @@
   <div class="mdl-card mdl-shadow--8dp">
 
     <div class="mdl-card__title">
-      <h3 class="mdl-card__title-text">{{ card.title }}</h3>
+      <h3 class="mdl-card__title-text">{{ currentCard.title }}</h3>
     </div>
 
-    <div class="mdl-card__supporting-text">{{ card.card }}</div>
-    <div class="mdl-card__supporting-text">{{ card.note }}</div>
+    <div class="mdl-card__supporting-text">{{ currentCard.card }}</div>
+    <div class="mdl-card__supporting-text">{{ currentCard.note }}</div>
 
     <div class="mdl-card__actions">
       <button ng-click="castCard(null, true); goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect">

@@ -19,6 +19,7 @@ angular.module('cardcast.main', [])
 
 
   $scope.renderNote = function(card) {
+    $scope.currentCard = card;
     $scope.showNote = true;
   };
 
@@ -50,9 +51,10 @@ angular.module('cardcast.main', [])
         // Provides extra time for the reciever to respond
         $timeout(function() {
           if (!isCasting) {
+            $scope.currentCard = card;
             $scope.castCard(card);
             // show popup of casted card with note
-            $scope.renderNote();
+            $scope.renderNote(card);
 
           } else {
             $scope.showWarning = true;

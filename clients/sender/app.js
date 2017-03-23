@@ -52,8 +52,8 @@ angular.module('cardcast', [
       controller: 'HomeCtrl',
       resolve: {
       // TODO: figure out what needs to happen on resolve
-      user: authorize,
-      allDecks: getAllDecks
+        user: authorize,
+        allDecks: getAllDecks
       }
     })
     .when('/newDeck', {
