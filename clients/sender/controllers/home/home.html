@@ -13,7 +13,7 @@
       </div>
 
       <div class="mdl-card__supporting-text">
-        Below is a list of your card decks, yo. Hail Satan. Click on a deck to view its cards.
+        Below is a list of your card decks. Hail Satan. Click on a deck to view its cards.
       </div>
 
     </div>
@@ -30,11 +30,10 @@
         <h3 class="mdl-card__title-text">{{ deck.title }}</h3>
       </div>
 
-      <!-- TODO: allow for deck descriptions -->
-
+      <div class="mdl-card__supporting-text">{{ deck.description }}</div>
       <div class="mdl-card__actions mdl-card--border">
         <!-- <a href="#!/edit/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a> -->
-        <a href="#!/home/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">View Deck</button></a>
+        <a href="#!/decks/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">View Deck</button></a>
         <!-- TODO: build warnings for deck deletion -->
         <!-- <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(deck)"/> -->
 
@@ -54,7 +53,7 @@
 <!-- delete deck warning -->
 <!--TODO: change delete handlers to cancel/delete DECKS, not cards -->
 
-<div class="popup" ng-show="showDelete">
+<!-- <div class="popup" ng-show="showDelete">
   <div class="mdl-card mdl-shadow--8dp">
 
     <div class="mdl-card__title">
@@ -73,7 +72,7 @@
     </div>
 
   </div>
-</div>
+</div> -->
 
 <!-- Add Deck Button -->
 <a href="#!/newDeck" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">

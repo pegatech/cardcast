@@ -6,6 +6,7 @@ angular.module('cardcast.home', [
 
   $scope.allDecks = allDecks;
   $scope.username = user;
+  $scope.showDelete = false;
 
 
 })

@@ -163,7 +163,7 @@ p {
 
 .new-card .mdl-card {
   width: 100%;
-  height: 550px;
+  height: 350px;
 }
 
 .new-card form {
@@ -184,11 +184,7 @@ p {
 }
 
 .new-card .text-area {
-  height: calc(50% - 25px);
-}
-
-.new-card .note-area {
-  height: calc(50% - 25px);
+  height: calc(100% - 70px);
 }
 
 .new-card textarea {

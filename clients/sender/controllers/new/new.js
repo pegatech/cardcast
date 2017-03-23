@@ -3,12 +3,11 @@ angular.module('cardcast.new', [
 ])
 
 .controller('NewCtrl', function($scope, $sanitize, $location, Service) {
-
+  // Declare deckId in scope
+  $scope.deckId = Service.get();
+  console.log($scope.deckId);
   // Declare message in scope
   $scope.message = '';
-
-  // Declare note in scope
-  $scope.note = '';
 
   // Function that creates new card
   $scope.createCard = function() {
@@ -17,7 +16,7 @@ angular.module('cardcast.new', [
     var cardInfo = {
       title: $scope.title,
       card: $scope.message,
-      note: $scope.note
+      deck: $scope.deckId
     };
 
     // Use the createCard function from the Service factory

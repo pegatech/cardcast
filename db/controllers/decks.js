@@ -10,17 +10,17 @@ exports.insertOne = function(deck) {
   return DeckModel.create(deck);
 };
 
-// find a deck in the database using the deck id
+// find a deck in the database using the card id
 exports.findOne = function(id) {
   return DeckModel.findOne({_id: id});
 };
 
-// update the deck info in the database
+// update the card info in the database
 exports.updateDeck = function(deck) {
-  return DeckModel.update({_id: deck.id}, {$set: {title: deck.title}});
+  return DeckModel.update({_id: deck.id}, {$set: {title: deck.title, description: deck.description}});
 };
 
-// delete a deck from the database
+// delete a card from the database
 exports.deleteDeck = function(id) {
   return DeckModel.remove({_id: id});
 };
