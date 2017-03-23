@@ -91,15 +91,17 @@
 
 <!-- Current casting card popup with note -->
 <!-- IMPLEMENT THE METHOD IN NG SHOW AND BOTH NG CLICKS -->
-<div class="popup note-popup" ng-show="showNote">
+<div class="popup" id='note-popup' ng-show="showNote">
   <div class="mdl-card mdl-shadow--8dp">
 
     <div class="mdl-card__title">
       <h3 class="mdl-card__title-text">{{ currentCard.title }}</h3>
     </div>
 
-    <div class="mdl-card__supporting-text">{{ currentCard.card }}</div>
-    <div class="mdl-card__supporting-text">{{ currentCard.note }}</div>
+    Currently Casting
+    <div class="mdl-card__supporting-text " style='border: solid'>{{ currentCard.card }}</div>
+    Notes
+    <div class="mdl-card__supporting-text " style='border: solid'>{{ currentCard.note }}</div>
 
     <div class="mdl-card__actions">
       <button ng-click="castCard(null, true); goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
