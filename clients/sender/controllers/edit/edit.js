@@ -18,6 +18,7 @@ angular.module('cardcast.edit', [
   $scope.setFont = function(font) {
     $scope.card.font = font;
   };
+
   // Funciton to update the card info in the database
   $scope.updateCard = function() {
 
