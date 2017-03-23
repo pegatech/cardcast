@@ -9,6 +9,8 @@ angular.module('cardcast.new', [
   // Declare message in scope
   $scope.message = '';
 
+  $scope.note = '';
+
   // Function that creates new card
   $scope.createCard = function() {
 
@@ -16,7 +18,8 @@ angular.module('cardcast.new', [
     var cardInfo = {
       title: $scope.title,
       card: $scope.message,
-      deck: $scope.deckId
+      deck: $scope.deckId,
+      note: $scope.note
     };
 
     // Use the createCard function from the Service factory
