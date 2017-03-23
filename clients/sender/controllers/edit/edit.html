@@ -47,6 +47,15 @@
             <label class="mdl-textfield__label" for="edit-card-markdown"></label>
           </div>
 
+          <div class="note-area mdl-textfield mdl-js-textfield">
+            <textarea name="note"
+                      class="mdl-textfield__input"
+                      ng-model="card.note"
+                      ng-change="changes()"
+                      id="edit-card-note"></textarea>
+            <label class="mdl-textfield__label" for="edit-card-note"></label>
+          </div>
+
         </div>
 
         <div class="mdl-card__actions mdl-card--border">
