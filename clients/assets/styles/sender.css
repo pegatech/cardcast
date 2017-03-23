@@ -169,6 +169,7 @@ p {
 .popup .mdl-card__actions {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 20px;
 }
 
 .new-card-info .mdl-card {
