@@ -6,8 +6,7 @@ angular.module('cardcast.edit', [
 
   // Set $scope.card with info received from card resolve
   $scope.card = card;
-
-  $scope.note = note;
+  $scope.deckId = Service.get();
 
   // Funciton to update the card info in the database
   $scope.updateCard = function() {
@@ -23,7 +22,7 @@ angular.module('cardcast.edit', [
     // Use the updateCard function from the Service factory
     Service.updateCard(cardInfo)
       .then(function(resp) {
-        $location.path('/cards');
+        $location.path('/decks/' + $scope.card.deck);
       })
       .catch(console.log);
   };
