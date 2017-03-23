@@ -25,7 +25,7 @@ angular.module('cardcast', [
   // get all decks for a specific user
   var getAllDecks = function(Service) {
     return Service.getAllDecks();
-  }
+  };
   // get a specific deck for a specific user
   var getDeck = function($route, Service) {
     return Service.getDeck($route.current.params.id);
@@ -52,8 +52,8 @@ angular.module('cardcast', [
       controller: 'HomeCtrl',
       resolve: {
       // TODO: figure out what needs to happen on resolve
-      user: authorize,
-      allDecks: getAllDecks
+        user: authorize,
+        allDecks: getAllDecks
       }
     })
     .when('/newDeck', {

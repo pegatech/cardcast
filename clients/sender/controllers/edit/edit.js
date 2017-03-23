@@ -9,7 +9,7 @@ angular.module('cardcast.edit', [
 
   // Set $scope.note with info recieved from card resolve
 
-  $scope.note = note;
+
 
   // Funciton to update the card info in the database
   $scope.updateCard = function() {

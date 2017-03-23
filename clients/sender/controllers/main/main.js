@@ -10,17 +10,33 @@ angular.module('cardcast.main', [])
   //toggles popup warning using 'ng-show' in main.html
   $scope.showWarning = false;
   $scope.showDelete = false;
+  $scope.showNote = false;
   $scope.username = user;
 
   // First checks for a session and sees if anyone else is currently casting.
   // Casts the card that invoked it as long as no one else is casting,
   // otherwise triggers the popup warning.
+
+
+  $scope.renderNote = function(card) {
+    $scope.currentCard = card;
+    $scope.showNote = true;
+  };
+
+  $scope.cancelNote = function() {
+    $scope.showNote = false;
+  };
+
+
   $scope.showPopup = function(card) {
 
     // if there is an active session and no one is casting, cast the card
     if (session && !isCasting) {
       console.log(session.status);
       $scope.castCard(card);
+
+      //show popup of casted card with note
+      $scope.renderNote();
 
     // if there is an active session and someone else is casting show popup
     } else if (session && isCasting) {
@@ -35,7 +51,11 @@ angular.module('cardcast.main', [])
         // Provides extra time for the reciever to respond
         $timeout(function() {
           if (!isCasting) {
+            $scope.currentCard = card;
             $scope.castCard(card);
+            // show popup of casted card with note
+            $scope.renderNote(card);
+
           } else {
             $scope.showWarning = true;
             $scope.currentCard = card;
@@ -83,5 +103,7 @@ angular.module('cardcast.main', [])
   $scope.cancelDelete = function() {
     $scope.showDelete = false;
   };
+
+ 
 
 });
