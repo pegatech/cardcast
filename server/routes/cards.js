@@ -26,7 +26,9 @@ router.post('/', helpers.isAuth, function(req, res) {
     card: req.body.card,
     deck: req.body.deck,
     user: req.user._id,
-    note: req.body.note
+    note: req.body.note,
+    color: req.body.color,
+    font: req.body.font
   };
 
   cardController.insertOne(cardInfo)

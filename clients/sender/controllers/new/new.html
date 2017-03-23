@@ -75,9 +75,35 @@
   <!-- Card Preview -->
   <div class="card-preview col-md-6">
     <div class="mdl-card mdl-shadow--4dp">
-      <div class="mdl-card__supporting-text">
+      <div class="mdl-card__supporting-text {{color}} {{font}}">
         <div ng-bind-html="preview"></div>
       </div>
+    </div>
+
+    <!-- Styling Choices -->
+    <div style="padding-top: 10px">
+      <button ng-click="setColor('blue')"type="button" class="mdl-chip blue">
+        <span class="mdl-chip__text"></span>
+      </button>
+      <button ng-click="setColor('red')" type="button" class="mdl-chip red">
+        <span class="mdl-chip__text"></span>
+      </button>
+      <button ng-click="setColor('yellow')" type="button" class="mdl-chip yellow">
+        <span class="mdl-chip__text"></span>
+      </button>
+
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash1">
+        <input ng-click="setFont('Roboto')" class="mdl-radio__button" id="flash1" name="flash" type="radio">
+        <span class="mdl-radio__label">Roboto</span>
+      </label>
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect Raleway" for="flash2">
+        <input ng-click="setFont('Raleway')" class="mdl-radio__button" id="flash2" name="flash" type="radio">
+        <span class="mdl-radio__label">Raleway</span>
+      </label>
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect Montserrat" for="flash3">
+        <input ng-click="setFont('Montserrat')" class="mdl-radio__button" id="flash3" name="flash" type="radio">
+        <span class="mdl-radio__label">Montserrat</span>
+      </label>
     </div>
   </div>
 

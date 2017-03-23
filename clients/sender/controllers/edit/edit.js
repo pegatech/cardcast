@@ -7,10 +7,19 @@ angular.module('cardcast.edit', [
   // Set $scope.card with info received from card resolve
   $scope.card = card;
   $scope.deckId = Service.get();
+  $scope.card.font = card.font || 'Montserrat';
+  $scope.card.color = card.color || 'red';
 
+  $scope.setColor = function(color) {
+    $scope.card.color = color;
+    console.log($scope.card.color);
+  };
 
-  
-  // Funciton to update the card info in the database
+  $scope.setFont = function(font) {
+    $scope.card.font = font;
+  };
+
+  // Function to update the card info in the database
   $scope.updateCard = function() {
 
     // Format the card info into an object
@@ -18,12 +27,15 @@ angular.module('cardcast.edit', [
       id: $scope.card._id,
       title: $scope.card.title,
       card: $scope.card.card,
-      note: $scope.card.note
+      note: $scope.card.note,
+      color: $scope.card.color,
+      font: $scope.card.font
     };
 
     // Use the updateCard function from the Service factory
     Service.updateCard(cardInfo)
       .then(function(resp) {
+        console.log(cardInfo);
         $location.path('/decks/' + $scope.card.deck);
       })
       .catch(console.log);

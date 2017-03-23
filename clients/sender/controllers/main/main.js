@@ -82,7 +82,9 @@ angular.module('cardcast.main', [])
       username: clear ? null : user,
       userDisplay: clear? null : '<div class="material-icons">perm_identity</div>  ' + user,
       card: clear ? '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...' : card.card,
-      cardId: clear ? null : card._id
+      cardId: clear ? null : card._id,
+      color: clear ? null : card.color,
+      font: clear ? null : card.font
     };
     $scope.showWarning = false;
     session.sendMessage(namespace, JSON.stringify(message), console.log.bind(null, 'onSuccess: ', 'Message was sent: ' + message), console.log.bind(null, 'onError: '));

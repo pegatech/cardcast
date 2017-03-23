@@ -7,6 +7,8 @@ angular.module('cardcast-receiver', [
   var isCasting = false;
   var who = null;
   var cardId = null;
+  $scope.color = null;
+  $scope.font = null;
 
   //broadcast makes the receiver send out a response message to all connected senders
   //it tells them who if anyone is currently casting and the id of the card that is being cast
@@ -74,6 +76,11 @@ angular.module('cardcast-receiver', [
       isCasting = !!message.username;
       who = message.username;
       cardId = message.cardId;
+
+      $scope.color = message.color;
+      console.log($scope.color);
+      $scope.font = message.font;
+      console.log($scope.font);
 
       broadcast();
 

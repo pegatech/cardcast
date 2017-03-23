@@ -8,7 +8,7 @@
     <title>CardCast</title>
 
     <!-- Load Styling Assets -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway|Roboto" rel="stylesheet">
     <link href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="/assets/styles/receiver.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
   </head>
   <body>
 
-    <div class="card-canvas mdl-card mdl-shadow--6dp receiver" ng-controller="MainController">
+    <div class="card-canvas mdl-card mdl-shadow--6dp receiver {{color}} {{font}}" ng-controller="MainController">
       <!-- caster information -->
       <span class="head-note" ng-bind-html="userDisplay"></span>
       <!-- Below is what actually gets cast to the screen -->
