@@ -9,4 +9,4 @@ angular.module('cardcast.home', [
   $scope.showDelete = false;
 
 
-})
+});

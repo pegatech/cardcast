@@ -8,6 +8,8 @@ angular.module('cardcast.edit', [
   $scope.card = card;
   $scope.deckId = Service.get();
 
+
+  
   // Funciton to update the card info in the database
   $scope.updateCard = function() {
 
