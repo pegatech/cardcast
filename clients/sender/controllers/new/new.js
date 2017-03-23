@@ -25,7 +25,7 @@ angular.module('cardcast.new', [
     // Use the createCard function from the Service factory
     Service.createCard(cardInfo)
       .then(function(resp) {
-        $location.path('/cards');
+        $location.path('/decks/' + $scope.deckId);
       });
 
   };

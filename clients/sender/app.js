@@ -96,14 +96,22 @@ angular.module('cardcast', [
     });
 })
 
-.run(function($rootScope, $location, $timeout, Auth) {
+.run(function($rootScope, $location, $timeout, Auth, Service) {
 
   // put things on the $rootScope so that all views have access to it (controller independent)
   $rootScope.logout = Auth.logout;
 
+  // go back to main decks page
+  $rootScope.goHome = function() {
+    $timeout(function() {
+      $location.path('/decks');
+    });
+  };
+
+  // go back to deck 
   $rootScope.goToDeck = function() {
     $timeout(function() {
-      $location.path('/cards');
+      $location.path('/decks/' + Service.get());
     });
   };
 

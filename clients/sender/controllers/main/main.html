@@ -8,6 +8,7 @@
       <div class="mdl-card__title">
         <h1 class="mdl-card__title-text">
           {{ deckInfo.title }}
+          <button ng-click="goHome()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Back to Decks</button>
           <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
         </h1>
       </div>
@@ -102,7 +103,7 @@
 
     <div class="mdl-card__actions">
       <button ng-click="castCard(null, true); goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-        Stop 
+        Stop
       </button>
       <button ng-click="cancelNote()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
         Close
