@@ -5,10 +5,8 @@ angular.module('cardcast.main', [])
   $scope.deckInfo = deck.deckInfo;
   // Set Service var 'deckId' so that all controllers have access to the current deck
   Service.set($scope.deckInfo._id);
-  console.log('deck info!!', $scope.deckInfo);
   // Set $scope.deck with info received from deck resolve
   $scope.deck = deck.cards;
-  console.log('deck!', $scope.deck);
   $scope.currentCard = {};
 
   //toggles popup warning using 'ng-show' in main.html
@@ -82,6 +80,7 @@ angular.module('cardcast.main', [])
   $scope.castCard = function(card, clear = false) {
     var message = {
       username: clear ? null : user,
+      userMessage: clear ? null : user + ' is currently casting!',
       card: clear ? '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...' : card.card,
       cardId: clear ? null : card._id,
       color: clear ? null : card.color,
@@ -109,7 +108,4 @@ angular.module('cardcast.main', [])
   $scope.cancelDelete = function() {
     $scope.showDelete = false;
   };
-
-
-
 });
