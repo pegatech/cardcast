@@ -43,7 +43,7 @@ router.get('/:id', helpers.isAuth, function (req, res, next) {
         deckInfo: deckInfo,
         cards: resp
       };
-      
+
       res.send(deck);
     })
     .catch(function (err) {
@@ -54,9 +54,9 @@ router.get('/:id', helpers.isAuth, function (req, res, next) {
 
 // deletes deck and all its cards from db
 router.post('/:deckId', helpers.isAuth, function (req, res, next) {
-  cardController.deleteAllCards(req.user._id, req.body.deck)
+  cardController.deleteAllCards(req.body._id)
     .then(function (resp) {
-      deckController.deleteDeck(req.body.deck)
+      deckController.deleteDeck(req.body._id)
       .then(function (resp) {
         res.send(resp);
       })
