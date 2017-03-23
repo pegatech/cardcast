@@ -238,7 +238,7 @@ p {
   background-color: #B3E5FC;
 }
 
-.row .card {
+#deck .card {
   margin: 0 auto 2rem;
   padding: 1rem;
   word-wrap: break-word;
