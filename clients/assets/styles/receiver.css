@@ -31,12 +31,26 @@ p {
 }
 
 .caster {
-  text-align: left  
+  text-align: left
 }
 
 .card-canvas img {
   display: block;
   width: 50%;
+  margin: auto;
   border-radius: 4px;
   margin: 0 auto;
+}
+
+.head-note {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #fff;
+  font-size: 24px;
+  height: 24px;
+}
+
+.material-icons {
+  color: #fff
 }

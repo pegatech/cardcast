@@ -21,7 +21,6 @@ angular.module('cardcast-receiver', [
 
   //default message and user when no one is casting
   $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...';
-  // $scope.userMessage = '<div></div>'
 
   //initialize sets up the castReceiverManager, messageBus and all related functions
   var initialize = function() {
@@ -67,7 +66,7 @@ angular.module('cardcast-receiver', [
       //if sender castCard was passed 'clear' parameter, this will reset to default
       //otherwise it is the text from the card
       $scope.text = $sanitize(Markdown.compile(message.card));
-      $scope.userMessage = $sanitize(message.userMessage);
+      $scope.userDisplay = $sanitize(message.userDisplay);
 
       //if castCard was passed 'clear', parameter, username and cardID will both be set to null
       //otherwise they will be the username, card ID and isCasting coerces TRUE value

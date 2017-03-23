@@ -19,13 +19,11 @@ angular.module('cardcast.service', [])
 
     // Function that makes get request to '/api/decks/:id' to get user's deck from db
     getDeck: function(id) {
-      console.log('this is the id', id);
       return $http({
         method: 'GET',
         url: '/api/decks/' + id
       })
         .then(function(resp) {
-          console.log('get Deck ran', resp);
           return resp.data;
         })
         .catch(function(err) {

@@ -13,7 +13,7 @@
       </div>
 
       <div class="mdl-card__supporting-text">
-        Below is a list of your card decks. Hail Satan. Click on a deck to view its cards.
+        Below is a list of your card decks. Click on a deck to view its cards, or click delete to remove the deck and all of its cards.
       </div>
 
     </div>
@@ -35,11 +35,6 @@
         <!-- <a href="#!/edit/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a> -->
         <a href="#!/decks/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">View Deck</button></a>
         <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(deck)"/>
-        <!-- TODO: build warnings for deck deletion -->
-        <!-- <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(deck)"/> -->
-
-        <!-- Displays 'Cast' with associated behavior for all cards not being casted -->
-
 
       </div>
 
