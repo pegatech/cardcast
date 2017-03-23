@@ -5,7 +5,6 @@ angular.module('cardcast.new', [
 .controller('NewCtrl', function($scope, $sanitize, $location, Service) {
   // Declare deckId in scope
   $scope.deckId = Service.get();
-  console.log($scope.deckId);
   // Declare message in scope
   $scope.message = '';
 

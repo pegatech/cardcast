@@ -80,7 +80,7 @@ angular.module('cardcast.main', [])
   $scope.castCard = function(card, clear = false) {
     var message = {
       username: clear ? null : user,
-      userMessage: clear ? null : user + ' is currently casting!',
+      userDisplay: clear? null : '<div class="material-icons">perm_identity</div>  ' + user,
       card: clear ? '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...' : card.card,
       cardId: clear ? null : card._id
     };
