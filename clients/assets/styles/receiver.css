@@ -79,4 +79,29 @@ p {
 
 .material-icons {
   color: #fff
+
+/*-----Card Styling-----*/
+.Roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.Raleway {
+  font-family: 'Raleway', sans-serif;
+}
+
+.Montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.red {
+  background-color: #ff5252;
+  color: white;
+}
+
+.blue {
+  background-color: #B3E5FC;
+}
+
+.yellow {
+  background-color: yellow;
 }
