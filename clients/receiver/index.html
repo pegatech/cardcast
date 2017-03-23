@@ -23,12 +23,10 @@
   </head>
   <body>
 
-    <div class="card-canvas mdl-card mdl-shadow--6dp {{color}} {{font}}" ng-controller="MainController">
+    <div class="card-canvas mdl-card mdl-shadow--6dp receiver {{color}} {{font}}" ng-controller="MainController">
+      <!-- caster information -->
+      <span class="head-note" ng-bind-html="userDisplay"></span>
       <!-- Below is what actually gets cast to the screen -->
-      <div class="mdl-card__title">
-        <!-- caster information -->
-        <h2 class="mdl-card__title-text markdown caster" ng-bind-html="userMessage"></h2>
-      </div>
       <div class="mdl-card__supporting-text">
         <!-- body of the cast message -->
         <div class="markdown" ng-bind-html="text"></div>
