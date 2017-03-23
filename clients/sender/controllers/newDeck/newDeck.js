@@ -3,7 +3,6 @@ angular.module('cardcast.newDeck', [
 ])
 
 .controller('NewDeckCtrl', function($scope, $sanitize, $location, Service) {
-
     // Declare message in scope
     $scope.description = '';
 
@@ -13,14 +12,12 @@ angular.module('cardcast.newDeck', [
       // Format the deck info to match card model schema
       var deckInfo = {
         title: $scope.title,
-        deck: $scope.description,
+        description: $scope.description,
       };
-
-      console.log(deckInfo);
       // Use the createDeck function from the Service factory
       Service.createDeck(deckInfo)
         .then(function(resp) {
-          $location.path('/home');
+          $location.path('/decks');
         });
    };
 });

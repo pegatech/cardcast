@@ -2,9 +2,13 @@ angular.module('cardcast.main', [])
 
 // Set up main controller for Sender.
 .controller('MainCtrl', function($scope, $timeout, $location, Service, user, deck) {
-
+  $scope.deckInfo = deck.deckInfo;
+  // Set Service var 'deckId' so that all controllers have access to the current deck
+  Service.set($scope.deckInfo._id);
+  console.log('deck info!!', $scope.deckInfo);
   // Set $scope.deck with info received from deck resolve
-  $scope.deck = deck;
+  $scope.deck = deck.cards;
+  console.log('deck!', $scope.deck);
   $scope.currentCard = {};
 
   //toggles popup warning using 'ng-show' in main.html

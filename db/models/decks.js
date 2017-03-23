@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var deckSchema = new Schema({
   title: String,
+  description: String,
   user: {
     type: Schema.Types.ObjectId,
     ref: 'user'
