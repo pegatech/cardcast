@@ -34,6 +34,7 @@
       <div class="mdl-card__actions mdl-card--border">
         <!-- <a href="#!/edit/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a> -->
         <a href="#!/decks/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">View Deck</button></a>
+        <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(deck)"/>
         <!-- TODO: build warnings for deck deletion -->
         <!-- <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(deck)"/> -->
 
@@ -53,7 +54,7 @@
 <!-- delete deck warning -->
 <!--TODO: change delete handlers to cancel/delete DECKS, not cards -->
 
-<!-- <div class="popup" ng-show="showDelete">
+<div class="popup" ng-show="showDelete">
   <div class="mdl-card mdl-shadow--8dp">
 
     <div class="mdl-card__title">
@@ -66,13 +67,13 @@
       <button ng-click="cancelDelete()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
         Cancel
       </button>
-      <button ng-click="deleteCard(currentCard)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+      <button ng-click="deleteDeck(currentDeck)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
         Delete
       </button>
     </div>
 
   </div>
-</div> -->
+</div>
 
 <!-- Add Deck Button -->
 <a href="#!/newDeck" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">

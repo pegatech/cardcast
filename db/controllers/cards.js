@@ -25,3 +25,8 @@ exports.updateCard = function(card) {
 exports.deleteCard = function(id) {
   return CardModel.remove({_id: id});
 };
+
+// delete all cards from a given decks
+exports.deleteAllCards = function (deckId) {
+  return CardModel.remove({deck: deckId});
+};

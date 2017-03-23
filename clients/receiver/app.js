@@ -8,7 +8,7 @@ angular.module('cardcast-receiver', [
   var who = null;
   var cardId = null;
 
-  //broadcast makes the receiver send out a response message to all connected senders 
+  //broadcast makes the receiver send out a response message to all connected senders
   //it tells them who if anyone is currently casting and the id of the card that is being cast
   //when the card sender gets this broadcast, main.html changes 'cast' button to 'stop'
   var broadcast = function() {
@@ -19,8 +19,9 @@ angular.module('cardcast-receiver', [
     }));
   };
 
-  //default message when no one is casting
+  //default message and user when no one is casting
   $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...';
+  // $scope.userMessage = '<div></div>'
 
   //initialize sets up the castReceiverManager, messageBus and all related functions
   var initialize = function() {
@@ -37,7 +38,7 @@ angular.module('cardcast-receiver', [
       castReceiverManager.setApplicationState('Application status is ready...');
     };
 
-    //whenever a new sender connects this broadcasts the casting status to all senders 
+    //whenever a new sender connects this broadcasts the casting status to all senders
     castReceiverManager.onSenderConnected = function(event) {
       console.log('Received Sender Connected event: ' + event.data);
       console.log(castReceiverManager.getSender(event.data).userAgent);
@@ -65,12 +66,13 @@ angular.module('cardcast-receiver', [
 
       //if sender castCard was passed 'clear' parameter, this will reset to default
       //otherwise it is the text from the card
-      $scope.text = $sanitize(Markdown.compile(message.card)); 
+      $scope.text = $sanitize(Markdown.compile(message.card));
+      $scope.userMessage = $sanitize(message.userMessage);
 
       //if castCard was passed 'clear', parameter, username and cardID will both be set to null
       //otherwise they will be the username, card ID and isCasting coerces TRUE value
       //this value is used by ng-show for the popup warning
-      isCasting = !!message.username; 
+      isCasting = !!message.username;
       who = message.username;
       cardId = message.cardId;
 
