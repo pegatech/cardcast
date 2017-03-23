@@ -38,7 +38,7 @@ angular.module('cardcast.main', [])
       $scope.castCard(card);
 
       //show popup of casted card with note
-      $scope.renderNote();
+      $scope.renderNote(card);
 
     // if there is an active session and someone else is casting show popup
     } else if (session && isCasting) {

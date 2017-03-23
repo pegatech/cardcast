@@ -8,7 +8,7 @@ var helpers = require('../helpers');
 router.get('/', helpers.isAuth, function (req, res, next) {
   deckController.findAll(req.user._id)
     .then(function (resp) {
-      res.send(resp)
+      res.send(resp);
     })
     .catch(function(err) {
       console.error(err);
@@ -22,7 +22,7 @@ router.post('/', helpers.isAuth, function (req, res, next) {
     title: req.body.title,
     description: req.body.description,
     user: req.user._id
-  }
+  };
 
   deckController.insertOne(deckInfo)
     .then(function (resp) {
@@ -49,8 +49,8 @@ router.get('/:id', helpers.isAuth, function (req, res, next) {
     .catch(function (err) {
       console.log(err);
     });
-  })
-})
+  });
+});
 
 // deletes deck and all its cards from db
 router.post('/:deckId', helpers.isAuth, function (req, res, next) {
@@ -78,6 +78,6 @@ router.put('/:deckId', helpers.isAuth, function (req, res, next) {
     .catch(function(err) {
       console.log(err);
     });
-})
+});
 
 module.exports = router;
