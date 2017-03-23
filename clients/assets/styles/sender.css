@@ -235,3 +235,33 @@ p {
   border-radius: 4px;
   margin: 0 auto;
 }
+
+.mdl-chip {
+  width: 60px;
+  height: 30px;
+}
+/*-----Card Styling-----*/
+.Roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.Raleway {
+  font-family: 'Raleway', sans-serif;
+}
+
+.Montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.red {
+  background-color: #ff5252;
+  color: white;
+}
+
+.blue {
+  background-color: #B3E5FC;
+}
+
+.yellow {
+  background-color: yellow;
+}

@@ -19,7 +19,9 @@ angular.module('cardcast.new', [
       title: $scope.title,
       card: $scope.message,
       deck: $scope.deckId,
-      note: $scope.note
+      note: $scope.note,
+      color: 'blue',
+      font: 'Roboto'
     };
 
     // Use the createCard function from the Service factory

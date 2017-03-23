@@ -83,7 +83,9 @@ angular.module('cardcast.main', [])
     var message = {
       username: clear ? null : user,
       card: clear ? '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...' : card.card,
-      cardId: clear ? null : card._id
+      cardId: clear ? null : card._id,
+      color: clear ? null : card.color,
+      font: clear ? null : card.font
     };
     $scope.showWarning = false;
     session.sendMessage(namespace, JSON.stringify(message), console.log.bind(null, 'onSuccess: ', 'Message was sent: ' + message), console.log.bind(null, 'onError: '));
@@ -108,6 +110,6 @@ angular.module('cardcast.main', [])
     $scope.showDelete = false;
   };
 
- 
+
 
 });
