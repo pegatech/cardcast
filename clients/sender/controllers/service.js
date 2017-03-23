@@ -74,6 +74,14 @@ angular.module('cardcast.service', [])
       })
     },
 
+    updateDeck: function (deck) {
+      return $http({
+        method: 'PUT',
+        url: '/api/decks/' + deck._id,
+        data: deck
+      })
+    },
+
     // Function that makes post request to '/api/cards' to insert new card into db
     createCard: function(card) {
       return $http({
