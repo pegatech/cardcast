@@ -69,7 +69,7 @@ router.post('/:deckId', helpers.isAuth, function (req, res, next) {
     });
 });
 
-// update deck title
+// update deck title and description
 router.put('/:deckId', helpers.isAuth, function (req, res, next) {
   deckController.updateDeck(req.body)
     .then(function(resp) {

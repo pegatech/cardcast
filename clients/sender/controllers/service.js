@@ -77,7 +77,7 @@ angular.module('cardcast.service', [])
     updateDeck: function (deck) {
       return $http({
         method: 'PUT',
-        url: '/api/decks/' + deck._id,
+        url: '/api/decks/' + deck.id,
         data: deck
       })
     },

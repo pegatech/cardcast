@@ -6,7 +6,8 @@ angular.module('cardcast', [
   'cardcast.service',
   'cardcast.edit',
   'cardcast.home',
-  'cardcast.newDeck'
+  'cardcast.newDeck',
+  'cardcast.editDeck'
 ])
 
 .config(function($routeProvider, $httpProvider) {
@@ -76,6 +77,14 @@ angular.module('cardcast', [
       templateUrl: '/sender/controllers/newDeck/newDeck.html',
       controller: 'NewDeckCtrl'
     })
+    .when('/editDeck/:id', {
+      templateUrl: '/sender/controllers/editDeck/editDeck.html',
+      controller: 'EditDeckCtrl',
+      resolve: {
+        user: authorize,
+        deck: getDeckInfo
+      }
+    })
     .when('/new', {
       templateUrl: '/sender/controllers/new/new.html',
       controller: 'NewCtrl',
@@ -108,7 +117,7 @@ angular.module('cardcast', [
     });
   };
 
-  // go back to deck 
+  // go back to deck
   $rootScope.goToDeck = function() {
     $timeout(function() {
       $location.path('/decks/' + Service.get());
