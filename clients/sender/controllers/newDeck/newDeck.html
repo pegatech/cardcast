@@ -1,21 +1,19 @@
-<!-- Bootstrap Grid System -->
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
     <!-- Top Navigation Card - Material Design Lite -->
     <div class="card-deck mdl-card mdl-shadow--4dp">
 
       <div class="mdl-card__title">
         <h1 class="mdl-card__title-text">
-          New Deck
-          <!-- TODO: fix goToDeck to change view to home -->
+          New Deck {{ heading }}
           <button ng-click="goHome()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Home</button>
           <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
         </h1>
       </div>
 
       <div class="mdl-card__supporting-text">
-        <p>This is where you create a new deck. You can also enter a description of your deck.</p>
+       <p>This is where you create a new deck. You can also enter a description of your deck.</p>
       </div>
 
     </div>
@@ -23,41 +21,42 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="new-card col-md-6">
+<!-- add space -->
+<br>
 
-    <!-- Card Editor -->
-    <div class="mdl-card mdl-shadow--4dp">
+<div class="row deck-card" id="deck">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
-      <form ng-submit="createDeck()">
+    <div class="card mdl-card mdl-shadow--4dp">
 
-        <div class="mdl-card__supporting-text">
+      <form ng-submit="createDeck()" name="deckForm">
 
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" ng-model="title" type="text" id="new-card-title" placeholder="New Deck Title">
-            <label class="mdl-textfield__label" for="new-card-title"></label>
-          </div>
+        <div class="mdl-textfield mdl-js-textfield deck-edit">
+          <input class="mdl-textfield__input" ng-model="title" type="text" id="new-card-title" placeholder="New Deck Title">
+          <label class="mdl-textfield__label" for="new-card-title"></label>
+        </div>
 
-          <div class="text-area mdl-textfield mdl-js-textfield">
-            <textarea name="description"
-                      class="mdl-textfield__input" placeholder="Add a description of your deck..."
-                      ng-model="description"
-                      id="new-card-markdown"></textarea>
-            <label class="mdl-textfield__label" for="new-card-markdown"></label>
-          </div>
-
+        <div class="text-area mdl-textfield mdl-js-textfield deck-edit">
+          <textarea name="description"
+                    class="mdl-textfield__input" placeholder="Add a description for your deck!" 
+                    ng-model="description"
+                    ng-change="changes()"
+                    id="edit-card-markdown"></textarea>
+          <label class="mdl-textfield__label" for="edit-card-markdown"></label>
         </div>
 
         <div class="mdl-card__actions mdl-card--border">
           <button ng-click="goHome()" type="button" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect">Cancel</button>
           <input class="mdl-button mdl-button--accent mdl-button--raised mdl-js-button mdl-js-ripple-effect"
-                 type="submit"
-                 value="Create New Deck"/>
+          type="submit"
+          value="Create New Deck"/>
         </div>
 
       </form>
-
     </div>
-  </div>
 
-<div class="deck-footer"></div>
+  </div>
+</div>
+
+<!-- add space -->
+<div class="deck-footer">&nbsp;</div>
