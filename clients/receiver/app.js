@@ -65,6 +65,11 @@ angular.module('cardcast-receiver', [
 
       var message = JSON.parse(event.data);
 
+      $scope.color = message.color;
+      console.log($scope.color);
+      $scope.font = message.font;
+      console.log($scope.font);
+      
       //if sender castCard was passed 'clear' parameter, this will reset to default
       //otherwise it is the text from the card
       $scope.text = $sanitize(Markdown.compile(message.card));
@@ -76,11 +81,6 @@ angular.module('cardcast-receiver', [
       isCasting = !!message.username;
       who = message.username;
       cardId = message.cardId;
-
-      $scope.color = message.color;
-      console.log($scope.color);
-      $scope.font = message.font;
-      console.log($scope.font);
 
       broadcast();
 

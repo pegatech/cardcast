@@ -272,15 +272,15 @@ p {
   height: 30px;
 }
 /*-----Card Styling-----*/
-.Roboto {
+.Roboto * {
   font-family: 'Roboto', sans-serif;
 }
 
-.Raleway {
+.Raleway * {
   font-family: 'Raleway', sans-serif;
 }
 
-.Montserrat {
+.Montserrat * {
   font-family: 'Montserrat', sans-serif;
 }
 
