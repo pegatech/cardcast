@@ -8,7 +8,7 @@ angular.module('cardcast.new', [
   // Declare message in scope
   $scope.message = '';
   $scope.note = '';
-  $scope.color = '#B3E5FC';
+  $scope.color = 'blue';
   $scope.font = 'Roboto';
 
   $scope.setColor = function(color) {
