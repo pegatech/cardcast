@@ -4,7 +4,8 @@ angular.module('cardcast.editDeck', [
 
 .controller('EditDeckCtrl', function ($location, $scope, $routeParams, $sanitize, Service, deck) {
 
-  $scope.deck = deck
+  $scope.deck = deck;
+  $scope.heading = deck.deckInfo.title;
 
   $scope.updateDeck = function () {
     var deckInfo = {
