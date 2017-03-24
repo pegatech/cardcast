@@ -28,7 +28,7 @@
     <!-- Card Editor -->
     <div class="mdl-card mdl-shadow--4dp">
 
-      <form ng-submit="createCard()">
+      <form ng-submit="createCard()" name="cardForm">
 
         <div class="mdl-card__supporting-text">
 
@@ -42,7 +42,7 @@
                       class="mdl-textfield__input" placeholder="Your markdown here..."
                       ng-model="message"
                       ng-change="changes()"
-                      id="new-card-markdown"></textarea>
+                      id="new-card-markdown" required></textarea>
             <label class="mdl-textfield__label" for="new-card-markdown"></label>
           </div>
 
@@ -64,7 +64,7 @@
           <input class="mdl-button mdl-button--accent mdl-button--raised mdl-js-button mdl-js-ripple-effect"
                  type="submit"
                  value="Create Card"
-                 ng-disable="cardForm.message.$dirty"/>
+                 ng-disabled="cardForm.message.$invalid"/>
         </div>
 
       </form>

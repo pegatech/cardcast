@@ -29,12 +29,12 @@
     <!-- Card Editor -->
     <div class="mdl-card mdl-shadow--4dp">
 
-      <form ng-submit="createDeck()">
+      <form ng-submit="createDeck()" name="deckForm">
 
         <div class="mdl-card__supporting-text">
 
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" ng-model="title" type="text" id="new-card-title" placeholder="New Deck Title">
+            <input class="mdl-textfield__input" name="title" ng-model="title" type="text" id="new-card-title" placeholder="New Deck Title" required>
             <label class="mdl-textfield__label" for="new-card-title"></label>
           </div>
 
@@ -52,7 +52,8 @@
           <button ng-click="goHome()" type="button" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect">Cancel</button>
           <input class="mdl-button mdl-button--accent mdl-button--raised mdl-js-button mdl-js-ripple-effect"
                  type="submit"
-                 value="Create New Deck"/>
+                 value="Create New Deck"
+                 ng-disabled="deckForm.title.$invalid"/>
         </div>
 
       </form>
