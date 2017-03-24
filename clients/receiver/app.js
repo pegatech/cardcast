@@ -69,7 +69,7 @@ angular.module('cardcast-receiver', [
       console.log($scope.color);
       $scope.font = message.font;
       console.log($scope.font);
-      
+
       //if sender castCard was passed 'clear' parameter, this will reset to default
       //otherwise it is the text from the card
       $scope.text = $sanitize(Markdown.compile(message.card));
