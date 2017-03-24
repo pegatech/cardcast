@@ -33,26 +33,26 @@
         <div class="mdl-card__supporting-text">
 
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" ng-model="title" type="text" id="new-card-title">
-            <label class="mdl-textfield__label" for="new-card-title">Card Title</label>
+            <input class="mdl-textfield__input" ng-model="title" type="text" id="new-card-title" placeholder="Card Title">
+            <label class="mdl-textfield__label" for="new-card-title"></label>
           </div>
 
           <div class="text-area mdl-textfield mdl-js-textfield">
             <textarea name="message"
-                      class="mdl-textfield__input"
+                      class="mdl-textfield__input" placeholder="Your markdown here..."
                       ng-model="message"
                       ng-change="changes()"
                       id="new-card-markdown"></textarea>
-            <label class="mdl-textfield__label" for="new-card-markdown">Your markdown here...</label>
+            <label class="mdl-textfield__label" for="new-card-markdown"></label>
           </div>
 
            <div class="note-area mdl-textfield mdl-js-textfield">
             <textarea name="note"
-                      class="mdl-textfield__input"
+                      class="mdl-textfield__input" placeholder="Enter presenter notes here..."
                       ng-model="note"
                       ng-change="changes()"
                       id="new-card-note"></textarea>
-            <label class="mdl-textfield__label" for="new-card-note">Enter presenter notes here...</label>
+            <label class="mdl-textfield__label" for="new-card-note"></label>
           </div>
 
 
