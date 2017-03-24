@@ -96,6 +96,7 @@ p {
 .card {
   margin-top: 20px;
   min-height: 0;
+  float: left;
   width: 100%;
   background-color: #B3E5FC;
 }

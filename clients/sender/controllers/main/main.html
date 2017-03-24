@@ -25,8 +25,10 @@
 <br>
 
 <!-- Iterates through all the users cards and displays them -->
-<div ng-repeat="card in deck" class="row">
-  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+<div class="row">
+<div ng-repeat="card in deck">
+
+  <div class="col-sm-4">
 
     <div class="card mdl-card mdl-shadow--4dp">
 
@@ -61,6 +63,8 @@
 
   </div>
 </div>
+</div>
+
 
 <!-- Space for scrolling -->
 <div class="deck-footer">&nbsp;</div>
