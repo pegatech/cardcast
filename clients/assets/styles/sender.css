@@ -108,7 +108,7 @@ p {
 
 .card .mdl-card__actions {
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
 }
 
 .card .mdl-button {
@@ -270,6 +270,10 @@ p {
 .mdl-chip {
   width: 60px;
   height: 30px;
+}
+
+.deck-edit {
+  width: 100%;
 }
 /*-----Card Styling-----*/
 .Roboto * {
