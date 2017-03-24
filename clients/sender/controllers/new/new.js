@@ -13,7 +13,6 @@ angular.module('cardcast.new', [
 
   $scope.setColor = function(color) {
     $scope.color = color;
-    console.log($scope.color);
   };
 
   $scope.setFont = function(font) {

@@ -23,7 +23,7 @@
 </div>
 
 <!-- add space -->
-<div class="deck-footer">&nbsp;</div>
+<br>
 
 <div class="row deck-card" id="deck">
   <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
@@ -32,12 +32,12 @@
 
       <form ng-submit="updateDeck()">
 
-        <div class="mdl-textfield mdl-js-textfield">
+        <div class="mdl-textfield mdl-js-textfield deck-edit">
           <input class="mdl-textfield__input" ng-model="deck.deckInfo.title" type="text" id="edit-card-title">
           <label class="mdl-textfield__label" for="edit-card-title"></label>
         </div>
 
-        <div class="text-area mdl-textfield mdl-js-textfield">
+        <div class="text-area mdl-textfield mdl-js-textfield deck-edit">
           <textarea name="message"
                     class="mdl-textfield__input"
                     ng-model="deck.deckInfo.description"
