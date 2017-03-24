@@ -275,6 +275,11 @@ p {
 .deck-edit {
   width: 100%;
 }
+
+.label {
+  font-size: 14px;
+  color: #1676d2;
+}
 /*-----Card Styling-----*/
 .Roboto * {
   font-family: 'Roboto', sans-serif;

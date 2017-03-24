@@ -74,7 +74,7 @@ angular.module('cardcast-receiver', [
       //otherwise it is the text from the card
       $scope.text = $sanitize(Markdown.compile(message.card));
       $scope.userDisplay = $sanitize(message.userDisplay);
-
+      
       //if castCard was passed 'clear', parameter, username and cardID will both be set to null
       //otherwise they will be the username, card ID and isCasting coerces TRUE value
       //this value is used by ng-show for the popup warning
