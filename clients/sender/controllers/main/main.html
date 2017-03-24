@@ -71,7 +71,7 @@
 
 <!-- Already Casting Warning pops up when 'showWarning' is true -->
 <div class="popup" ng-show="showWarning">
-  <div class="mdl-card mdl-shadow--8dp">
+  <div class="mdl-card mdl-shadow--8dp" id="warning-popup">
 
     <div class="mdl-card__title">
       <h3 class="mdl-card__title-text">Cast already in progress</h3>
@@ -95,14 +95,14 @@
 <!-- Current casting card popup with note -->
 <!-- IMPLEMENT THE METHOD IN NG SHOW AND BOTH NG CLICKS -->
 <div class="popup" id='note-popup' ng-show="showNote">
-  <div class="mdl-card mdl-shadow--8dp">
+  <div class="mdl-card mdl-shadow--8dp {{currentCard.color}}">
 
     <div class="mdl-card__title">
       <h3 class="mdl-card__title-text">{{ currentCard.title }}</h3>
     </div>
 
     Currently Casting
-    <div class="mdl-card__supporting-text " style='border: solid'>{{ currentCard.card }}</div>
+    <div class="mdl-card__supporting-text" style='border: solid'>{{ currentCard.card }}</div>
     Notes
     <div class="mdl-card__supporting-text " style='border: solid'>{{ currentCard.note }}</div>
 
