@@ -8,14 +8,13 @@ angular.module('cardcast.editDeck', [
 
   $scope.updateDeck = function () {
     var deckInfo = {
-      id: $scope.deck.deckInfo_id,
+      id: $scope.deck.deckInfo._id,
       title: $scope.deck.deckInfo.title,
       description: $scope.deck.deckInfo.description
     };
-
     Service.updateDeck(deckInfo)
       .then(function (resp) {
-        $location.path('/decks/' + resp.deckId);
+        $location.path('/decks/');
       })
       .catch (function (err) {
         console.log(err);
