@@ -1,0 +1,63 @@
+<!-- Bootstrap Grid -->
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+    <!-- Top Navigation Card - Material Design Lite -->
+    <div class="card-deck mdl-card mdl-shadow--4dp">
+
+      <div class="mdl-card__title">
+        <h1 class="mdl-card__title-text">
+          Edit
+          <button ng-click="goHome()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Home</button>
+          <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
+        </h1>
+      </div>
+
+      <div class="mdl-card__supporting-text">
+        <p>This is where you can edit your deck. Change your markdown in the text box below and use the interactive preview to see how your card will look. After you are done press save and then cast away! To learn more about markdown, visit this <a href="http://commonmark.org/help/">link</a>.</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- add space -->
+<div class="deck-footer">&nbsp;</div>
+
+<div class="row deck-card" id="deck">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+    <div class="card mdl-card mdl-shadow--4dp">
+
+      <form ng-submit="updateDeck()">
+
+        <div class="mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" ng-model="deck.deckInfo.title" type="text" id="edit-card-title">
+          <label class="mdl-textfield__label" for="edit-card-title"></label>
+        </div>
+
+        <div class="text-area mdl-textfield mdl-js-textfield">
+          <textarea name="message"
+                    class="mdl-textfield__input"
+                    ng-model="deck.deckInfo.description"
+                    ng-change="changes()"
+                    id="edit-card-markdown"></textarea>
+          <label class="mdl-textfield__label" for="edit-card-markdown"></label>
+        </div>
+
+        <div class="mdl-card__actions mdl-card--border">
+          <button ng-click="goHome()" type="button" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect">Cancel</button>
+          <input class="mdl-button mdl-button--accent mdl-button--raised mdl-js-button mdl-js-ripple-effect"
+          type="submit"
+          value="Save"/>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- add space -->
+<div class="deck-footer">&nbsp;</div>

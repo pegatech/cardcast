@@ -33,7 +33,7 @@
 
       <div class="mdl-card__supporting-text">{{ deck.description }}</div>
       <div class="mdl-card__actions mdl-card--border">
-        <!-- <a href="#!/edit/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a> -->
+        <a href="#!/editDeck/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
         <a href="#!/decks/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">View Deck</button></a>
         <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(deck)"/>
 
