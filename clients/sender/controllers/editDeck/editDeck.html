@@ -22,29 +22,33 @@
   </div>
 </div>
 
-<!-- Iterates through all the users decks and displays them -->
+<!-- add space -->
+<div class="deck-footer">&nbsp;</div>
+
 <div class="row deck-card" id="deck">
   <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
     <div class="card mdl-card mdl-shadow--4dp">
 
       <div class="mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" ng-model="deck.title" type="text" id="edit-card-title">
+        <input class="mdl-textfield__input" ng-model="deck.deckInfo.title" type="text" id="edit-card-title">
         <label class="mdl-textfield__label" for="edit-card-title"></label>
       </div>
 
       <div class="text-area mdl-textfield mdl-js-textfield">
         <textarea name="message"
                   class="mdl-textfield__input"
-                  ng-model="deck.description"
+                  ng-model="deck.deckInfo.description"
                   ng-change="changes()"
                   id="edit-card-markdown"></textarea>
         <label class="mdl-textfield__label" for="edit-card-markdown"></label>
       </div>
+
+      <div class="mdl-card__actions mdl-card--border">
         <!-- <a href="#!/edit/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a> -->
         <a href="#!/decks/{{ deck._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Done</button></a>
         <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(deck)"/>
-
+      </div>
       </div>
 
     </div>

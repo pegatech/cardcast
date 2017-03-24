@@ -8,9 +8,9 @@ angular.module('cardcast.editDeck', [
 
   $scope.updateDeck = function () {
     var deckInfo = {
-      id: $scope.deck._id,
-      title: $scope.deck.title,
-      description: $scope.deck.description
+      id: $scope.deck.deckInfo_id,
+      title: $scope.deck.deckInfo.title,
+      description: $scope.deck.deckInfo.description
     };
 
     Service.updateDeck(deckInfo)
