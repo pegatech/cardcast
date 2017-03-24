@@ -45,6 +45,9 @@ p {
   color: #fff;
   font-size: 24px;
   height: 24px;
+}
+
+.userDisplay {
   border: 2px solid;
   border-radius: 5px;
   padding: 5px;
