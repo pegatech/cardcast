@@ -54,9 +54,6 @@ p {
   padding-bottom: 7px;
 }
 
-.material-icons {
-  color: #fff
-}
 /*-----Card Styling-----*/
 
 .Roboto * {
@@ -78,8 +75,10 @@ p {
 
 .blue {
   background-color: #B3E5FC;
+  color: #757575;
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #FFEB3B;
+  color: white;
 }
