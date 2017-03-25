@@ -44,6 +44,7 @@
       <div class="mdl-card__actions mdl-card--border" style="position: absolute; bottom: 0; width: 100%; z-index: 5">
         <a href="#!/edit/{{ card._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
         <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
+        <a ng-click="displayNote(card)"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Notes</button></a>
 
         <!-- Displays 'Cast' with associated behavior for all cards not being casted -->
         <input ng-if="card._id !== cardId"
