@@ -13,7 +13,8 @@ angular.module('cardcast.main', [])
   $scope.showWarning = false;
   $scope.showDelete = false;
   $scope.showNote = false;
-  $scope.username = user;
+  $scope.username = user; 
+  $scope.showNoteAlternate = false;
 
   // First checks for a session and sees if anyone else is currently casting.
   // Casts the card that invoked it as long as no one else is casting,
@@ -23,15 +24,22 @@ angular.module('cardcast.main', [])
   $scope.renderNote = function(card) {
     $scope.currentCard = card;
     $scope.showNote = true;
+
+  };
+
+  $scope.renderAlternate = function(card){
+    $scope.currentCard = card;
+    $scope.showNoteAlternate = true;
   };
 
   $scope.cancelNote = function() {
     $scope.showNote = false;
+    $scope.showNoteAlternate = false;
   };
 
 
   $scope.showPopup = function(card) {
-
+    
     // if there is an active session and no one is casting, cast the card
     if (session && !isCasting) {
       console.log(session.status);
@@ -39,11 +47,12 @@ angular.module('cardcast.main', [])
 
       //show popup of casted card with note
       $scope.renderNote(card);
-
     // if there is an active session and someone else is casting show popup
     } else if (session && isCasting) {
       $scope.showWarning = true;
       $scope.currentCard = card;
+
+     // $scope.showStopButton = true;
     } else if (chrome.cast) {
 
     // if there is no active session request one
@@ -57,10 +66,12 @@ angular.module('cardcast.main', [])
             $scope.castCard(card);
             // show popup of casted card with note
             $scope.renderNote(card);
+            //$scope.showStopButton = true;
 
           } else {
             $scope.showWarning = true;
             $scope.currentCard = card;
+            //$scope.showStopButton = false;
           }
         }, 100);
 
