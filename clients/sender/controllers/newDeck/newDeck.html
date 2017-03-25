@@ -24,12 +24,20 @@
 <!-- add space -->
 <br>
 
+
 <div class="row deck-card" id="deck">
   <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
+      <form ng-submit="createDeck()" name="deckForm">
+
+
     <div class="card mdl-card mdl-shadow--4dp">
 
-      <form ng-submit="createDeck()" name="deckForm">
+
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" name="title" ng-model="title" type="text" id="new-card-title" placeholder="New Deck Title" required>
+            <label class="mdl-textfield__label" for="new-card-title"></label>
+          </div>
 
         <div class="mdl-textfield mdl-js-textfield deck-edit">
           <input class="mdl-textfield__input" ng-model="title" type="text" id="new-card-title" placeholder="New Deck Title">
@@ -48,8 +56,10 @@
         <div class="mdl-card__actions mdl-card--border">
           <button ng-click="goHome()" type="button" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect">Cancel</button>
           <input class="mdl-button mdl-button--accent mdl-button--raised mdl-js-button mdl-js-ripple-effect"
-          type="submit"
-          value="Create New Deck"/>
+                 type="submit"
+                 value="Create New Deck"
+                 ng-disabled="deckForm.title.$invalid"/>
+
         </div>
 
       </form>
