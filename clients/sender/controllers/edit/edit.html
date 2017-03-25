@@ -31,28 +31,27 @@
       <form ng-submit="updateCard()">
 
         <div class="mdl-card__supporting-text">
-
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" ng-model="card.title" type="text" id="edit-card-title">
-            <label class="mdl-textfield__label" for="edit-card-title"></label>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" ng-model="card.title" type="text" id="edit-card-title" placeholder=' '>
+            <label class="mdl-textfield__label" for="edit-card-title">Card Title</label>
           </div>
 
-          <div class="text-area mdl-textfield mdl-js-textfield">
+          <div class="text-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <textarea name="message"
-                      class="mdl-textfield__input"
+                      class="mdl-textfield__input" placeholder=' '
                       ng-model="card.card"
                       ng-change="changes()"
                       id="edit-card-markdown"></textarea>
-            <label class="mdl-textfield__label" for="edit-card-markdown"></label>
+            <label class="mdl-textfield__label" for="edit-card-markdown">Your markdown here...</label>
           </div>
 
-          <div class="note-area mdl-textfield mdl-js-textfield">
+          <div class="note-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <textarea name="note"
-                      class="mdl-textfield__input"
+                      class="mdl-textfield__input" placeholder=' '
                       ng-model="card.note"
                       ng-change="changes()"
                       id="edit-card-note"></textarea>
-            <label class="mdl-textfield__label" for="edit-card-note"></label>
+            <label class="mdl-textfield__label" for="edit-card-note">Enter presenter notes here...</label>
           </div>
         </div>
 

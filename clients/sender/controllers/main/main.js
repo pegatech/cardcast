@@ -73,8 +73,6 @@ angular.module('cardcast.main', [])
     $scope.showWarning = false;
   };
 
-
-
   // Sends cast using the card that invoked showPopup. The username tracks who is currently casting
   // Passing the 'clear' parameter stops the current cast and reverts everything to default state.
   $scope.castCard = function(card, clear = false) {

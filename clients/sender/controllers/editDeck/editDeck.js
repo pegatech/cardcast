@@ -7,12 +7,15 @@ angular.module('cardcast.editDeck', [
   $scope.deck = deck;
   $scope.heading = deck.deckInfo.title;
 
+  document.getElementsByClassName(".deck-edit").className += 'is-dirty';
+
   $scope.updateDeck = function () {
     var deckInfo = {
       id: $scope.deck.deckInfo._id,
       title: $scope.deck.deckInfo.title,
       description: $scope.deck.deckInfo.description
     };
+
     Service.updateDeck(deckInfo)
       .then(function (resp) {
         $location.path('/decks/');
