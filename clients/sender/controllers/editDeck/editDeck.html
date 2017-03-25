@@ -32,19 +32,17 @@
 
       <form ng-submit="updateDeck()">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label deck-edit">
-          <span class='label'>Title</span>
-          <input class="mdl-textfield__input" ng-model="deck.deckInfo.title" type="text" id="edit-card-title">
-          <label class="mdl-textfield__label" for="edit-card-title"></label>
+          <input class="mdl-textfield__input" ng-model="deck.deckInfo.title" type="text" id="edit-card-title" placeholder=''>
+          <label class="mdl-textfield__label" for="edit-card-title">Title</label>
         </div>
 
         <div class="text-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label deck-edit">
-          <span class='label'>Description</span>
           <textarea name="message"
                     class="mdl-textfield__input"
-                    ng-model="deck.deckInfo.description"
+                    ng-model="deck.deckInfo.description" placeholder=''
                     ng-change="changes()"
                     id="edit-card-markdown"></textarea>
-          <label class="mdl-textfield__label" for="edit-card-markdown"></label>
+          <label class="mdl-textfield__label" for="edit-card-markdown">Description</label>
         </div>
 
         <div class="mdl-card__actions mdl-card--border">
