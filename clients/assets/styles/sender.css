@@ -154,14 +154,28 @@ p {
   left: 0;
   width: 675px;
   height: 500px;
-  /*background-color: rgba(144, 144, 144, 0.5);*/
-  /*background-color: #B3E5FC;*/
+  border-radius: 5px;
+}
+
+.scroll {
+  overflow: auto;
+}
+
+.note-popup-title .mdl-card__title-text {
+  font-size:2em;
+  color: white;
+  margin:20px 0 0 0;
 }
 
 #note-popup .mdl-card__supporting-text {
-  font-size: 1.5em;
-  width: 650px;
-  height: 200px;
+  margin: 5px 15px 10px 15px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 1em;
+  width: 630px;
+  height: 150px;
+  color: #757575;
+  background-color: white;
 }
 
 .popup .mdl-card__supporting-text {
@@ -300,8 +314,22 @@ p {
 
 .blue {
   background-color: #B3E5FC;
+  color: #757575;
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #FFEB3B;
+  color: #757575;
+}
+
+.blue.dark {
+  background-color: #03A9F4;
+  color: white;
+}
+
+.note-popup-title .mdl-card__title-text .blue {
+  background-color: #03A9F4;
+}
+.note-popup-title .mdl-card__title-text .yellow {
+  color: #757575;
 }

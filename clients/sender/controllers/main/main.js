@@ -13,7 +13,7 @@ angular.module('cardcast.main', [])
   $scope.showWarning = false;
   $scope.showDelete = false;
   $scope.showNote = false;
-  $scope.username = user; 
+  $scope.username = user;
   $scope.showNoteAlternate = false;
 
   // First checks for a session and sees if anyone else is currently casting.
@@ -24,12 +24,15 @@ angular.module('cardcast.main', [])
   $scope.renderNote = function(card) {
     $scope.currentCard = card;
     $scope.showNote = true;
-
   };
 
   $scope.renderAlternate = function(card){
     $scope.currentCard = card;
     $scope.showNoteAlternate = true;
+    var notes = document.querySelector('#note-popup-notes');
+    var card = document.querySelector('#note-popup-card');
+    notes.classList.add('scroll');
+    card.classList.add('scroll');
   };
 
   $scope.cancelNote = function() {
@@ -39,7 +42,7 @@ angular.module('cardcast.main', [])
 
 
   $scope.showPopup = function(card) {
-    
+
     // if there is an active session and no one is casting, cast the card
     if (session && !isCasting) {
       console.log(session.status);
@@ -89,7 +92,7 @@ angular.module('cardcast.main', [])
   $scope.castCard = function(card, clear = false) {
     var message = {
       username: clear ? null : user,
-      userDisplay: clear? null : '<div class="material-icons userDisplay">perm_identity</div>  ' + user,
+      userDisplay: clear? null : '<div class="material-icons userDisplay" id="userDisplay">perm_identity</div>  ' + user,
       card: clear ? '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...' : card.card,
       cardId: clear ? null : card._id,
       color: clear ? null : card.color,
