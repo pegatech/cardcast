@@ -11,7 +11,6 @@ angular.module('cardcast.edit', [
   $scope.card.color = card.color;
 
   var checkedFont = document.querySelector("#" + $scope.card.font);
-
   checkedFont.setAttribute('checked', 'true');
 
   // set color attribute to equal selected
