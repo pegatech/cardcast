@@ -42,9 +42,8 @@ angular.module('cardcast.new', [
 
   // Function that watches for changes in message
   $scope.changes = function() {
-
     // If message is empty show Your Card Preview
-    if ($scope.message === '') {
+    if ($scope.message === undefined || $scope.message === '') {
       $scope.preview = $sanitize('<h3>Your Card Preview</h3>');
     } else {
       // Else compile the message and set it as preview
