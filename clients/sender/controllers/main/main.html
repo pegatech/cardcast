@@ -44,7 +44,7 @@
       <div class="mdl-card__actions mdl-card--border" style="position: absolute; bottom: 0; width: 100%; z-index: 5">
         <a href="#!/edit/{{ card._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
         <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
-        <a ng-click="displayNote(card)"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Notes</button></a>
+        <a ng-click="renderAlternate(card)"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Notes</button></a>
 
         <!-- Displays 'Cast' with associated behavior for all cards not being casted -->
         <input ng-if="card._id !== cardId"
@@ -97,6 +97,7 @@
 
 
 <!-- Current casting card popup with note -->
+<!-- Opens when pushing cast -->
 <!-- IMPLEMENT THE METHOD IN NG SHOW AND BOTH NG CLICKS -->
 <div class="popup" id='note-popup' ng-show="showNote">
   <div class="mdl-card mdl-shadow--8dp {{currentCard.color}}">
@@ -113,6 +114,31 @@
     <div class="mdl-card__actions">
       <button ng-click="castCard(null, true); cancelNote()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
         Stop
+      </button>
+      <button ng-click="cancelNote()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+        Close
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Popup that opens when pushing notes  -->
+<div class="popup" id='note-popup' ng-show="showNoteAlternate">
+  <div class="mdl-card mdl-shadow--8dp {{currentCard.color}}">
+
+    <div class="mdl-card__title">
+      <h3 class="mdl-card__title-text">{{ currentCard.title }}</h3>
+    </div>
+
+    Currently Casting
+    <div class="mdl-card__supporting-text" style='border: solid'>{{ currentCard.card }}</div>
+    Notes
+    <div class="mdl-card__supporting-text " style='border: solid'>{{ currentCard.note }}</div>
+
+    <div class="mdl-card__actions">
+      <button ng-click="renderNote(currentCard); showPopup(currentCard); cancelNote();" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+        Cast
       </button>
       <button ng-click="cancelNote()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
         Close
