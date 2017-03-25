@@ -34,18 +34,18 @@
     <div class="card mdl-card mdl-shadow--4dp">
 
 
-          <div class="mdl-textfield mdl-js-textfield deck-edit">
-            <input class="mdl-textfield__input" name="title" ng-model="title" type="text" id="new-card-title" placeholder="New Deck Title" required>
-            <label class="mdl-textfield__label" for="new-card-title"></label>
+          <div class="mdl-textfield mdl-js-textfield deck-edit mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="title" ng-model="title" type="text" id="new-card-title" required>
+            <label class="mdl-textfield__label" for="new-card-title">Deck Title</label>
           </div>
 
-        <div class="text-area mdl-textfield mdl-js-textfield deck-edit">
+        <div class="text-area mdl-textfield mdl-js-textfield deck-edit mdl-textfield--floating-label">
           <textarea name="description"
-                    class="mdl-textfield__input" placeholder="Add a description for your deck!" 
+                    class="mdl-textfield__input"
                     ng-model="description"
                     ng-change="changes()"
                     id="edit-card-markdown"></textarea>
-          <label class="mdl-textfield__label" for="edit-card-markdown"></label>
+          <label class="mdl-textfield__label" for="edit-card-markdown">Add a description to your deck!</label>
         </div>
 
         <div class="mdl-card__actions mdl-card--border">
