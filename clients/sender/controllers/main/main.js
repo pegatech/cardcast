@@ -31,8 +31,12 @@ angular.module('cardcast.main', [])
     $scope.showNoteAlternate = true;
     var notes = document.querySelector('#note-popup-notes');
     var card = document.querySelector('#note-popup-card');
+    var altnotes = document.querySelector('#altnote-popup-notes');
+    var altcard = document.querySelector('#alt-note-popup-card');
     notes.classList.add('scroll');
     card.classList.add('scroll');
+    altnotes.classList.add('scroll');
+    altcard.classList.add('scroll');
   };
 
   $scope.cancelNote = function() {
