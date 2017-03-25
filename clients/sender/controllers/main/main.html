@@ -112,6 +112,8 @@
       <h5 style='margin:0 20px 10px 20px'> Notes </h5>
       <div class="mdl-card__supporting-text {{currentCard.color}}" id='note-popup-notes' style='margin-bottom: 20px'>{{ currentCard.note }}</div>
     </div>
+
+    <!-- bottom actions -->
     <div class="mdl-card__actions mdl-card--border" style:'height: 50px'>
       <button ng-click="castCard(null, true); cancelNote()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
         Stop
@@ -126,18 +128,20 @@
 
 <!-- Popup that opens when pushing notes  -->
 <div class="popup" id='note-popup' ng-show="showNoteAlternate">
-  <div class="mdl-card mdl-shadow--8dp {{currentCard.color}}">
+  <div class="mdl-card mdl-shadow--8dp {{currentCard.color}} dark">
 
-    <div class="mdl-card__title">
-      <h3 class="mdl-card__title-text">{{ currentCard.title }}</h3>
+    <div style='margin:0; padding:0'>
+      <h1 class="{{currentCard.color}} dark" style='margin:10px 0 0 0'>{{ currentCard.title }}</h1>
+    </div>
+    <div>
+      <h5 style='margin:0 20px 10px 20px'> Currently Casting </h5>
+      <div class="mdl-card__supporting-text {{currentCard.color}}" id='note-popup-card'>{{ currentCard.card }}</div>
+      <h5 style='margin:0 20px 10px 20px'> Notes </h5>
+      <div class="mdl-card__supporting-text {{currentCard.color}}" id='note-popup-notes' style='margin-bottom: 20px'>{{ currentCard.note }}</div>
     </div>
 
-    Currently Casting
-    <div class="mdl-card__supporting-text" style='border: solid'>{{ currentCard.card }}</div>
-    Notes
-    <div class="mdl-card__supporting-text " style='border: solid'>{{ currentCard.note }}</div>
-
-    <div class="mdl-card__actions">
+    <!-- bottom actions -->
+    <div class="mdl-card__actions mdl-card--border" style:'height: 50px'>
       <button ng-click="renderNote(currentCard); showPopup(currentCard); cancelNote();" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
         Cast
       </button>
