@@ -33,6 +33,52 @@ p {
 .card-canvas img {
   display: block;
   width: 50%;
+  margin: auto;
   border-radius: 4px;
   margin: 0 auto;
+}
+
+.head-note {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #fff;
+  font-size: 24px;
+  height: 24px;
+}
+
+.userDisplay {
+  border: 2px solid;
+  border-radius: 5px;
+  padding: 5px;
+  padding-bottom: 7px;
+}
+
+/*-----Card Styling-----*/
+
+.Roboto * {
+  font-family: 'Roboto', sans-serif;
+}
+
+.Raleway * {
+  font-family: 'Raleway', sans-serif;
+}
+
+.Montserrat * {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.red {
+  background-color: #ff5252;
+  color: white;
+}
+
+.blue {
+  background-color: #B3E5FC;
+  color: #757575;
+}
+
+.yellow {
+  background-color: #FFEB3B;
+  color: #757575;
 }

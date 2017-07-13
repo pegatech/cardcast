@@ -7,35 +7,57 @@
 
       <div class="mdl-card__title">
         <h1 class="mdl-card__title-text">
-          Your Deck
+          {{ deckInfo.title }}
+          <button ng-click="goHome()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Decks</button>
           <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
         </h1>
       </div>
 
-      <div class="mdl-card__supporting-text">
-        Below is a list of all of the cards in your personal deck. Click the plus button in the bottom right corner to add a new card to your deck or edit one that already exits. When you are ready to cast a card, hit the cast button to share the card with any Chromecast on your network. Please make sure you are using an up-to-date version of the Chrome Browser.
+      <div class="mdl-card__supporting-text" style='padding-top:10px'>
+        <h4 style='margin-top:10px'>{{ deckInfo.description}}</h4>
+        Below is a list of all of the cards in {{deckInfo.title}}.
+        Click the plus button to add a new card to your deck, or click the edit button to edit a deck that already exits.
+        When you are ready to cast a card, click the cast button to share it with any Chromecast on your network.
+        Please make sure you are using an up-to-date version of the Chrome Browser.
       </div>
 
     </div>
 
   </div>
 </div>
+<br>
 
 <!-- Iterates through all the users cards and displays them -->
-<div ng-repeat="card in deck" class="row">
-  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+<div class="row">
+<div ng-repeat="card in deck">
 
-    <div class="card mdl-card mdl-shadow--4dp">
+  <div class="col-sm-4">
+
+    <div class="card mdl-card mdl-shadow--4dp {{card.color}}" style="height: 225px; position: relative;">
 
       <div class="mdl-card__title">
-        <h3 class="mdl-card__title-text">{{ card.title }}</h3>
+        <h3 class="mdl-card__title-text" style="position: absolute; top: 10px; padding: 5px;">{{ card.title }}</h3>
       </div>
 
-      <div class="mdl-card__supporting-text">{{ card.card }}</div>
+      <div class="mdl-card__supporting-text" style="height: 130px; margin-left: 5px">{{ card.card }}</div>
 
-      <div class="mdl-card__actions mdl-card--border">
+      <div class="mdl-card__actions mdl-card--border" style="position: absolute; bottom: 0; width: 100%; z-index: 5">
         <a href="#!/edit/{{ card._id }}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
         <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
+
+        <!-- Displays 'Notes' with associated behavior for all cards not being casted -->
+        <input ng-if="card._id === cardId"
+               ng-click="renderNote(card)"
+               type='button'
+               value='Notes'
+               class="mdl-button mdl-js-button mdl-js-ripple-effect" />
+
+        <!-- Displays 'Notes' with associated behavior for card being casted -->
+        <input ng-if="card._id !== cardId"
+               ng-click="renderAlternate(card)"
+               type='button'
+               value='Notes'
+               class="mdl-button mdl-js-button mdl-js-ripple-effect"/>
 
         <!-- Displays 'Cast' with associated behavior for all cards not being casted -->
         <input ng-if="card._id !== cardId"
@@ -45,6 +67,7 @@
                ng-click="showPopup(card)"/>
 
         <!-- Displays 'Stop' and associated behavior for the card being cast -->
+
          <input ng-if="card._id === cardId"
                 type="button"
                 value="Stop"
@@ -58,13 +81,15 @@
 
   </div>
 </div>
+</div>
+
 
 <!-- Space for scrolling -->
 <div class="deck-footer">&nbsp;</div>
 
 <!-- Already Casting Warning pops up when 'showWarning' is true -->
 <div class="popup" ng-show="showWarning">
-  <div class="mdl-card mdl-shadow--8dp">
+  <div class="mdl-card mdl-shadow--8dp" id="warning-popup">
 
     <div class="mdl-card__title">
       <h3 class="mdl-card__title-text">Cast already in progress</h3>
@@ -76,7 +101,7 @@
       <button ng-click="cancelCast()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
         Cancel
       </button>
-      <button ng-click="castCard(currentCard)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+      <button ng-click="castCard(currentCard); renderNote(currentCard)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
         Cast Anyway
       </button>
     </div>
@@ -84,9 +109,69 @@
   </div>
 </div>
 
+
+<!-- Current casting card popup with note -->
+<!-- Opens when pushing cast -->
+<!-- IMPLEMENT THE METHOD IN NG SHOW AND BOTH NG CLICKS -->
+<div class="popup" id='note-popup' ng-show="showNote">
+  <div class="mdl-card mdl-shadow--8dp {{currentCard.color}} dark">
+
+    <div style='margin:0; padding:0'>
+      <h1 class="{{currentCard.color}} dark" style='margin:10px 0 0 0'>{{ currentCard.title }}</h1>
+    </div>
+    <div>
+      <h5 style='margin:0 20px 10px 20px'> Currently Casting </h5>
+      <div class="mdl-card__supporting-text {{currentCard.color}}" id='note-popup-card'>{{ currentCard.card }}</div>
+      <h5 style='margin:0 20px 10px 20px'> Notes </h5>
+      <div class="mdl-card__supporting-text {{currentCard.color}}" id='note-popup-notes' style='margin-bottom: 20px'>{{ currentCard.note }}</div>
+    </div>
+
+    <!-- bottom actions -->
+    <div class="mdl-card__actions mdl-card--border" style:'height: 50px'>
+
+      <button ng-click="castCard(null, true); cancelNote()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+        Stop
+      </button>
+      <button ng-click="cancelNote()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+        Close
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Popup that opens when pushing notes  -->
+<div class="popup" id='note-popup' ng-show="showNoteAlternate">
+  <div class="mdl-card mdl-shadow--8dp {{currentCard.color}} dark">
+
+    <div style='margin:0; padding:0'>
+      <h1 class="{{currentCard.color}} dark" style='margin:10px 0 0 0'>{{ currentCard.title }}</h1>
+    </div>
+    <div>
+      <h5 style='margin:0 20px 10px 20px'> Currently Casting </h5>
+      <div class="mdl-card__supporting-text {{currentCard.color}}" id='altnote-popup-card'>{{ currentCard.card }}</div>
+      <h5 style='margin:0 20px 10px 20px'> Notes </h5>
+      <div class="mdl-card__supporting-text {{currentCard.color}}" id='altnote-popup-notes' style='margin-bottom: 20px'>{{ currentCard.note }}</div>
+    </div>
+
+
+    <!-- bottom actions -->
+    <div class="mdl-card__actions mdl-card--border" style:'height: 50px'>
+      <button ng-click="renderNote(currentCard); showPopup(currentCard); cancelNote();" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+        Cast
+      </button>
+      <button ng-click="cancelNote()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+        Close
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
 <!-- Delete Card Warning -->
 <div class="popup" ng-show="showDelete">
-  <div class="mdl-card mdl-shadow--8dp">
+  <div class="mdl-card mdl-shadow--8dp" id="warning-popup">
 
     <div class="mdl-card__title">
       <h3 class="mdl-card__title-text">Do You Really Want To Delete?</h3>

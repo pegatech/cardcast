@@ -96,12 +96,14 @@ p {
 .card {
   margin-top: 20px;
   min-height: 0;
+  float: left;
   width: 100%;
   background-color: #B3E5FC;
 }
 
 .card .mdl-card__supporting-text {
   font-size: 1em;
+
 }
 
 .card .mdl-card__actions {
@@ -137,8 +139,43 @@ p {
   background-color: rgba(144, 144, 144, 0.5);
 }
 
-.popup .mdl-card {
+
+#warning-popup {
   background-color: #03A9F4;
+}
+
+#note-popup .mdl-card {
+  /*position: fixed;*/
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 675px;
+  height: 500px;
+  border-radius: 5px;
+}
+
+.scroll {
+  overflow: auto;
+}
+
+.note-popup-title .mdl-card__title-text {
+  font-size:2em;
+  color: white;
+  margin:20px 0 0 0;
+}
+
+#note-popup .mdl-card__supporting-text {
+  margin: 5px 15px 10px 15px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 1em;
+  width: 630px;
+  height: 150px;
+  color: #757575;
+  background-color: white;
 }
 
 .popup .mdl-card__supporting-text {
@@ -148,6 +185,7 @@ p {
 .popup .mdl-card__actions {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 20px;
 }
 
 .new-card-info .mdl-card {
@@ -163,7 +201,7 @@ p {
 
 .new-card .mdl-card {
   width: 100%;
-  height: 350px;
+  height: 550px;
 }
 
 .new-card form {
@@ -184,7 +222,11 @@ p {
 }
 
 .new-card .text-area {
-  height: calc(100% - 70px);
+  height: calc(50% - 25px);
+}
+
+.new-card .note-area {
+  height: calc(50% - 25px);
 }
 
 .new-card textarea {
@@ -212,6 +254,13 @@ p {
   background-color: #B3E5FC;
 }
 
+#deck .card {
+  margin: 0 auto 2rem;
+  padding: 1rem;
+  word-wrap: break-word;
+  box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #99c4d8, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #99c4d8, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
+}
+
 /* fix for weird bootstrap thing */
 .card-preview h1 {
   font-size: 56px;
@@ -230,4 +279,57 @@ p {
   width: 50%;
   border-radius: 4px;
   margin: 0 auto;
+}
+
+.mdl-chip {
+  width: 60px;
+  height: 30px;
+}
+
+.deck-edit {
+  width: 100%;
+}
+
+.label {
+  font-size: 14px;
+  color: #1676d2;
+}
+/*-----Card Styling-----*/
+.Roboto * {
+  font-family: 'Roboto', sans-serif;
+}
+
+.Raleway * {
+  font-family: 'Raleway', sans-serif;
+}
+
+.Montserrat * {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.red {
+  background-color: #ff5252;
+  color: white;
+}
+
+.blue {
+  background-color: #B3E5FC;
+  color: #757575;
+}
+
+.yellow {
+  background-color: #FFEB3B;
+  color: #757575;
+}
+
+.blue.dark {
+  background-color: #03A9F4;
+  color: white;
+}
+
+.note-popup-title .mdl-card__title-text .blue {
+  background-color: #03A9F4;
+}
+.note-popup-title .mdl-card__title-text .yellow {
+  color: #757575;
 }

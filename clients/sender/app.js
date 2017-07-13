@@ -4,7 +4,10 @@ angular.module('cardcast', [
   'cardcast.new',
   'cardcast.auth',
   'cardcast.service',
-  'cardcast.edit'
+  'cardcast.edit',
+  'cardcast.home',
+  'cardcast.newDeck',
+  'cardcast.editDeck'
 ])
 
 .config(function($routeProvider, $httpProvider) {
@@ -19,9 +22,19 @@ angular.module('cardcast', [
     return Auth.isAuth();
   };
 
-  // get a deck for a specific user
-  var getDeck = function(Service) {
-    return Service.getDeck();
+  // get cards from a deck for a specific user
+  var getDeck = function($route, Service) {
+    return Service.getDeck($route.current.params.id);
+  };
+
+  // get deck info for a specific deck
+  var getDeckInfo = function($route, Service) {
+    return Service.getDeckInfo($route.current.params.id);
+  }
+
+  // get all decks for a specific user
+  var getAllDecks = function(Service) {
+    return Service.getAllDecks();
   };
 
   // get a specific card
@@ -38,7 +51,7 @@ angular.module('cardcast', [
       templateUrl: '/sender/controllers/auth/signup.html',
       controller: 'AuthCtrl'
     })
-    .when('/cards', {
+    .when('/decks/:id', {
       templateUrl: '/sender/controllers/main/main.html',
       controller: 'MainCtrl',
       resolve: {
@@ -50,6 +63,26 @@ angular.module('cardcast', [
         // go to the MainCtrl to see where these are used.
         user: authorize,
         deck: getDeck
+      }
+    })
+    .when('/decks', {
+      templateUrl: '/sender/controllers/home/home.html',
+      controller: 'HomeCtrl',
+      resolve: {
+        user: authorize,
+        allDecks: getAllDecks
+      }
+    })
+    .when('/newDeck', {
+      templateUrl: '/sender/controllers/newDeck/newDeck.html',
+      controller: 'NewDeckCtrl'
+    })
+    .when('/editDeck/:id', {
+      templateUrl: '/sender/controllers/editDeck/editDeck.html',
+      controller: 'EditDeckCtrl',
+      resolve: {
+        user: authorize,
+        deck: getDeckInfo
       }
     })
     .when('/new', {
@@ -72,14 +105,22 @@ angular.module('cardcast', [
     });
 })
 
-.run(function($rootScope, $location, $timeout, Auth) {
+.run(function($rootScope, $location, $timeout, Auth, Service) {
 
   // put things on the $rootScope so that all views have access to it (controller independent)
   $rootScope.logout = Auth.logout;
 
+  // go back to main decks page
+  $rootScope.goHome = function() {
+    $timeout(function() {
+      $location.path('/decks');
+    });
+  };
+
+  // go back to deck
   $rootScope.goToDeck = function() {
     $timeout(function() {
-      $location.path('/cards');
+      $location.path('/decks/' + Service.get());
     });
   };
 

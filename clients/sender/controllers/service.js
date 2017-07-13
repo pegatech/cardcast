@@ -1,18 +1,27 @@
 angular.module('cardcast.service', [])
 
 .factory('Service', function($http) {
+  var deckId = {};
+
   return {
 
+    set: function (data) {
+      deckId = data;
+    },
+
+    get: function () {
+      return deckId;
+    },
     // Function to compile markdown
     markDownCompile: function(text) {
       return marked(text);
     },
 
-    // Function that makes get request to '/api/cards' to get user's deck from db
-    getDeck: function() {
+    // Function that makes get request to '/api/decks/:id' to get user's deck from db
+    getDeck: function(id) {
       return $http({
         method: 'GET',
-        url: '/api/cards'
+        url: '/api/decks/' + id
       })
         .then(function(resp) {
           return resp.data;
@@ -20,6 +29,57 @@ angular.module('cardcast.service', [])
         .catch(function(err) {
           console.error(err);
         });
+    },
+
+    // Function that makes get request to '/api/decks/:id' to get user's deck info
+    getDeckInfo: function(id) {
+      return $http({
+        method: 'GET',
+        url: '/api/decks/' + id
+      })
+        .then(function(resp) {
+          return resp.data;
+        })
+        .catch(function(err) {
+          console.error(err);
+        });
+    },
+
+    getAllDecks: function() {
+       return $http({
+         method: 'GET',
+         url: '/api/decks',
+       })
+       .then(function(resp) {
+         return resp.data;
+       })
+       .catch(function(err) {
+         console.log(err);
+       })
+     },
+
+    createDeck: function (deck) {
+      return $http({
+        method: 'POST',
+        url: '/api/decks',
+        data: deck
+      });
+    },
+
+    deleteDeck: function (deck) {
+      return $http({
+        method: 'POST',
+        url: '/api/decks/' + deck._id,
+        data: deck
+      })
+    },
+
+    updateDeck: function (deck) {
+      return $http({
+        method: 'PUT',
+        url: '/api/decks/' + deck.id,
+        data: deck
+      })
     },
 
     // Function that makes post request to '/api/cards' to insert new card into db

@@ -1,1 +1,0 @@
-//window.DEV_APP_ID = 'YOUR_SPECIAL_APP_ID';

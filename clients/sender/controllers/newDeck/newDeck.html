@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+    <!-- Top Navigation Card - Material Design Lite -->
+    <div class="card-deck mdl-card mdl-shadow--4dp">
+
+      <div class="mdl-card__title">
+        <h1 class="mdl-card__title-text">
+          New Deck {{ heading }}
+          <button ng-click="goHome()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Home</button>
+          <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
+        </h1>
+      </div>
+
+      <div class="mdl-card__supporting-text">
+       <p>This is where you create a new deck. You can also enter a description of your deck.</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- add space -->
+<br>
+
+
+<div class="row deck-card" id="deck">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+      <form ng-submit="createDeck()" name="deckForm">
+
+
+    <div class="card mdl-card mdl-shadow--4dp">
+
+
+          <div class="mdl-textfield mdl-js-textfield deck-edit mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="title" ng-model="title" type="text" id="new-card-title" required>
+            <label class="mdl-textfield__label" for="new-card-title">Deck Title</label>
+          </div>
+
+        <div class="text-area mdl-textfield mdl-js-textfield deck-edit mdl-textfield--floating-label">
+          <textarea name="description"
+                    class="mdl-textfield__input"
+                    ng-model="description"
+                    ng-change="changes()"
+                    id="edit-card-markdown"></textarea>
+          <label class="mdl-textfield__label" for="edit-card-markdown">Add a description to your deck!</label>
+        </div>
+
+        <div class="mdl-card__actions mdl-card--border">
+          <button ng-click="goHome()" type="button" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect">Cancel</button>
+          <input class="mdl-button mdl-button--accent mdl-button--raised mdl-js-button mdl-js-ripple-effect"
+                 type="submit"
+                 value="Create New Deck"
+                 ng-disabled="deckForm.title.$invalid"/>
+
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- add space -->
+<div class="deck-footer">&nbsp;</div>

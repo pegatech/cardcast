@@ -28,23 +28,34 @@
     <!-- Card Editor -->
     <div class="mdl-card mdl-shadow--4dp">
 
-      <form ng-submit="createCard()">
+      <form ng-submit="createCard()" name="cardForm">
 
         <div class="mdl-card__supporting-text">
 
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" ng-model="title" type="text" id="new-card-title">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" ng-model="title" type="text" id="new-card-title" maxlength="25">
             <label class="mdl-textfield__label" for="new-card-title">Card Title</label>
           </div>
 
-          <div class="text-area mdl-textfield mdl-js-textfield">
+          <div class="text-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <textarea name="message"
                       class="mdl-textfield__input"
                       ng-model="message"
                       ng-change="changes()"
-                      id="new-card-markdown"></textarea>
+                      id="new-card-markdown" required></textarea>
             <label class="mdl-textfield__label" for="new-card-markdown">Your markdown here...</label>
           </div>
+
+          <div class="note-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <textarea name="note"
+                      class="mdl-textfield__input"
+                      ng-model="note"
+                      ng-change="changes()"
+                      id="new-card-note"></textarea>
+            <label class="mdl-textfield__label" for="new-card-note">Enter presenter notes here...</label>
+          </div>
+
+
 
         </div>
 
@@ -53,7 +64,7 @@
           <input class="mdl-button mdl-button--accent mdl-button--raised mdl-js-button mdl-js-ripple-effect"
                  type="submit"
                  value="Create Card"
-                 ng-disable="cardForm.message.$dirty"/>
+                 ng-disabled="cardForm.message.$invalid"/>
         </div>
 
       </form>
@@ -64,9 +75,35 @@
   <!-- Card Preview -->
   <div class="card-preview col-md-6">
     <div class="mdl-card mdl-shadow--4dp">
-      <div class="mdl-card__supporting-text">
+      <div class="mdl-card__supporting-text {{color}} {{font}}">
         <div ng-bind-html="preview"></div>
       </div>
+    </div>
+
+    <!-- Styling Choices -->
+    <div style="padding-top: 10px">
+      <button ng-click="setColor('blue')" type="button" class="mdl-chip blue">
+        <span class="mdl-chip__text"></span>
+      </button>
+      <button ng-click="setColor('red')" type="button" class="mdl-chip red">
+        <span class="mdl-chip__text"></span>
+      </button>
+      <button ng-click="setColor('yellow')" type="button" class="mdl-chip yellow">
+        <span class="mdl-chip__text"></span>
+      </button>
+
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash1">
+        <input ng-click="setFont('Roboto')" class="mdl-radio__button" id="flash1" name="flash" type="radio" checked>
+        <span class="mdl-radio__label">Roboto</span>
+      </label>
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect Raleway" for="flash2">
+        <input ng-click="setFont('Raleway')" class="mdl-radio__button" id="flash2" name="flash" type="radio">
+        <span class="mdl-radio__label">Raleway</span>
+      </label>
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect Montserrat" for="flash3">
+        <input ng-click="setFont('Montserrat')" class="mdl-radio__button" id="flash3" name="flash" type="radio">
+        <span class="mdl-radio__label">Montserrat</span>
+      </label>
     </div>
   </div>
 
